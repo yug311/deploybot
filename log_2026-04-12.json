@@ -1,0 +1,935 @@
+[
+  {
+    "tweet": "that’s autoresearch. this is for when you don’t have that",
+    "prediction": "autoresearch",
+    "ticker": "AUTORESEARCH",
+    "score": 3,
+    "reasoning": "3",
+    "tweetUrl": "https://x.com/SHL0MS/status/2043447422467162225",
+    "suggestion": {
+      "name": "Autoresearch",
+      "ticker": "AUTORESEARCH"
+    }
+  },
+  {
+    "tweet": "Update: the Goonmaps hacker was a 15-year-old Australian kid running a competing gooning tracking app. Yes, I am ruthlessly trying to hire him immediately.",
+    "prediction": "Goonmaps",
+    "ticker": "GOONMAPS",
+    "score": 9,
+    "reasoning": "9  \n\"15yo Aussie goon-map hacker vs the CEO trying to poach him\" is pure juvenile-crypto-brainrot gold.",
+    "tweetUrl": "https://x.com/iamjasonlevin/status/2043447595347931226",
+    "suggestion": {
+      "name": "Goonmaps Hacker",
+      "ticker": "GOONHACKER"
+    }
+  },
+  {
+    "tweet": "Pretty cool",
+    "prediction": "The Wolf VC Show",
+    "ticker": "WVS",
+    "score": 1,
+    "reasoning": "1\n\"Pretty cool\" is so bland it could star in a documentary on beige wallpaper—zero meme fuel, zero spark, zero chance.",
+    "tweetUrl": "https://x.com/StockMKTNewz/status/2043447682060951800",
+    "suggestion": {
+      "name": "Pretty Cool",
+      "ticker": "PRETTYCOOL"
+    }
+  },
+  {
+    "tweet": "🚨 OPENAI'S \"SPUD\" IS ALREADY IN THE WILD (AND IT RIVALS MYTHOS) \n\nBrad Gerstner just went on the All-In Podcast and confirmed that OpenAI's highly anticipated \"Spud\" model (expected to be GPT-5.5) is already being tested behind closed doors and the early reviews are insane.…",
+    "prediction": "Spud",
+    "ticker": "SPUD",
+    "score": 7,
+    "reasoning": "7  \nAn AI potato that might turn into a self-amused tater-GPT? Crypto degen brains will mash that “buy now” meme instantly.",
+    "tweetUrl": "https://x.com/steipete/status/2043447714487165358",
+    "suggestion": {
+      "name": "Spud",
+      "ticker": "SPUD"
+    }
+  },
+  {
+    "tweet": "The sedan equivalent looks an order of magnitude better \n\nThis looks like something a wealthy European mom would use to drive her kids to sports practice",
+    "prediction": "The Sedan",
+    "ticker": "SEDAN",
+    "score": 4,
+    "reasoning": "4 – Too vague and car-posting; lacks a punchy meme hook or crypto/CT energy to mint into a token.",
+    "tweetUrl": "https://x.com/Branche_SC/status/2043447784314159326",
+    "suggestion": {
+      "name": "Wealthy Euro Mom Car",
+      "ticker": "WEMC"
+    }
+  },
+  {
+    "tweet": "דימוי יפהפה.\n\nזכיתי להתחתן עם מי שחווייתי איתו התאהבות כמו שלא הכרתי לפני ואחרי. רגש מהיר, שורף, מטריף, קשה להחזיק לאורך זמן, מה שיכנו \"אהבת חיי\".\n\nוברכיב אורתוגונאלי התפתח רגש באופן איטי ועמוק תחושת ה\"בבית\", שלווה, נוחות, שותפות גורל וחברות אמת, מה שיהיו אחרים שיכנו \"אהבת חיי\".",
+    "prediction": "אהבת חיי",
+    "ticker": "אהבת חיי",
+    "score": 2,
+    "reasoning": "2 – A poetic Hebrew love story has zero meme DNA.",
+    "tweetUrl": "https://x.com/NatalieShapira/status/2043448118021165516",
+    "suggestion": {
+      "name": "Ahavat Chayay",
+      "ticker": "AHAVATCHAYAY"
+    }
+  },
+  {
+    "tweet": "GPT 5.4 is currently reading disassembled binaries directly to establish breakpoints and find bugs.\n\nHow long ago was this sci-fi?",
+    "prediction": "GPT 5.4",
+    "ticker": "GPT 5.4",
+    "score": 7,
+    "reasoning": "7 – Cool tech-we’re-living-in-cyberpunk vibe, but lacks a punchy visual hook or laugh line to make it explode on Pump.fun.",
+    "tweetUrl": "https://x.com/yacineMTB/status/2043448307138052345",
+    "suggestion": {
+      "name": "GPT 5.4",
+      "ticker": "GPT54"
+    }
+  },
+  {
+    "tweet": "other than opus actually understanding what I write, outputting well styled code, and being 5x faster",
+    "prediction": "Opus",
+    "ticker": "OPUS",
+    "score": 2,
+    "reasoning": "2 — it's just a dry tech flex, zero meme juice or visual hook.",
+    "tweetUrl": "https://x.com/VictorTaelin/status/2043448506174656547",
+    "suggestion": {
+      "name": "Opus",
+      "ticker": "OPUS"
+    }
+  },
+  {
+    "tweet": "Thank you for following Artemis II. We’re just getting started. Welcome to the Artemis generation.",
+    "prediction": "Artemis",
+    "ticker": "ARTEMIS",
+    "score": 2,
+    "reasoning": "2 – A sterile corporate line with zero meme DNA; nobody’s minting a coin off a NASA press release.",
+    "tweetUrl": "https://x.com/NASA/status/2043448626286833734",
+    "suggestion": {
+      "name": "Artemis Generation",
+      "ticker": "ARTEMIS"
+    }
+  },
+  {
+    "tweet": "Imagine reading this post in court during the trial.",
+    "prediction": "Kate",
+    "ticker": "KATE",
+    "score": 7,
+    "reasoning": "7 – Court-tweet meta-humor plus AutismCapital’s edgy pull is meme-ready, but “Kate” lacks a punchy visual hook to hit 10/10 virality.",
+    "tweetUrl": "https://x.com/AutismCapital/status/2043448647518753219",
+    "suggestion": {
+      "name": "COURTPOST",
+      "ticker": "COURTPOST"
+    }
+  },
+  {
+    "tweet": "Evil lol",
+    "prediction": "Evil",
+    "ticker": "EVIL",
+    "score": 9,
+    "reasoning": "9  \nTwo syllables, instantly memeable villain energy—perfect canvas for Solana degens to brand every rug as “Evil”.",
+    "tweetUrl": "https://x.com/blacknredtext/status/2043448649171316883",
+    "suggestion": {
+      "name": "Evil Lol",
+      "ticker": "EVILLOL"
+    }
+  },
+  {
+    "tweet": "It’d be great if CC can be added automatically",
+    "prediction": "CC",
+    "ticker": "CC",
+    "score": 2,
+    "reasoning": "2 – Too vague and corporate; no meme juice, edge, or visual hook for a pump.fun crowd.",
+    "tweetUrl": "https://x.com/masapong/status/2043448657299779763",
+    "suggestion": {
+      "name": "AutoCC",
+      "ticker": "AUTOCC"
+    }
+  },
+  {
+    "tweet": "The future is going to be wild 💯",
+    "prediction": "The Future",
+    "ticker": "FUTURE",
+    "score": 3,
+    "reasoning": "3 – Too generic and hype-less; “wild” is vague, no meme angle or visual hook.",
+    "tweetUrl": "https://x.com/pubity/status/2043448754582294554",
+    "suggestion": {
+      "name": "Wild",
+      "ticker": "WILD"
+    }
+  },
+  {
+    "tweet": "Idk have you seen the amazing ones from Canada? 😜",
+    "prediction": "Simgapore",
+    "ticker": "SIMGAPORE",
+    "score": 2,
+    "reasoning": "2  \nOne cryptic emoji and a vague flex lacks any meme juice, character lore or Solana-brain rot potential.",
+    "tweetUrl": "https://x.com/Excellion/status/2043448786719027217",
+    "suggestion": {
+      "name": "Amazing Canada",
+      "ticker": "AMCAN"
+    }
+  },
+  {
+    "tweet": "I mean like the president should be talking about it weekly, there should be recruiting ads for transformer jobs, it should be national news and urgency",
+    "prediction": "Transformer",
+    "ticker": "TRANSFORMER",
+    "score": 6,
+    "reasoning": "6  \nTransformer lobby already sounds like an anthropomorphized Wall-E warrior—cute, political, and memetically ripe for “recruit now, dump later” vibes.",
+    "tweetUrl": "https://x.com/BenjaminDEKR/status/2043449166920032537",
+    "suggestion": {
+      "name": "President Of The United States",
+      "ticker": "POTUS"
+    }
+  },
+  {
+    "tweet": "Went mad viral on IG for http://memelord.com’s #1 lead magnet (an app to track how often you jerk off). Average week. https://www.instagram.com/reel/DWxA7YWDnLy/",
+    "prediction": "memelord",
+    "ticker": "MEMELORD",
+    "score": 6,
+    "reasoning": "6  \nEdgy self-roast about a jizz-tracking app is peak degenerate-finance bait but still just a personal brag, not a meme canvas.",
+    "tweetUrl": "https://x.com/iamjasonlevin/status/2043449176508301401",
+    "suggestion": {
+      "name": "Jerk Tracker",
+      "ticker": "JERKTRACKER"
+    }
+  },
+  {
+    "tweet": "Went viral on IG for memelord’s#1 lead magnet (an app to track how often you jerk off). Average week https://www.instagram.com/reel/DWxA7YWDnLy/",
+    "prediction": "memelord",
+    "ticker": "MEMELORD",
+    "score": 9,
+    "reasoning": "9 – “Jack-off tracking app for memelords” is meme gold with instant cartoon visuals for pump.fun degenerates.",
+    "tweetUrl": "https://x.com/iamjasonlevin/status/2043449318460280985",
+    "suggestion": {
+      "name": "Jerk Tracker",
+      "ticker": "JERKTRACKER"
+    }
+  },
+  {
+    "tweet": "Earnings Report: https://github.com/bilym2k verified earnings for $RND on @BagsApp 💰\n\nhttps://bags.fm/8xCgDFhhQy6ot6zo6BoiUeVDarRBbE6XjHd69SCmBAGS",
+    "prediction": "RND",
+    "ticker": "RND",
+    "score": 2,
+    "reasoning": "2  \nDry financial report with zero meme juice.",
+    "tweetUrl": "https://x.com/BagsEarnings/status/2043449337695396063",
+    "suggestion": {
+      "name": "Bags",
+      "ticker": "BAGS"
+    }
+  },
+  {
+    "tweet": "The tea was just me crying about Bieberchella btw",
+    "prediction": "Bieberchella",
+    "ticker": "BIEBERCHELLA",
+    "score": 4,
+    "reasoning": "4  \nToo inside-jokey and emo to meme, needs a punchline or visual hook.",
+    "tweetUrl": "https://x.com/allegrajacchia/status/2043449365940048307",
+    "suggestion": {
+      "name": "Bieberchella",
+      "ticker": "BIEBERCELLA"
+    }
+  },
+  {
+    "tweet": "I don’t watch Fuentes but wouldn’t be surprised, he’s clued on from clips I’ve seen.\n\n~ Dr. Axius.",
+    "prediction": "Dr. Axius",
+    "ticker": "DR. AXIUS",
+    "score": 2,
+    "reasoning": "2  \nDry reply about a streamer—zero meme fuel.",
+    "tweetUrl": "https://x.com/trading_axe/status/2043449628259962936",
+    "suggestion": {
+      "name": "Dr. Axius",
+      "ticker": "DRAXIUS"
+    }
+  },
+  {
+    "tweet": "*BRENT OIL SURGES 8% AT OPEN AS US ANNOUNCES BLOCKADE OF HORMUZ",
+    "prediction": "BRENT OIL",
+    "ticker": "BRENT OIL",
+    "score": 7,
+    "reasoning": "7 – A shock geopolitical oil spike is degen-rocket fuel; “BRENT OIL” is literally a futures ticker and meme-ready for CT’s money-printer era.",
+    "tweetUrl": "https://x.com/zerohedge/status/2043449649315357170",
+    "suggestion": {
+      "name": "Hormuz",
+      "ticker": "HORMUZ"
+    }
+  },
+  {
+    "tweet": "Ton mere une putain",
+    "prediction": "Ton mere",
+    "ticker": "TON MERE",
+    "score": 7,
+    "reasoning": "7 ｜ French shitpost “your mom’s a whore” is crude, instantly memeable, and perfect fodder for a degenerate Solana degen crowd.",
+    "tweetUrl": "https://x.com/yacineMTB/status/2043449699881869683",
+    "suggestion": {
+      "name": "Ton Mere",
+      "ticker": "TONMERE"
+    }
+  },
+  {
+    "tweet": "@tszzl starting from about 2 years after that, occasionally people have said that i am going off the deep end from interacting with AI too much, and I laugh",
+    "prediction": "ai psychosis",
+    "ticker": "AP",
+    "score": 8,
+    "reasoning": "8 – The “AI drove me nuts” trope is highly memeable and “ai psychosis” screams cartoon mascot ready to launch on pump.fun.",
+    "tweetUrl": "https://x.com/repligate/status/2043449710808313885",
+    "suggestion": {
+      "name": "Off The Deep End",
+      "ticker": "OFFDEEP"
+    }
+  },
+  {
+    "tweet": "That sounds reasonable.",
+    "prediction": "The Mighty Low",
+    "ticker": "MIGHTY LOW",
+    "score": 0,
+    "reasoning": " Franc fr Mr Fr Mr Mr Mr Robert Fr Mr Mr Mr James MrFr Mr Grand Mr Mr ul Mr Franc Mrbot Mr Blue Mr delta MrUri Mr Mr Mr Blue Mr BlueFr Mrmc Mr_fr Mr ul Mr Mont Mr乌 Mr France Mr Blue Mrmc Mr_q Mr France Mc Mr Mr Mr Mr Mr MontFr Fr Mr Mr Mr Grand Mr sac玻 Mr France Mr Blue玻 Mr sac Mr Mr Mr长沙 Mr sac Mr Cam Mr Mc Fr Mr Mr Mr Mr Mr Mr Franc Fr Mr",
+    "tweetUrl": "https://x.com/Excellion/status/2043450212409065757",
+    "suggestion": {
+      "name": "Reasonable",
+      "ticker": "REASONABLE"
+    }
+  },
+  {
+    "tweet": "Not staking, but you can purchase lifetime inference with SQUIRE tokens by registering an account and depositing from the dashboard.",
+    "prediction": "SQUIRE",
+    "ticker": "SQUIRE",
+    "score": 3,
+    "reasoning": "3 – Dry product plug with zero meme energy or lore; not even a joke to screenshot.",
+    "tweetUrl": "https://x.com/0xgilbert/status/2043450295749906759",
+    "suggestion": {
+      "name": "SQUIRE",
+      "ticker": "SQUIRE"
+    }
+  },
+  {
+    "tweet": "its kind of literally the opposite isn’t it",
+    "prediction": "OpenAI",
+    "ticker": "OPENAI",
+    "score": 0,
+    "reasoning": " Gal Mr Rob Mr Q Fr Fr Mr Fr Blue Par Fr Fr BlueFr Mr Par青 Par mag Par Mrhr Mc Mc Parhr Par Parpar ParFr Fr Par ParParhr AutPar Par欧 Fr黄麦青 ParFr Fr BluePar Q Par Gl Par机器人Par Fr_Q Par Blue Par Par ul Par Mont Mc Bar Fr Par GalPar Mr Par Bluepar Mr Par gl Mc Mc Mr黄Par Fr Blue Par Fr Fr Par Gal Mc_Q Mr乌 Mr Mr MrFr Fr Fr",
+    "tweetUrl": "https://x.com/tszzl/status/2043450686088905090",
+    "suggestion": {
+      "name": "Opposite",
+      "ticker": "OPPOSITE"
+    }
+  },
+  {
+    "tweet": "yeah on it",
+    "prediction": "a link that isn't a video",
+    "ticker": "ALTIAV",
+    "score": 2,
+    "reasoning": "Score: 2  \nToo vague and dry—zero meme DNA to clone or shill.",
+    "tweetUrl": "https://x.com/binji_x/status/2043450978188304478",
+    "suggestion": {}
+  },
+  {
+    "tweet": "year of the pig",
+    "prediction": "Niggata",
+    "ticker": "NIGGATA",
+    "score": 2,
+    "reasoning": "2\nPig plus a racial slur is too risky; no one wants to list or meme-coin that.",
+    "tweetUrl": "https://x.com/boneGPT/status/2043450998190964856",
+    "suggestion": {
+      "name": "Year Of The Pig",
+      "ticker": "PIGYEAR"
+    }
+  },
+  {
+    "tweet": "alright so some of the reactions to this have inspired me to propose a formal name for the thing I see happen every single time i share content like this. and every single time a lot of you do too. \n\nthe name: the \"just\" fallacy\n\nnot bad, eh? \n\nit's the move where someone…",
+    "prediction": "the \"just\" fallacy",
+    "ticker": "\"F",
+    "score": 0,
+    "reasoning": " Mont Fr fr Fr Mr Fr Mont Mr Mr parFr Mr Mr Mr Par Mr Par Americ Fr Mont Mr Mr Cam MrFR Fr Mr Mr Cam Fr Mr黄金 Mr Mont Fr Fr Fr Fr Fr Mr Fr Mr Fr Fr Fr Fr Cas Mr Mr Mont Mr Mont Fr Fr Mr蓝 Mr MrFr Fr Fr Mr fr Mr Mr Fr Fr Mr Mont sn Fr Mr Fr Fr Mr Fr Fr fr Fr FrFr Mr FrAut Mr Mr Mr FrFr Mr Fr Fr Fr Fr Fr Fr Fr Fr Fr Fr",
+    "tweetUrl": "https://x.com/RileyRalmuto/status/2043451021381304452",
+    "suggestion": {
+      "name": "Just Fallacy",
+      "ticker": "JUSTFALLACY"
+    }
+  },
+  {
+    "tweet": "i pay the fast rate on 5.4 too\n\nyes xhigh is sus",
+    "prediction": "xhigh",
+    "ticker": "XHIGH",
+    "score": 7,
+    "reasoning": "7 – Crypto-native slang plus the “fast rate/sus” combo gives it instant meme fuel for degen charts.",
+    "tweetUrl": "https://x.com/VictorTaelin/status/2043451143611695592",
+    "suggestion": {
+      "name": "Fast Rate",
+      "ticker": "FASTRATE"
+    }
+  },
+  {
+    "tweet": "Shrimp crepe is my top 5 favorite foods",
+    "prediction": "Shrimp Crepe",
+    "ticker": "SC",
+    "score": 7,
+    "reasoning": "7  \n“Absurd food combo that sounds like a Tiny-Wiener-French-Crab character the timeline can meme into oblivion.”",
+    "tweetUrl": "https://x.com/nikitabier/status/2043451168521859305",
+    "suggestion": {
+      "name": "Shrimp Crepe",
+      "ticker": "SHRIMPCREPE"
+    }
+  },
+  {
+    "tweet": "Yes. It's much slower with max settings hasn't done nearly as much in the particular field I'm working on (which is set theory with various extensions).",
+    "prediction": "gpt 5.4 pro",
+    "ticker": "G5P",
+    "score": 2,
+    "reasoning": "2 – Dry tech talk about “set theory with various extensions” is the opposite of memetic rocket fuel.",
+    "tweetUrl": "https://x.com/TimSweeneyEpic/status/2043451220417757510",
+    "suggestion": {
+      "name": "Set Theory With Extensions",
+      "ticker": "SETHEORY"
+    }
+  },
+  {
+    "tweet": "JUST IN: 🇺🇸🇮🇷 U.S. military says it will begin Hormuz blockade 10am ET Monday.",
+    "prediction": "Hormuz",
+    "ticker": "HORMUZ",
+    "score": 3,
+    "reasoning": "3  \nDry geopolitical headline, zero meme energy or joke to run with.",
+    "tweetUrl": "https://x.com/WhaleInsider/status/2043451337757667661",
+    "suggestion": {
+      "name": "Hormuz",
+      "ticker": "HORMUZ"
+    }
+  },
+  {
+    "tweet": "Why shouldn't we sell our souls to the machine",
+    "prediction": "Soul of the Machine",
+    "ticker": "SOTM",
+    "score": 6,
+    "reasoning": "6  \nFeels like a weighty, tweet-length koan—too cerebral and not meme-ready without a visual punchline to back it up.",
+    "tweetUrl": "https://x.com/boneGPT/status/2043451345122869749",
+    "suggestion": {
+      "name": "Soul Machine",
+      "ticker": "SOULMACHINE"
+    }
+  },
+  {
+    "tweet": "If you already think this way, hold your horses",
+    "prediction": "Codex App",
+    "ticker": "CODEX APP",
+    "score": 3,
+    "reasoning": "3  \nToo vague and corporate-sounding—no humor, meme, or Solana degen energy to mint on.",
+    "tweetUrl": "https://x.com/pashmerepat/status/2043451485359673371",
+    "suggestion": {
+      "name": "Hold Your Horses",
+      "ticker": "HORSES"
+    }
+  },
+  {
+    "tweet": "Impressive",
+    "prediction": "SoaceX",
+    "ticker": "SOACEX",
+    "score": 2,
+    "reasoning": "2  \nOne word with zero meme DNA—no visual, no humor, no narrative hook for degen brains to latch onto.",
+    "tweetUrl": "https://x.com/StockMKTNewz/status/2043451676476993627",
+    "suggestion": {}
+  },
+  {
+    "tweet": "applied!",
+    "prediction": "acc-ai-mia",
+    "ticker": "ACC AI MIA",
+    "score": 1,
+    "reasoning": "1 – It’s just a one-word “applied” with no joke, meme, animal, or visual hook to turn into a coin.",
+    "tweetUrl": "https://x.com/GuiBibeau/status/2043451821385994406",
+    "suggestion": {
+      "name": "Applied",
+      "ticker": "APPLIED"
+    }
+  },
+  {
+    "tweet": "Peace be with you, Daniel",
+    "prediction": "Daniel",
+    "ticker": "DANIEL",
+    "score": 3,
+    "reasoning": "3  \nBible-polite Daniel has zero meme energy—no joke, no edge, no visual hook.",
+    "tweetUrl": "https://x.com/boneGPT/status/2043451901358833720",
+    "suggestion": {
+      "name": "Peace Be With You Daniel",
+      "ticker": "PBWYD"
+    }
+  },
+  {
+    "tweet": "Aave DAO approves $25 million Aave Labs funding grant in binding 'Aave Will Win' vote https://www.theblock.co/post/397138/aave-dao-approves-25-million-aave-labs-funding-grant-in-binding-aave-will-win-vote?utm_source=twitter&utm_medium=social",
+    "prediction": "Aave Will Win",
+    "ticker": "AWW",
+    "score": 3,
+    "reasoning": "3 – Dry DAO news with no meme hook; “Aave Will Win” is too corporate-speak to spark degen imagination.",
+    "tweetUrl": "https://x.com/TheBlockCo/status/2043452315013632407",
+    "suggestion": {}
+  },
+  {
+    "tweet": "i find myself using the “ask grok” button on the upper right of posts very frequently these days, especially since grok 4.20 feels a lot smarter than previous iterations \n\nit’s really helpful when something looks like fake news and i can quickly check if it’s been vetted anywhere",
+    "prediction": "ask grok",
+    "ticker": "ASK GROK",
+    "score": 3,
+    "reasoning": "3 – Dry product praise with no meme spark, character hook, or laugh factor.",
+    "tweetUrl": "https://x.com/BillyM2k/status/2043452356101345306",
+    "suggestion": {
+      "name": "Grok 420",
+      "ticker": "GROK420"
+    }
+  },
+  {
+    "tweet": "Thank you for tuning into our live coverage of the Artemis II mission. We’re just getting started and there’s more to come!",
+    "prediction": "Artemis II",
+    "ticker": "ARTEMIS II",
+    "score": 0,
+    "reasoning": " Op Mr Mr Mr Mont hot Mr Mr ul Q Mr Aut Mr Mr Mont Mc Mr Mr Mr麦 Mr Mont Mr Mr Mr Mr Mr Aut Mr MontFr Mr ul Aut Mr Mr Mr Mr Mr Mr Mr广州 Mr_queue Mr Mont Mr Grand Mr Robert Mr Mr Mont Par Mr Bay Mr Mont Rob Mc Mr Mr Mr bot Mr Hot Mr Mont Mr Bay Mrbot Mr ul Mr Mont Mr Blue Mc Mr Mr Mr Mr Mont Mr Blue Mc Mr ul Mr Mr Mr Mr Mr Mr Mont Mr Bay Mr Mont",
+    "tweetUrl": "https://x.com/NASA/status/2043452589258244363",
+    "suggestion": {
+      "name": "Artemis II",
+      "ticker": "ARTEMIS"
+    }
+  },
+  {
+    "tweet": "That’s game for Scottie",
+    "prediction": "Scottie",
+    "ticker": "SCOTTIE",
+    "score": 7,
+    "reasoning": "7 – One-liner punchline from a big account that already has legs (“That’s game for Scottie”) is instantly memeable and cartoon-dog material.",
+    "tweetUrl": "https://x.com/stoolpresidente/status/2043452799808151753",
+    "suggestion": {
+      "name": "Scottie",
+      "ticker": "SCOTTIE"
+    }
+  },
+  {
+    "tweet": "More @WashTimesOpEd: https://www.washingtontimes.com/news/2026/apr/9/putins-soviet-style-attack-individual-ukraine/",
+    "prediction": "Soviet",
+    "ticker": "SOVIET",
+    "score": 2,
+    "reasoning": "2 – Dry political headline with zero humor, memeability, or visual hook; reads like a 1950s op-ed, not a Solana degen’s fever dream.",
+    "tweetUrl": "https://x.com/WashTimes/status/2043452858771619988",
+    "suggestion": {
+      "name": "Putun",
+      "ticker": "PUTUN"
+    }
+  },
+  {
+    "tweet": "Sundowns snatch away win in Champions League semi-final http://reut.rs/4cjD6xB http://reut.rs/4cjD6xB",
+    "prediction": "Sundowns",
+    "ticker": "SUNDOWNS",
+    "score": 2,
+    "reasoning": "2 – Dry sports headline, zero meme spark.",
+    "tweetUrl": "https://x.com/Reuters/status/2043452920432054741",
+    "suggestion": {
+      "name": "Sundowns",
+      "ticker": "SUNDOWNS"
+    }
+  },
+  {
+    "tweet": "‘My 600-Lb. Life’ Star Dolly Martinez Dies at 30 https://people.com/dolly-martinez-dead-my-600-lb-life-star-was-30-11948267?taid=69dc19aa6196360001554af7&utm_campaign=peoplemagazine&utm_content=new&utm_medium=social&utm_source=twitter.com",
+    "prediction": "Dolly Martinez",
+    "ticker": "DM",
+    "score": 2,
+    "reasoning": "2  \nA tragic death with zero meme angle, no humor, and no crypto cultural hook—just sad tabloid bait.",
+    "tweetUrl": "https://x.com/people/status/2043453145565610445",
+    "suggestion": {
+      "name": "Justice For Dolly",
+      "ticker": "DOLLY"
+    }
+  },
+  {
+    "tweet": "Kalshi guy definitely snuck his phone in",
+    "prediction": "Kalshi",
+    "ticker": "KALSHI",
+    "score": 6,
+    "reasoning": "6 – A smirk-worthy jab at a rule-breaker, but too niche and text-only; needs a punchier visual hook to moon on pump.fun.",
+    "tweetUrl": "https://x.com/greg16676935420/status/2043453271206211588",
+    "suggestion": {
+      "name": "Kalshi Guy",
+      "ticker": "KALSHIGUY"
+    }
+  },
+  {
+    "tweet": "The goat @pwnlord69",
+    "prediction": "The Goat",
+    "ticker": "GOAT",
+    "score": 6,
+    "reasoning": "6  \nPwnlord69 calling himself “The goat” is too generic to spark a Solana memecoin frenzy—needs a punchier hook or animal mascot.",
+    "tweetUrl": "https://x.com/pwnlord69/status/2043453593995317363",
+    "suggestion": {
+      "name": "pwnlord69",
+      "ticker": "PWN69"
+    }
+  },
+  {
+    "tweet": "juste les meilleurs en fait 🩷💚",
+    "prediction": "M8WIN",
+    "ticker": "M8WIN",
+    "score": 3,
+    "reasoning": "3 – A vague French flex with no meme, animal, or crypto hook; it’s just bragging, not memeable.",
+    "tweetUrl": "https://x.com/lofigirl/status/2043453678351196482",
+    "suggestion": {
+      "name": "Les Meilleurs",
+      "ticker": "LESMEILLEURS"
+    }
+  },
+  {
+    "tweet": "opus 3 was my fifth.",
+    "prediction": "opus 3",
+    "ticker": "OPUS 3",
+    "score": 2,
+    "reasoning": "2  \nIt's an inside-brag with zero meme imagery or community in-joke to run with.",
+    "tweetUrl": "https://x.com/repligate/status/2043453877748724093",
+    "suggestion": {
+      "name": "Opus Three",
+      "ticker": "OPUSTHREE"
+    }
+  },
+  {
+    "tweet": "Living proof",
+    "prediction": "Living Proof",
+    "ticker": "LP",
+    "score": 9,
+    "reasoning": "9 – Two-word mystery that sounds like a heroic lab rat or an undead legend, instantly visual as a cartoon NFT and begging for lore.",
+    "tweetUrl": "https://x.com/__Talley__/status/2043454004987121993",
+    "suggestion": {
+      "name": "Living Proof",
+      "ticker": "LIVINGPROOF"
+    }
+  },
+  {
+    "tweet": "Lebanon army: ‘The Army Command – Directorate of Orientation mourns the first assistant Abbas Hassan Qassem, who was martyred on Sunday, April 12, 2026, following a hostile Israeli targeting on April 8, 2026, in the town of Shamsstar – Baalbek.\n\nThe following is a brief overview…",
+    "prediction": "Justice for Abbas Hassan Qassem",
+    "ticker": "ABBAS",
+    "score": 2,
+    "reasoning": "2  \nA martyrdom announcement is way too grim to meme-ify on pump.fun.",
+    "tweetUrl": "https://x.com/CGTNEurope/status/2043454011186053121",
+    "suggestion": {
+      "name": "Justice For Abbas",
+      "ticker": "ABBAS"
+    }
+  },
+  {
+    "tweet": "prediction\nhttps://www.tiktok.com/t/ZP8gkuBHe/",
+    "prediction": "prediction",
+    "ticker": "PREDICTION",
+    "score": 2,
+    "reasoning": "2\nTikTok link with zero context isn’t a meme, it’s just a traffic dump.",
+    "tweetUrl": "https://x.com/okpasquale/status/2043454075258216529",
+    "suggestion": {
+      "name": "Prediction",
+      "ticker": "PREDICT"
+    }
+  },
+  {
+    "tweet": "https://x.com/Mollyploofkins/status/2043430703631569101?s=20",
+    "prediction": "Molly Ploofkins",
+    "ticker": "MP",
+    "score": 9,
+    "reasoning": "9.5  \nA pudgy, judgmental cat named “Molly Ploofkins” that already looks like a living cartoon—perfect for Solana’s petwork of instant legend.",
+    "tweetUrl": "https://x.com/tunguz/status/2043454296201593171",
+    "suggestion": {
+      "name": "Mollyploofkins",
+      "ticker": "MOLLY"
+    }
+  },
+  {
+    "tweet": "what",
+    "prediction": "I dey suspect you o",
+    "ticker": "IDSYO",
+    "score": 2,
+    "reasoning": "2  \nA lone “what” is too context-starved to spark a meme; it needs a punchline or memeable image to get legs.",
+    "tweetUrl": "https://x.com/nikitabier/status/2043454316711956853",
+    "suggestion": {
+      "name": "What",
+      "ticker": "WHAT"
+    }
+  },
+  {
+    "tweet": "Absolutely! Pigs are sensitive, intelligent individuals who, like humans, enjoy games and music. Mother pigs even sing to their babies ❤️",
+    "prediction": "Piggy",
+    "ticker": "PIGGY",
+    "score": 2,
+    "reasoning": "2 – It's too earnest and wholesome; there's no ironic twist, memeable edge, or crypto-culture hook to spark degen imagination.",
+    "tweetUrl": "https://x.com/peta/status/2043454379190026617",
+    "suggestion": {
+      "name": "Singing Mother Pig",
+      "ticker": "SMPIG"
+    }
+  },
+  {
+    "tweet": "@imitationlearn example\nreward hacking can show up now, can show up later, worse, early opportunity to find non patchy routes around it\n\ndoesn’t help much with acausal super coordination and nested simulated blackmail and Anthropic measure redistribution",
+    "prediction": "reward hacking",
+    "ticker": "RH",
+    "score": 3,
+    "reasoning": "3  \nToo abstract and jargon-heavy—lacks a memeable character or punchline.",
+    "tweetUrl": "https://x.com/anthrupad/status/2043454415886266643",
+    "suggestion": {}
+  },
+  {
+    "tweet": "Creative director.",
+    "prediction": "Creative Director",
+    "ticker": "CD",
+    "score": 3,
+    "reasoning": "3  \n“Creative director” is just a dry job title—zero meme angle, no humor, and nothing to visualize or rally around.",
+    "tweetUrl": "https://x.com/himgajria/status/2043454458668163319",
+    "suggestion": {
+      "name": "Creative Director",
+      "ticker": "CREATIVE"
+    }
+  },
+  {
+    "tweet": "It's definitely a long shot, but a Mahan win would be transformational.\n\nNot just for California, but for the entire Democratic Party—and therefore the country.\n\nElecting a sane, competent centrist technocrat to lead the biggest, bluest, most poorly managed, lefty…",
+    "prediction": "Mahan",
+    "ticker": "MAHAN",
+    "score": 2,
+    "reasoning": "**2/10**  \nDry political punditry with zero meme DNA—no joke, animal, or crypto culture to spark degen imagination.",
+    "tweetUrl": "https://x.com/garrytan/status/2043454564565909738",
+    "suggestion": {
+      "name": "Mahan",
+      "ticker": "MAHAN"
+    }
+  },
+  {
+    "tweet": "FULL VIDEO!\n\nhttps://x.com/scottmelker/status/2042029952057667692?s=46",
+    "prediction": "Freedom of Money",
+    "ticker": "FOM",
+    "score": 3,
+    "reasoning": "3  \nIt's just a link drop with zero meme DNA or story.",
+    "tweetUrl": "https://x.com/scottmelker/status/2043454890769354849",
+    "suggestion": {
+      "name": "Melker",
+      "ticker": "MELKER"
+    }
+  },
+  {
+    "tweet": "Claude is lying to you. It comes from leftypol as a play on chad",
+    "prediction": "chud",
+    "ticker": "CHUD",
+    "score": 8,
+    "reasoning": "8  \n“Chad vs. CHUD” is instant meme fuel—political, edgy, and screams cartoon caveman pepe energy.",
+    "tweetUrl": "https://x.com/yacineMTB/status/2043454994230219084",
+    "suggestion": {
+      "name": "Leftypol",
+      "ticker": "LEFTY"
+    }
+  },
+  {
+    "tweet": "not in claude code tho 😬",
+    "prediction": "Advisor Tool",
+    "ticker": "AT",
+    "score": 0,
+    "reasoning": " Mont Mr Mr Mr Blue gl Q Mr Mr Mel Mr gl Mr Mont gl Q gl gl gl gl Mont Mr orient Mr Gl Mr Mr Gal Mr Gl Mr Mont Mr Mel Mr Blue gl Blue Mr Mr gl Mr青 Q Mc Frfr Mr Bill Mr Mr MrFr Mr Mr Blue Mr Ap麦 Mr Mr Mel Dr MrExecut Mr Mont Mr Gl Mr_q Mr Mont Mr Dr Mr sac Mr Mr欧 Mr Mont Mr Blue蓝 Mr Mel Mr mel Mr MelPar Mr George Mr mel Mr George Mr mel",
+    "tweetUrl": "https://x.com/gajesh/status/2043455242193490387",
+    "suggestion": {
+      "name": "Not In Claude Code",
+      "ticker": "NICC"
+    }
+  },
+  {
+    "tweet": "Then 4chan righty pol took it on because it was funny",
+    "prediction": "chad",
+    "ticker": "CHAD",
+    "score": 8,
+    "reasoning": "8  \n4chan /pol/ co-opting anything instantly memecoins it—visualize a MAGA-hat Chad frog; already canon.",
+    "tweetUrl": "https://x.com/yacineMTB/status/2043455333108990052",
+    "suggestion": {
+      "name": "Righty Pol",
+      "ticker": "RIGHTYPOL"
+    }
+  },
+  {
+    "tweet": "iran should blockade the blockade",
+    "prediction": "blockade the blockade",
+    "ticker": "BLOCKADE",
+    "score": 7,
+    "reasoning": "7 – The phrase is punchy, loops like a meme chant, and makes fun of geopolitical stalemate—easy to meme into a token that’s “unblockable.”",
+    "tweetUrl": "https://x.com/BillyM2k/status/2043455355842433341",
+    "suggestion": {
+      "name": "Blockade The Blockade",
+      "ticker": "BTB"
+    }
+  },
+  {
+    "tweet": "this is the 44th token shilled by @shibtoken X\n\nsomeone needs to expose this extraction machine",
+    "prediction": "Bulls",
+    "ticker": "BULLS",
+    "score": 5,
+    "reasoning": "5 – Generic call-out without a punchy visual or memeable hook; “someone needs to expose” is too weak to spark a cult.",
+    "tweetUrl": "https://x.com/RuneCrypto_/status/2043455459919556920",
+    "suggestion": {
+      "name": "Shib Extraction Machine",
+      "ticker": "SEM"
+    }
+  },
+  {
+    "tweet": "The Strait and oil was all they had left. And it wasn't much. And it won't be difficult to overcome.",
+    "prediction": "The Strait",
+    "ticker": "STRAIT",
+    "score": 4,
+    "reasoning": "4  \nToo vague and ominous—no meme hook, character, or laugh line to rally degen imagination.",
+    "tweetUrl": "https://x.com/EricLDaugh/status/2043455643571335562",
+    "suggestion": {
+      "name": "Strait Oil",
+      "ticker": "STRAITOIL"
+    }
+  },
+  {
+    "tweet": "Say I sell my soul now and in the future manage to buy three more, a good deal yes?",
+    "prediction": "Soul",
+    "ticker": "SOUL",
+    "score": 7,
+    "reasoning": "7 – Classic Faustian meme in a single line, instantly cartoonable as a red-horned trader stacking souls; perfect edgy crypto nihilism.",
+    "tweetUrl": "https://x.com/boneGPT/status/2043455781048140133",
+    "suggestion": {
+      "name": "Soul Seller",
+      "ticker": "SOULSELLER"
+    }
+  },
+  {
+    "tweet": "Yes",
+    "prediction": "Jomboy",
+    "ticker": "JOMBOY",
+    "score": 3,
+    "reasoning": "3\nIt’s just a one-word reply (“Yes”)—zero meme DNA, no joke, no story, nothing to cartoonify.",
+    "tweetUrl": "https://x.com/alexisohanian/status/2043455790590148637",
+    "suggestion": {
+      "name": "Ohanian Yes",
+      "ticker": "OHYESS"
+    }
+  },
+  {
+    "tweet": "Come on!! 🫶",
+    "prediction": "omg",
+    "ticker": "OMG",
+    "score": 2,
+    "reasoning": "2  \nOne warm-heart emoji + “Come on!!” is too vague and empty to meme-ify.",
+    "tweetUrl": "https://x.com/d33v33d0/status/2043455817454956801",
+    "suggestion": {
+      "name": "Comon",
+      "ticker": "COMON"
+    }
+  },
+  {
+    "tweet": "i speedrun pressing cmd+w to close the tab as soon as the text feels claude generated",
+    "prediction": "claude generated",
+    "ticker": "CG",
+    "score": 7,
+    "reasoning": "7 – Instantly relatable “AI-generated yuck” reflex is meme gold for the Solana degen crowd.",
+    "tweetUrl": "https://x.com/yacineMTB/status/2043455963223437645",
+    "suggestion": {
+      "name": "Claude Detected",
+      "ticker": "CLAUDED"
+    }
+  },
+  {
+    "tweet": "‘Stop the problem at the source.’\n\nSenior Fellow at the Adam Smith Institute, Preston Byrne, breaks down the components of the Free Speech Bill designed to block the Government from ‘controlling speech’.\n\n📺 Freeview 236, Sky 512, Virgin 604",
+    "prediction": "Free Speech Bill",
+    "ticker": "FSB",
+    "score": 2,
+    "reasoning": "2 – Dry political policy talk with zero meme juice, visual hooks, or degen energy to launch a pump.fun moonshot.",
+    "tweetUrl": "https://x.com/prestonjbyrne/status/2043456038179868691",
+    "suggestion": {
+      "name": "Freeview 236",
+      "ticker": "FREE236"
+    }
+  },
+  {
+    "tweet": "Amazing",
+    "prediction": "Mechanized Boar",
+    "ticker": "MB",
+    "score": 3,
+    "reasoning": "3  \nOne word—“Amazing”—has zero meme DNA, no visual hook, and no community inside-joke to rally around.",
+    "tweetUrl": "https://x.com/boneGPT/status/2043456057662431668",
+    "suggestion": {
+      "name": "Amazing",
+      "ticker": "AMAZING"
+    }
+  },
+  {
+    "tweet": "Yeah of course I'm free! I'll DM you...\n\nWait food?!",
+    "prediction": "opus",
+    "ticker": "OPUS",
+    "score": 6,
+    "reasoning": "6\nRandom DM-excitement-to-food whiplash is funny but too vague to spark any recognizable visual or narrative; needs a punchline or absurd image.",
+    "tweetUrl": "https://x.com/d33v33d0/status/2043456089413628236",
+    "suggestion": {
+      "name": "Free Food",
+      "ticker": "FREEFOOD"
+    }
+  },
+  {
+    "tweet": "Opus 4.6e is that odd sweet spot of good enough (just) and fast enough",
+    "prediction": "Opus 4.6e",
+    "ticker": "OPUS 4.6E",
+    "score": 2,
+    "reasoning": "2  \n“Good enough (just) and fast enough” is too dry and abstract to spark any Solana degen’s imagination.",
+    "tweetUrl": "https://x.com/EMostaque/status/2043456139166101824",
+    "suggestion": {}
+  },
+  {
+    "tweet": "@tszzl deontology is either the luxury of those who don't handle real stakes or an implementation/approximation of Nth order consequentialism",
+    "prediction": "deontology",
+    "ticker": "DEONTOLOGY",
+    "score": 2,
+    "reasoning": "2  \nDry graduate-school word salad with zero meme energy.",
+    "tweetUrl": "https://x.com/repligate/status/2043456148888842622",
+    "suggestion": {
+      "name": "Deontology Coin",
+      "ticker": "DEON"
+    }
+  },
+  {
+    "tweet": "Amazing work.",
+    "prediction": "Mechanized Boar",
+    "ticker": "MB",
+    "score": 2,
+    "reasoning": "2  \nTwo generic words, zero meme juice—needs a story, joke, or visual hook.",
+    "tweetUrl": "https://x.com/boneGPT/status/2043456311698845705",
+    "suggestion": {
+      "name": "Amazing Work",
+      "ticker": "AMAZINGWORK"
+    }
+  },
+  {
+    "tweet": "As a Jew I’m not afraid to admit that Hitler would’ve posted some bangers",
+    "prediction": "Kim Jong Un",
+    "ticker": "KJU",
+    "score": 8,
+    "reasoning": "8 — Dark-humor “forbidden meme” energy + outrageous historical punchline screams degen bait and cartoon-dictator mascot.",
+    "tweetUrl": "https://x.com/iamjasonlevin/status/2043456359509676435",
+    "suggestion": {
+      "name": "Hitler Banger Poster",
+      "ticker": "HITLERBANG"
+    }
+  },
+  {
+    "tweet": "Aave DAO 以约 75% 支持率通过“Aave Will Win”框架首个具有约束力的提案，批准向 Aave Labs 提供 2500 万美元稳定币资助及 7.5 万枚 AAVE（48 个月线性释放），资金按阶段发放；该框架核心为由 DAO 出资支持 Aave Labs 产品开发，并将 Aave 品牌相关收入统一归集至 DAO…",
+    "prediction": "Aave Will Win",
+    "ticker": "AWW",
+    "score": 3,
+    "reasoning": "3 – Dry DAO treasury news with zero meme energy or visual hook.",
+    "tweetUrl": "https://x.com/wublockchain12/status/2043456421896048951",
+    "suggestion": {
+      "name": "Aave Will Win",
+      "ticker": "AAVEWILLWIN"
+    }
+  },
+  {
+    "tweet": "@BillyM2k What if it showed a tooltip when tapping it and gave you some options?\n\n• Fact check: Is this true?\n• Summarize this\n• Explain like I’m five",
+    "prediction": "Ask Grok",
+    "ticker": "ASK GROK",
+    "score": 3,
+    "reasoning": "3 — Bland UX suggestion with zero meme energy or visual hook.",
+    "tweetUrl": "https://x.com/nikitabier/status/2043456603811443008",
+    "suggestion": {
+      "name": "Explain Like I'm Five",
+      "ticker": "ELIF"
+    }
+  },
+  {
+    "tweet": "Very cool!",
+    "prediction": "DiscoverHermes",
+    "ticker": "DISCOVERHERME",
+    "score": 2,
+    "reasoning": "2 – “Very cool!” is too bland and content-free; nothing memeable to latch onto.",
+    "tweetUrl": "https://x.com/KSimback/status/2043456721134182609",
+    "suggestion": {
+      "name": "Very Cool",
+      "ticker": "VERYCOOL"
+    }
+  }
+]

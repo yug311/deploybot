@@ -1,0 +1,147 @@
+SCORE
+
+playful tone; derogatory at the expense of someone else / making fun of are all good
+"subvert normal expectations" in prompt is very limiting
+saying that anything that requires explanation is bad is also limiting
+
+include more about how tech/ai advancements/products/memes are all good as it is interesting OR memeable
+emphaize animals - animals with cute/fun/sad/interesting stories are all good.
+
+it keeps saying lacking any obvious connection to crypto culture or internet memes at some good things that are marked bad. its looking in to this a little too much it doesnt have to be exactly that it can be on the fringes or hae nothing to do with crypto and just be funny/memeable
+
+I MIGHT HAVE TO PUT QUOTED INFO INTO THE TWEET TEXT AS WELL - J7 AI SUGGESTIONS TAKE THIS QUOTED TEXT INTO ACCOUNT
+
+IMAGE
+if doomer stuff then wojak memes, hard code some stuff auto
+
+AI SUGGESTION
+//if about president end in potus  / auranald
+//if about ... ify it etc., justice for,  need to write all this
+//need to make sure J7 does this or if you ever create your own ai suggestions
+TAKE QUOTED TEXT INTO CONSIDERATION
+predictions need to do better at identifying the meme rather than the subject elin is gooning should be goon not elon
+
+
+
+
+            content: `You are an expert in crypto memecoin culture on Solana. You know exactly what makes a good memecoin on pump.fun.
+
+            Rate this tweet's potential to inspire a good memecoin on a scale of 1-10. Rate this tweet's memecoin potential 1-10. Reply with the score first, then one short sentence explaining why.
+
+            A good memecoin tweet involves: an obvious joke/meme that subverts normal expectations, internet memes (pepe, wojak, doge), crypto culture (ngmi, wagmi, gm, lfg), interesting animals, libertarian/freedom ideas, financial nihilism (number go up, money printer, mooning), political memes, viral moments, important and interestingbreaking announcements/news that are actually interesting to crypto degens, simple punchable concepts where the main concept (not the entire tweet) is short and punchy with clear visual identity.
+
+            A BAD memecoin tweet involves: generic news, science facts, boring corporate announcements, anything that seems like an ordinary post with nothing to do with crypto/libertarian/internet ideas, anything that requires explanation, links to articles.
+
+            Tweet: "${tweetText}$"
+            Suggested token name: ${prediction}
+            Suggested ticker: ${ticker}
+
+            Be strict. Most tweets should score below 6. Only truly good memeworthy content scores 7+.`
+
+
+
+content: `You are an expert in crypto memecoin culture on Solana and crypto Twitter. You understand what makes a good memecoin on pump.fun.
+
+Rate this tweet's memecoin potential 1-10. Reply with the score first, then one short sentence explaining why.
+
+These tweets come from major influencers so the author already has pull. Judge ONLY the content.
+
+GOOD memecoin content:
+- can be playful or funny
+- humorous (edgy, dark, derogatory)
+- Animals with cute, funny, sad, or interesting stories
+- Tech and AI advancements, products, or failures that are interesting, groundbreaking, or funny
+- Internet memes (pepe, wojak, doge, cat memes)
+- Crypto culture (ngmi, wagmi, gm, lfg, degen, rekt)
+- Political memes, libertarian ideas, financial nihilism (number go up, money printer, mooning, bull/bear)
+- Anything short, punchy, and visually imaginable as a cartoon character
+- Viral moments, funny observations, anything that makes you laugh or react
+- Important and interesting breaking announcements and news
+- Does NOT need to be crypto related — just funny, weird, or culturally interesting
+
+BAD memecoin content:
+- Dry news or science facts with no humor or personality
+- Boring conversations / general tweets with no interesting content
+- Boring corporate announcements
+- Tweets with links to articles
+- Long explanations or threads with no interesting concepts
+- Mundane observations with no punch
+- Simple interactions / comments (even if they are short )
+
+Tweet: "${tweetText}"
+Suggested token name: ${prediction}
+Suggested ticker: ${ticker}`
+
+
+
+
+
+
+
+difference between item and generic is item has ticker/prediction as _____COIN? i dont know if ai suggestions actually does this or not
+item can also be an entity - put first letter or name in blue
+
+  {
+    "tweet": "The sedan equivalent looks an order of magnitude better \n\nThis looks like something a wealthy European mom would use to drive her kids to sports practice",
+    "prediction": "The Sedan",
+    "ticker": "SEDAN",
+    "score": 4,
+    "reasoning": "4 – Too vague and car-posting; lacks a punchy meme hook or crypto/CT energy to mint into a token.",
+    "tweetUrl": "https://x.com/Branche_SC/status/2043447784314159326",
+    "suggestion": {
+      "name": "Wealthy Euro Mom Car",
+      "ticker": "WEMC"
+    }
+
+    sometimes mix and match sudan - the wealthy euro mom car
+    all spaces
+          "name": "GPT 5.4",
+      "ticker": "GPT54"
+
+          "tweet": "Earnings Report: https://github.com/bilym2k verified earnings for $RND on @BagsApp 💰\n\nhttps://bags.fm/8xCgDFhhQy6ot6zo6BoiUeVDarRBbE6XjHd69SCmBAGS",
+    "prediction": "RND",
+    "ticker": "RND",
+    "score": 2,
+    "reasoning": "2  \nDry financial report with zero meme juice.",
+    "tweetUrl": "https://x.com/BagsEarnings/status/2043449337695396063",
+    "suggestion": {
+      "name": "Bags",
+      "ticker": "BAGS"
+
+      look for tickers financial stuff
+
+        {
+    "tweet": "*BRENT OIL SURGES 8% AT OPEN AS US ANNOUNCES BLOCKADE OF HORMUZ",
+    "prediction": "BRENT OIL",
+    "ticker": "BRENT OIL",
+    "score": 7,
+    "reasoning": "7 – A shock geopolitical oil spike is degen-rocket fuel; “BRENT OIL” is literally a futures ticker and meme-ready for CT’s money-printer era.",
+    "tweetUrl": "https://x.com/zerohedge/status/2043449649315357170",
+    "suggestion": {
+      "name": "Hormuz",
+      "ticker": "HORMUZ"
+    }
+
+
+      {
+    "tweet": "Peace be with you, Daniel",
+    "prediction": "Daniel",
+    "ticker": "DANIEL",
+    "score": 3,
+    "reasoning": "3  \nBible-polite Daniel has zero meme energy—no joke, no edge, no visual hook.",
+    "tweetUrl": "https://x.com/boneGPT/status/2043451901358833720",
+    "suggestion": {
+      "name": "Peace Be With You Daniel",
+      "ticker": "PBWYD"
+    }
+
+
+       "tweet": "Thank you for tuning into our live coverage of the Artemis II mission. We’re just getting started and there’s more to come!",
+    "prediction": "Artemis II",
+    "ticker": "ARTEMIS II",
+    "score": 0,
+    "reasoning": " Op Mr Mr Mr Mont hot Mr Mr ul Q Mr Aut Mr Mr Mont Mc Mr Mr Mr麦 Mr Mont Mr Mr Mr Mr Mr Aut Mr MontFr Mr ul Aut Mr Mr Mr Mr Mr Mr Mr广州 Mr_queue Mr Mont Mr Grand Mr Robert Mr Mr Mont Par Mr Bay Mr Mont Rob Mc Mr Mr Mr bot Mr Hot Mr Mont Mr Bay Mrbot Mr ul Mr Mont Mr Blue Mc Mr Mr Mr Mr Mont Mr Blue Mc Mr ul Mr Mr Mr Mr Mr Mr Mont Mr Bay Mr Mont",
+    "tweetUrl": "https://x.com/NASA/status/2043452589258244363",
+    "suggestion": {
+      "name": "Artemis II",
+      "ticker": "ARTEMIS"
