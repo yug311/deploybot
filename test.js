@@ -1,11 +1,11 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import { io } from "socket.io-client";
 import fs from "fs";
 import Groq from "groq-sdk";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 const model = "moonshotai/kimi-k2-instruct"; // "llama-3.3-70b-versatile", moonshotai/kimi-k2-instruct, qwen/qwen3-32b, openai/gpt-oss-120b
-
-
 
 const WHITELIST = [
     "elonmusk", "pmarca", "solana", "pumpfun", "toly", "aeyakovenko",
@@ -19,6 +19,16 @@ const PERSON_IMAGE = `data:image/webp;base64,${fs.readFileSync("carciature.webp"
 const ITEM_IMAGE = `data:image/webp;base64,${fs.readFileSync("memestock.webp").toString("base64")}`;
 
 const tweetCache = {};
+
+setInterval(() => {
+    const now = Date.now();
+    for (const id in tweetCache) {
+        if (now - tweetCache[id].cachedAt > 10 * 60 * 1000) {
+            delete tweetCache[id];
+        }
+    }
+    console.log(`🧹 Cache cleaned — ${Object.keys(tweetCache).length} tweets remaining`);
+}, 5 * 60 * 1000);
 
 async function generateSuggestion(tweetText, author) {
 
@@ -61,7 +71,7 @@ async function generateSuggestion(tweetText, author) {
     return { name, ticker };
 }
 
-async function scoreTweet(tweetText, prediction, ticker, tweetUrl, authorsHandle) {
+async function scoreTweet(tweetText, prediction, ticker, authorsHandle) {
     const response = await groq.chat.completions.create({
         model: model,
         messages: [{
@@ -110,16 +120,14 @@ async function scoreTweet(tweetText, prediction, ticker, tweetUrl, authorsHandle
 
     const scoreMatch = response.choices[0].message.content.match(/\d+/);
     const score = scoreMatch ? parseInt(scoreMatch[0]) : 0;
-    const suggestion = await generateSuggestion(tweetText, authorsHandle);
-    logToFile(tweetText, prediction, ticker, score, response.choices[0].message.content, tweetUrl, suggestion);
-    return score;
+    // const suggestion = await generateSuggestion(tweetText, authorsHandle);
+    // logToFile(tweetText, prediction, ticker, score, response.choices[0].message.content, tweetUrl, suggestion);
+    return {score: score, reasoning: response.choices[0].message.content.trim()};
 }
 
-function logToFile(tweet, prediction, ticker, score, reasoning, tweetUrl, suggestion    ) {
+function logToFile(tweet, score, reasoning, tweetUrl, suggestion) {
     const entry = {
         tweet: tweet,
-        prediction,
-        ticker,
         score,
         reasoning,
         tweetUrl,
@@ -138,7 +146,7 @@ function logToFile(tweet, prediction, ticker, score, reasoning, tweetUrl, sugges
     console.log(`  💾 Logged to ${filename}`);
 }
 
-async function generateImage(tweetText, prediction, ticker) {
+async function generateImage(tweetText, prediction, ticker, tweet) {
 
     // classify content type first
     const groqResponse = await groq.chat.completions.create({
@@ -198,34 +206,48 @@ async function generateImage(tweetText, prediction, ticker) {
                      : null;
 
     
-    const response = await fetch("https://nyc.j7tracker.io/api/ai-image", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "origin": "https://j7tracker.io",
-            "referer": "https://j7tracker.io/",
-            "x-session-id": process.env.SESSION_ID,
-            "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
-        },
-        body: JSON.stringify({
-            prompt,
-            session_id: process.env.SESSION_ID,
-            model: "model-b",
-            ...(referenceImage && {
-                image: referenceImage,
-                images: [referenceImage]
-            })
-        })
-    });
 
-    const data = await response.json();
-    if (!data.success) {
-        console.log("❌ Image generation failed:", data.error);
+    const controller = new AbortController();
+    if (tweet) tweet.abortController = controller;
+
+    try {
+        const response = await fetch("https://nyc.j7tracker.io/api/ai-image", {
+            method: "POST",
+            signal: controller.signal,
+            headers: {
+                "Content-Type": "application/json",
+                "origin": "https://j7tracker.io",
+                "referer": "https://j7tracker.io/",
+                "x-session-id": process.env.SESSION_ID,
+                "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+            },
+            body: JSON.stringify({
+                prompt,
+                session_id: process.env.SESSION_ID,
+                model: "model-b",
+                ...(referenceImage && {
+                    image: referenceImage,
+                    images: [referenceImage]
+                })
+            })
+        });
+
+        const data = await response.json();
+        if (!data.success) {
+            console.log("❌ Image generation failed:", data.error);
+            return null;
+        }
+
+        console.log(`  🎨 Image generated in ${data.elapsed}s`);
+        return data.image; // base64 image
+    } catch (err) {    
+        if (err.name === "AbortError") {
+            console.log("  ⚠️ Image generation aborted — image arrived");
+        } else {
+            console.log("❌ Image generation error:", err.message);
+        }
         return null;
     }
-
-    console.log(`  🎨 Image generated in ${data.elapsed}s`);
-    return data.image; // base64 image
 }
 
 async function deployToken(name, ticker, imageBase64, tweetText, authorHandle) {
@@ -313,45 +335,158 @@ socket.on("connect", () => {
 socket.on("tweet", (data) => {
     const handle = data.author?.handle?.toLowerCase();
     // if (!WHITELIST.includes(handle)) return;
-    if (data.media?.images?.length > 0 || data.media?.videos?.length > 0) return;
-    if (!data.text) return;
 
-    tweetCache[data.id] = {...data, cachedAt: Date.now()};
+    tweetCache[data.id] = {
+        ...data,
+        cachedAt: Date.now(),
+        processing: false,
+        imageArrived: false,
+        hasMedia: data.media?.images?.length > 0
+    };
+
+    processTweet(data.id);
 });
 
-socket.on("ai_suggestion", async (data) => {
-    const tweet = tweetCache[data.tweet_id];
+socket.on("tweet_update", (data) => {
+    const existing = tweetCache[data.id];
+    if (!existing) return;
+
+    const hasMedia = data.media?.images?.length > 0;
+
+    tweetCache[data.id] = {
+        ...data,
+        cachedAt: existing.cachedAt,
+        processing: existing.processing,
+        imageArrived: existing.imageArrived || hasMedia,
+        hasMedia: existing.hasMedia || hasMedia,
+        abortController: existing.abortController
+    };
+
+    if (hasMedia && !existing.hasMedia) {
+        console.log(`📸 Image arrived for tweet ${data.id} — processing: ${existing.processing}`);
+        
+        if (existing.processing) {
+            existing.abortController?.abort();
+            processWithImage(tweetCache[data.id]);
+        }
+    }
+});
+async function processTweet(tweetId) {
+    const tweet = tweetCache[tweetId];
     if (!tweet) return;
 
-    console.log("ELAPSED SUGGESTION:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), "s");
+    tweet.processing = true;
 
-    const score = await scoreTweet(tweet.text, data.prediction, data.ticker, tweet.tweetUrl, tweet.author?.handle);
-    // const score = 9; // for testing
+    console.log("ELAPSED START:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), "s");
 
+    // generate our own suggestion instead of using j7's
+    const suggestion = await generateSuggestion(tweet.text, tweet.author?.handle);
+    if (!suggestion.name || !suggestion.ticker) return;
+
+    // check 1 — image arrived while we were generating suggestion
+    if (tweet.imageArrived) {
+        console.log("📸 Image arrived during suggestion — switching to image path");
+        await processWithImage(tweet);
+        return;
+    }
+
+    const {score, reasoning} = await scoreTweet(tweet.text, suggestion.name, suggestion.ticker, tweet.author?.handle);
     console.log("ELAPSED SCORE:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), "s");
 
+    // check 2 — image arrived while we were scoring
+    if (tweet.imageArrived) {
+        console.log("📸 Image arrived during scoring — switching to image path");
+        await processWithImage(tweet);
+        return;
+    }
 
     if (score >= 7) {
-
-        const image = await generateImage(tweet.text, data.prediction, data.ticker);
+        const image = await generateImage(tweet.text, suggestion.name, suggestion.ticker, tweet);
         if (!image) return;
+
         const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
         fs.writeFileSync("generated_image.jpg", Buffer.from(base64Data, "base64"));
-
         console.log("ELAPSED IMAGE:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), "s");
 
-
-        // next step: deploy
-        const result = await deployToken(data.prediction, data.ticker, image, tweet.text, tweet.author?.handle);
+        logToFile(tweet.text, score, reasoning, tweet.tweetUrl, suggestion);
+        const result = await deployToken(suggestion.name, suggestion.ticker, image, tweet.text, tweet.author?.handle);
         if (result.type === "token_create_success") {
             console.log(`  ✅ Token deployed: ${result.mint_address}`);
-
             console.log("ELAPSED DEPLOY:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), "s");
         } else {
             console.log(`  ❌ Deploy failed:`, result.error);
         }
     }
-});
+
+    tweet.processing = false;
+}
+
+async function processWithImage(tweet) {
+    const imageUrl = tweet.media.images[0].url;
+
+    
+    console.log("📸 Processing with image:", imageUrl);
+
+    // describe image with llama 4 scout
+    const visionResponse = await groq.chat.completions.create({
+        model: "meta-llama/llama-4-scout-17b-16e-instruct",
+        messages: [{
+            role: "user",
+            content: [
+                {
+                    type: "image_url",
+                    image_url: { url: imageUrl }
+                },
+                {
+                    type: "text",
+                    text: `Describe what you see in this image in one short sentence. Focus on the main subject, mood, and any text visible. Be concise.`
+                }
+            ]
+        }],
+        max_tokens: 100,
+        temperature: 0
+    });
+
+    const imageDescription = visionResponse.choices[0].message.content.trim();
+    console.log("  🖼️ Image description:", imageDescription);
+
+    // combine tweet text and image description
+    const combinedText = `${tweet.text || ""} [image: ${imageDescription}]`.trim();
+
+    // check if image arrived during vision call (shouldn't happen but just in case)
+    const suggestion = await generateSuggestion(combinedText, tweet.author?.handle);
+    if (!suggestion.name || !suggestion.ticker) return;
+
+    console.log(`  💡 Suggestion: ${suggestion.name} (${suggestion.ticker})`);
+
+    const {score, reasoning} = await scoreTweet(combinedText, suggestion.name, suggestion.ticker, tweet.author?.handle);
+    console.log("ELAPSED SCORE:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), "s");
+
+    if (score < 7) {
+        console.log(`  ❌ Score too low — skipping`);
+        return;
+    }
+
+    // fetch tweet image and convert to base64
+    const imgResponse = await fetch(imageUrl);
+    const buffer = await imgResponse.arrayBuffer();
+    const image = `data:image/jpeg;base64,${Buffer.from(buffer).toString("base64")}`;
+
+    const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
+    fs.writeFileSync("generated_image.jpg", Buffer.from(base64Data, "base64"));
+    console.log("ELAPSED IMAGE:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), "s");
+
+    logToFile(tweet.text, score, reasoning, tweet.tweetUrl, suggestion);
+    const result = await deployToken(suggestion.name, suggestion.ticker, image, combinedText, tweet.author?.handle);
+    if (result.type === "token_create_success") {
+        console.log(`  ✅ Token deployed: ${result.mint_address}`);
+        console.log("ELAPSED DEPLOY:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), "s");
+    } else {
+        console.log(`  ❌ Deploy failed:`, result.error);
+    }
+
+    tweet.processing = false;
+}
 
 
 // var text = "Stray dog ‘Buck’ — whose head was stuck in bucket — rescued after huge search for poor pup"
