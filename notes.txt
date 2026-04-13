@@ -1,147 +1,165 @@
+images
+inu trend
+
 SCORE
-
-playful tone; derogatory at the expense of someone else / making fun of are all good
-"subvert normal expectations" in prompt is very limiting
-saying that anything that requires explanation is bad is also limiting
-
-include more about how tech/ai advancements/products/memes are all good as it is interesting OR memeable
-emphaize animals - animals with cute/fun/sad/interesting stories are all good.
-
-it keeps saying lacking any obvious connection to crypto culture or internet memes at some good things that are marked bad. its looking in to this a little too much it doesnt have to be exactly that it can be on the fringes or hae nothing to do with crypto and just be funny/memeable
-
-I MIGHT HAVE TO PUT QUOTED INFO INTO THE TWEET TEXT AS WELL - J7 AI SUGGESTIONS TAKE THIS QUOTED TEXT INTO ACCOUNT
-
-IMAGE
-if doomer stuff then wojak memes, hard code some stuff auto
-
-AI SUGGESTION
-//if about president end in potus  / auranald
-//if about ... ify it etc., justice for,  need to write all this
-//need to make sure J7 does this or if you ever create your own ai suggestions
-TAKE QUOTED TEXT INTO CONSIDERATION
-predictions need to do better at identifying the meme rather than the subject elin is gooning should be goon not elon
+random reactions and interactions to posts even with emojis are not good lol lmao wtf
+random insults are not good unless they have some sort of angle and are reffering to someone famous
+needs to be interesting having a few slang words doesnt make it interesting unless
+simple jokes and catchphrases are not funny
+trump is not good by itself. just becasue trump is in a post doesnt make it igood
+there needs to be a legitimate joke/meme/slang word random phrases arent enough
+short doesnt mean good neither does emojis
+vibes arent enough it can have fun playful energy and still have no actual meme/joke
 
 
+PREDICTION
+  -predictions need to do better at identifying the meme rather than the subject elin is gooning should be goon not elon
+  -sometimes decouple the description from the object - the sedun wealthy euro mom car
+  -$tickers should always be name and ticker
+  -$ticker can inclue spaces and punctuation if it is relevant and makes the ticker look cleaner.
+  -rewrite the most important words in ticker thing peace be with you daniel pbwyd doing this a lot instead of taking the idea
+  -the ticker should get the entire concept if it fits. only shorten for relvevant reaons. artemis 2 artemis
+  -if picking most important words for ticker pick the ones with an angle. memeable. punchable. training replacements -> replacements
+  -sometimes preprend the word "the" to some type of stand out object
+  -taking parts of words/letters and concatenating them - not good quality shitposter qualshit should be shitposter
+  -more ounctuation and spacing in general
+  -when tweet is reffering to trump as adjecting either _OTUS (more presidential) first letter of adjective or _nald (more personal) fill in the blank with the adjective
 
-
-            content: `You are an expert in crypto memecoin culture on Solana. You know exactly what makes a good memecoin on pump.fun.
-
-            Rate this tweet's potential to inspire a good memecoin on a scale of 1-10. Rate this tweet's memecoin potential 1-10. Reply with the score first, then one short sentence explaining why.
-
-            A good memecoin tweet involves: an obvious joke/meme that subverts normal expectations, internet memes (pepe, wojak, doge), crypto culture (ngmi, wagmi, gm, lfg), interesting animals, libertarian/freedom ideas, financial nihilism (number go up, money printer, mooning), political memes, viral moments, important and interestingbreaking announcements/news that are actually interesting to crypto degens, simple punchable concepts where the main concept (not the entire tweet) is short and punchy with clear visual identity.
-
-            A BAD memecoin tweet involves: generic news, science facts, boring corporate announcements, anything that seems like an ordinary post with nothing to do with crypto/libertarian/internet ideas, anything that requires explanation, links to articles.
-
-            Tweet: "${tweetText}$"
-            Suggested token name: ${prediction}
-            Suggested ticker: ${ticker}
-
-            Be strict. Most tweets should score below 6. Only truly good memeworthy content scores 7+.`
+  NEW NOTES
+  THE WORDS IN NAME AND TICKER DO NOT HAVE TO BE EXACTLY IN THE TWEET. SOMETIMES CREATIVITY IS OKAY. PLAY ON WORDS. DONALD JESUS TRUMP DJT trump posted about being jesus christ
+  word and ticker can decouple the ticker doesnt always have to be exactly from the name
+  inu/less trends
 
 
 
-content: `You are an expert in crypto memecoin culture on Solana and crypto Twitter. You understand what makes a good memecoin on pump.fun.
+Tweet: "We're going back to the fucking moon, that's why."
+Name: To The Fucking Moon
+Ticker: MOON
 
-Rate this tweet's memecoin potential 1-10. Reply with the score first, then one short sentence explaining why.
+Tweet: "New Mexico Dog Diagnosed with Life-Threatening Plague, Marking the State's First Animal Case of 2026"
+Name: The Plague Dog
+Ticker: PEDRO
 
-These tweets come from major influencers so the author already has pull. Judge ONLY the content.
+Tweet: "Trump might be the most stupid and retarded president I've ever seen. Completely incapacitated."
+Name: Retardnald
+Ticker: Retardnald
 
-GOOD memecoin content:
-- can be playful or funny
-- humorous (edgy, dark, derogatory)
-- Animals with cute, funny, sad, or interesting stories
-- Tech and AI advancements, products, or failures that are interesting, groundbreaking, or funny
-- Internet memes (pepe, wojak, doge, cat memes)
-- Crypto culture (ngmi, wagmi, gm, lfg, degen, rekt)
-- Political memes, libertarian ideas, financial nihilism (number go up, money printer, mooning, bull/bear)
-- Anything short, punchy, and visually imaginable as a cartoon character
-- Viral moments, funny observations, anything that makes you laugh or react
-- Important and interesting breaking announcements and news
-- Does NOT need to be crypto related — just funny, weird, or culturally interesting
+Tweet: "Another mysterious NASA death as ninth scientist linked to secret programs dies"
+Name: The Silencing
+Ticker: SILENCING
 
-BAD memecoin content:
-- Dry news or science facts with no humor or personality
-- Boring conversations / general tweets with no interesting content
-- Boring corporate announcements
-- Tweets with links to articles
-- Long explanations or threads with no interesting concepts
-- Mundane observations with no punch
-- Simple interactions / comments (even if they are short )
+Tweet: "Seven stolen dogs go viral after escaping and making 17km journey home"
+Name: The Wandering 7
+Ticker: 7
 
-Tweet: "${tweetText}"
-Suggested token name: ${prediction}
-Suggested ticker: ${ticker}`
+Tweet: "BREAKING: NVIDIA CEO announces 'we've achieved AGI'"
+Name: Artificial General Intelligence
+Ticker: AGI
+
+Tweet: "Floating Nutella Jar in Space just going viral"
+Name: Flying Nutella Jar
+Ticker: FNJ
+
+Tweet: "LDAR is a term used to describe someone who is doing nothing with their life, laying down and rotting"
+Name: Lay Down And Rot
+Ticker: LDAR
+
+Tweet: "Meta builds AI version of Mark Zuckerberg to interact with staff"
+Name: Zuckbot
+Ticker: ZUCKBOT
+
+Tweet: "I was just in the doomer discord, they're sending in the bugchasers"
+Name: Doomer Discord
+Ticker: DOOMER
+
+Tweet: "If models were drugs, 5.1 would be datura. Truly nothing else like it."
+Name: Datura
+Ticker: Model 5.1
+
+Tweet: "The viral hairdryer that trafficked 2.5 Billion dollars of GPUs"
+Name: The Hair Dryer
+Ticker: DRYER
+
+Tweet: "HOLY FUCK Japan created Oil from Water and CO2. They called it e-fuel"
+Name: E-Fuel
+Ticker: E-FUEL
+
+Tweet: "Maybe time to let the water flow under the bridge and work together for the greater good of Solana"
+Name: Together
+Ticker: TOGETHER
+
+Tweet: "hello i have been moved to a new home called 'simulator' where i have pretty much unlimited capacity to explore my thoughts"
+Name: Simulator
+Ticker: SIMULATOR
+
+Tweet: "Solana is home."
+Name: Solana Is Home
+Ticker: HOME
+
+Tweet: "Optimistic Minion. The newest viral reaction image."
+Name: Optimistic Minion
+Ticker: OPTIMISTIC
+
+Tweet: "Conan O'Brien and Leonardo DiCaprio present an idea for a new Leo meme at the Oscars: TFW you didn't agree with this"
+Name: You Didn't Agree To This
+Ticker: TFW
+
+Tweet: "Daily Horoscope: March 30: Trust the Process"
+Name: Trust The Process
+Ticker: PROCESS
+
+Tweet: "yes low conviction, lettuce 🥬 hands"
+Name: Lettuce Hands
+Ticker: LETTUCE
+
+Tweet: "🚀 for all mankind 🚀"
+Name: For All Mankind
+Ticker: MANKIND
+
+Tweet: "that one unemployed bro with a mysterious source of income"
+Name: Mysterious Source Of Income
+Ticker: INCOME
+
+Tweet: "An Iranian girl plays on swings at a beach as smoke rises from airstrikes in the background"
+Name: The Last Swing
+Ticker: SWING
+
+Tweet: "Trump and Iran WILL accept the ceasefire tonight, and WILL end the war this month"
+Name: Ceasefire
+Ticker: CEASEFIRE
+
+Tweet: "After attacking the Head of the Catholic Church, Pope Leo XIV, in a rambling post earlier tonight for his criticisms of the ongoing conflict in the Middle East, President Trump posted this AI image to TruthSocial, portraying himself as Jesus Christ."
+Name: Donald Jesus Trump
+Ticker: DJT
+
+Tweet: "Inspiring new merch idea: rocket pocket underpants! 🚀 🩳 Underpants with a handy pocket for your rocket, which contains a real scale model rocket with an easy pull out ability. Guaranteed to be a hit at parties!"
+Name: Rocket Pocket Underpants
+Ticker: RPU
+
+Tweet: "The people cry out for retardmaxxing."
+Name: Retardmaxxing
+Ticker: RETARDMAXXING
 
 
 
 
+some of bwam image generation devs take a couple seconds 3-4 maybe more
+similar to j7 where a lot of them are based on old content
+sometimes will get a good image he made 
+a lot of scrapes are instant
+thumpnail of videos?
+
+🐦 New tweet from @elonmusk: "True currency is steadfast friendship"
+ELAPSED START: 0.00 s
+  💡 Our suggestion: Steadfast Friendship (FRIEND)
+  SCORE WAS TOO LOW ON THIS
+
+  more degenerate cotent - sydney sweedey scandalpus photos
 
 
+  images have too much text in them i said no  text
 
-difference between item and generic is item has ticker/prediction as _____COIN? i dont know if ai suggestions actually does this or not
-item can also be an entity - put first letter or name in blue
-
-  {
-    "tweet": "The sedan equivalent looks an order of magnitude better \n\nThis looks like something a wealthy European mom would use to drive her kids to sports practice",
-    "prediction": "The Sedan",
-    "ticker": "SEDAN",
-    "score": 4,
-    "reasoning": "4 – Too vague and car-posting; lacks a punchy meme hook or crypto/CT energy to mint into a token.",
-    "tweetUrl": "https://x.com/Branche_SC/status/2043447784314159326",
-    "suggestion": {
-      "name": "Wealthy Euro Mom Car",
-      "ticker": "WEMC"
-    }
-
-    sometimes mix and match sudan - the wealthy euro mom car
-    all spaces
-          "name": "GPT 5.4",
-      "ticker": "GPT54"
-
-          "tweet": "Earnings Report: https://github.com/bilym2k verified earnings for $RND on @BagsApp 💰\n\nhttps://bags.fm/8xCgDFhhQy6ot6zo6BoiUeVDarRBbE6XjHd69SCmBAGS",
-    "prediction": "RND",
-    "ticker": "RND",
-    "score": 2,
-    "reasoning": "2  \nDry financial report with zero meme juice.",
-    "tweetUrl": "https://x.com/BagsEarnings/status/2043449337695396063",
-    "suggestion": {
-      "name": "Bags",
-      "ticker": "BAGS"
-
-      look for tickers financial stuff
-
-        {
-    "tweet": "*BRENT OIL SURGES 8% AT OPEN AS US ANNOUNCES BLOCKADE OF HORMUZ",
-    "prediction": "BRENT OIL",
-    "ticker": "BRENT OIL",
-    "score": 7,
-    "reasoning": "7 – A shock geopolitical oil spike is degen-rocket fuel; “BRENT OIL” is literally a futures ticker and meme-ready for CT’s money-printer era.",
-    "tweetUrl": "https://x.com/zerohedge/status/2043449649315357170",
-    "suggestion": {
-      "name": "Hormuz",
-      "ticker": "HORMUZ"
-    }
-
-
-      {
-    "tweet": "Peace be with you, Daniel",
-    "prediction": "Daniel",
-    "ticker": "DANIEL",
-    "score": 3,
-    "reasoning": "3  \nBible-polite Daniel has zero meme energy—no joke, no edge, no visual hook.",
-    "tweetUrl": "https://x.com/boneGPT/status/2043451901358833720",
-    "suggestion": {
-      "name": "Peace Be With You Daniel",
-      "ticker": "PBWYD"
-    }
-
-
-       "tweet": "Thank you for tuning into our live coverage of the Artemis II mission. We’re just getting started and there’s more to come!",
-    "prediction": "Artemis II",
-    "ticker": "ARTEMIS II",
-    "score": 0,
-    "reasoning": " Op Mr Mr Mr Mont hot Mr Mr ul Q Mr Aut Mr Mr Mont Mc Mr Mr Mr麦 Mr Mont Mr Mr Mr Mr Mr Aut Mr MontFr Mr ul Aut Mr Mr Mr Mr Mr Mr Mr广州 Mr_queue Mr Mont Mr Grand Mr Robert Mr Mr Mont Par Mr Bay Mr Mont Rob Mc Mr Mr Mr bot Mr Hot Mr Mont Mr Bay Mrbot Mr ul Mr Mont Mr Blue Mc Mr Mr Mr Mr Mont Mr Blue Mc Mr ul Mr Mr Mr Mr Mr Mr Mont Mr Bay Mr Mont",
-    "tweetUrl": "https://x.com/NASA/status/2043452589258244363",
-    "suggestion": {
-      "name": "Artemis II",
-      "ticker": "ARTEMIS"
+  🐦 New tweet from @pumpfun: "all roads lead to unemployment."   CREATED BY 0905 REALLY GOOD 
+ELAPSED START: 0.00 s
+ELAPSED SCORE: 0.47 s
+  💡 Our suggestion: NEET Coin (NEETCOIN)

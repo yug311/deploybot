@@ -1,72 +1,232 @@
 [
   {
-    "tweet": "🇮🇳 Factory workers in India are wearing head-mounted cameras so AI can watch exactly how humans do physical work. Every hand movement, every adjustment, every shortcut.\n\nThe workers are training their own replacements in real time, on the job, getting paid to do it.\n\nThe most…",
+    "tweet": "ユーロ円、史上最高値だよなぁと悲しい気持ちでチャート調べに行ったら、ユーロ導入前からユーロ円が存在する世界線のチャートを見つけた。。どういうことなの。。",
     "score": 8,
-    "reasoning": "8  \n“Factory workers training their AI replacements” is peak dystopian meme fuel—visual, ironic, and instantly spawnable into a wojak cartoon.",
-    "tweetUrl": "https://twitter.com/MarioNawfal/status/2043530111795056924",
+    "reasoning": "8\nThis tweet contains a specific, vivid,",
+    "tweetUrl": "https://x.com/demk0814/status/2043682384718311631",
     "suggestion": {
-      "name": "Training Replacements",
-      "ticker": "TRAINR"
+      "name": "Euro Sadness",
+      "ticker": "EUROSAD"
     }
   },
   {
-    "tweet": "I had so much fun this weekend on the timeline. Keep up the good work and the crashouts",
+    "tweet": "Technological disruptions never happen with consensus. \n\nThat's why they are called disruptions.",
+    "score": 8,
+    "reasoning": "8\nThe tweet contains a clever play on words",
+    "tweetUrl": "https://x.com/DaveShapi/status/2043682487080022031",
+    "suggestion": {
+      "name": "Disruptor",
+      "ticker": "DISRUPT"
+    }
+  },
+  {
+    "tweet": "IDF Spokesman: 'Controlling the Bent Jbeil stadium is not merely a military achievement, but a shattering of the symbolism of arrogance. From the one who threatened us with weakness, his fortresses have crumbled before our steadfastness.  The Defense Army is turning the page on…",
+    "score": 8,
+    "reasoning": "8\nThe tweet contains a specific, vivid,",
+    "tweetUrl": "https://x.com/CGTNEurope/status/2043703838645899353",
+    "suggestion": {
+      "name": "The Weakness",
+      "ticker": "WEAK"
+    }
+  },
+  {
+    "tweet": "Federal Court Strikes Down 158-Year-Old Home Distilling Ban https://www.zerohedge.com/political/federal-court-strikes-down-158-year-old-home-distilling-ban",
     "score": 7,
-    "reasoning": "7  \n“Crashouts” is already a punchy meme insult for people who self-destruct online—prime fodder for a cartoon coin with schadenfreude-driven holders.",
-    "tweetUrl": "https://x.com/allegrajacchia/status/2043530353621754064",
+    "reasoning": "Score: 7 – \"Moonshiners Re",
+    "tweetUrl": "https://twitter.com/zerohedge/status/2043715863992311954",
     "suggestion": {
-      "name": "Crashouts",
-      "ticker": "CRASHOUTS"
+      "name": "Moonshiners Reborn",
+      "ticker": "HOMEMOON"
     }
   },
   {
-    "tweet": "ツキノワグマがとめ糞を排泄した瞬間の映像です。",
-    "score": 7,
-    "reasoning": "7 – A bear dropping a deuce on cam is peak dumb-animal meme gold and “Tsukinowaguma” rolls off degen tongues.",
-    "tweetUrl": "https://twitter.com/UenoZooGardens/status/2043530450136969436",
-    "suggestion": {
-      "name": "Tsukinowaguma",
-      "ticker": "TSUKI"
-    }
-  },
-  {
-    "tweet": "wtf 💀",
+    "tweet": "*LVMH 1Q FASHION & LEATHER ORGANIC SALES -2%, EST. -0.05%",
     "score": 8,
-    "reasoning": "8  \n\"wtf 💀\" is peak meme-territory: the universal face-melt reaction that screams cartoon WTF-energy perfect for Solana degenerates.",
-    "tweetUrl": "https://x.com/therealchaseeb/status/2043530484555317643",
+    "reasoning": "8  \n“Luxury Slump” is the",
+    "tweetUrl": "https://x.com/zerohedge/status/2043717208103137775",
     "suggestion": {
-      "name": "WTF",
-      "ticker": "WTF"
+      "name": "The Luxury Slump",
+      "ticker": "LUXSLUMP"
     }
   },
   {
-    "tweet": "far ass way from nanaimo",
-    "score": 8,
-    "reasoning": "8 – “Far-ass way from Nanaimo” is an instantly memeable, goofy-sounding diss that turns a random Canadian town into a punch-line character begging to be cartoon-beaver’d onto a coin.",
-    "tweetUrl": "https://x.com/yacineMTB/status/2043530619871732094",
-    "suggestion": {
-      "name": "Nanaimo",
-      "ticker": "NANAIMO"
-    }
-  },
-  {
-    "tweet": "Step 1: Give up.",
+    "tweet": "This is the heartwarming moment astronaut Christina Koch was welcomed home by her dog, Sadie, following her trip on Artemis II around the moon. ❤️",
     "score": 9,
-    "reasoning": "9.0  \nUltra-relatable nihilism packed into three words—perfect setup for a “give up and maybe moon” memecoin cult.",
-    "tweetUrl": "https://x.com/nikitabier/status/2043531270861570401",
+    "reasoning": "9  \nA loyal dog named Sadie literally waiting",
+    "tweetUrl": "https://twitter.com/nypost/status/2043717430086688948",
     "suggestion": {
-      "name": "Give Up",
-      "ticker": "GIVEUP"
+      "name": "Sadie Waits At The Window",
+      "ticker": "SADIE"
     }
   },
   {
-    "tweet": "idk smart people make dumb mistakes all the time. jagged intelligence",
+    "tweet": "I think when we removed the crypto bots, there were only 2000 people rugging each other back and forth, forever",
     "score": 7,
-    "reasoning": "7  \n“Jagged intelligence” is the perfect self-deprecating label degens will slap on their own brain-rot, instantly memeable as a crooked brain Wojak coin.",
-    "tweetUrl": "https://x.com/deepfates/status/2043531425803358682",
+    "reasoning": "7 – “Only 2k of us left",
+    "tweetUrl": "https://x.com/nikitabier/status/2043717548412477520",
     "suggestion": {
-      "name": "Jagged Intelligence",
-      "ticker": "JAGINCEL"
+      "name": "The 2000",
+      "ticker": "2000"
+    }
+  },
+  {
+    "tweet": "TIL the USSR concealed a bug in a hand-carved Great Seal given as a \"gift\" in 1945 to the US ambassador that was only discovered by accident in 1951. The bug was designed by Theremin (!) and had no power source or active electronic components.",
+    "score": 7,
+    "reasoning": "7  \nCold-war spy meme meets Theremin lore",
+    "tweetUrl": "https://x.com/toly/status/2043720263859425318",
+    "suggestion": {
+      "name": "The Great Seal Bug",
+      "ticker": "THEREMIN"
+    }
+  },
+  {
+    "tweet": "Dave Jones \"burst out laughing\" when he found out he was going to be involved in a bear romance scene while voicing Halsin in Baldur's Gate 3",
+    "score": 7,
+    "reasoning": "7\n“Bear romance” is a vivid,",
+    "tweetUrl": "https://x.com/Dexerto/status/2043720870787756050",
+    "suggestion": {
+      "name": "Bear Romance",
+      "ticker": "BEAROMANCE"
+    }
+  },
+  {
+    "tweet": "Trump has deleted his post seemingly depicting himself as Jesus, per WaPo",
+    "score": 7,
+    "reasoning": "7 – A divine-selfie-then-delete is",
+    "tweetUrl": "https://x.com/unusual_whales/status/2043720989889147332",
+    "suggestion": {
+      "name": "The Second Coming (Again)",
+      "ticker": "DELETE"
+    }
+  },
+  {
+    "tweet": "'Pukechella': Coachella revelers report falling ill after eating $25 pizza in latest disaster to befall festival https://trib.al/NiDkpQ0",
+    "score": 7,
+    "reasoning": "7 — “Pukechella” is a",
+    "tweetUrl": "https://x.com/nypost/status/2043721888162054404",
+    "suggestion": {
+      "name": "Pukechella",
+      "ticker": "PUKE"
+    }
+  },
+  {
+    "tweet": "Trump posts, then deletes AI image of himself as Christ-like figure, sparking blasphemy accusations https://trib.al/dzpS1Co",
+    "score": 7,
+    "reasoning": "7  \nDepicting Trump in a literal Christ",
+    "tweetUrl": "https://x.com/nypost/status/2043723055151624492",
+    "suggestion": {
+      "name": "BlasphemDon",
+      "ticker": "BLASPHEMUS"
+    }
+  },
+  {
+    "tweet": "using the product pumps the stock but posting the ticker doesn't. not ideal if he really wants palantir to go up",
+    "score": 7,
+    "reasoning": "7 – “Post The Ticker Bro” snaps",
+    "tweetUrl": "https://x.com/notthreadguy/status/2043745228767510844",
+    "suggestion": {
+      "name": "Post The Ticker Bro",
+      "ticker": "TICKER"
+    }
+  },
+  {
+    "tweet": "HAPPENING NOW... 👀🍟💰",
+    "score": 7,
+    "reasoning": "7  \n“Fries, money, and a",
+    "tweetUrl": "https://x.com/POTUS/status/2043756508697993293",
+    "suggestion": {
+      "name": "The Fry Flip",
+      "ticker": "FRYUS"
+    }
+  },
+  {
+    "tweet": "Sheriff finds himself behind bars after horseback riding and parasailing wife collected over $200k in DISABILITY checks https://trib.al/kFMhKin",
+    "score": 7,
+    "reasoning": "7  \nAbsurdly meme image: disability-f",
+    "tweetUrl": "https://x.com/DailyMail/status/2043758186922992045",
+    "suggestion": {
+      "name": "Sheriffin Airdisability",
+      "ticker": "GIDDYUP"
+    }
+  },
+  {
+    "tweet": "Animal rights activist 'freed' restaurant's lobster after falsely believing it was to be eaten... but was only kept for educational purposes https://trib.al/ATLug4b",
+    "score": 8,
+    "reasoning": "Score: 8\nA cartoon lobster in a",
+    "tweetUrl": "https://x.com/DailyMail/status/2043761849817088409",
+    "suggestion": {
+      "name": "The Liberated Lobster",
+      "ticker": "FREED"
+    }
+  },
+  {
+    "tweet": "all roads lead to unemployment.",
+    "score": 7,
+    "reasoning": "7  \nIt’s a crisp, instantly-relatable",
+    "tweetUrl": "https://x.com/Pumpfun/status/2043766368655339661",
+    "suggestion": {
+      "name": "NEET Coin",
+      "ticker": "NEETCOIN"
+    }
+  },
+  {
+    "tweet": "Every day, the same new bullshit.",
+    "score": 7,
+    "reasoning": "7  \nA perfect doom-boom mascot: the",
+    "tweetUrl": "https://twitter.com/AutismCapital/status/2043767047709175931",
+    "suggestion": {
+      "name": "It's All So Tiresome",
+      "ticker": "TIRESOME"
+    }
+  },
+  {
+    "tweet": "A man dressed as Spider-Man stole $65,000 in cash after breaking into a cigar shop through the ceiling",
+    "score": 9,
+    "reasoning": "9  \nA burglar in a Spidey",
+    "tweetUrl": "https://x.com/Dexerto/status/2043769860023271931",
+    "suggestion": {
+      "name": "Ceiling Spider",
+      "ticker": "CEILING"
+    }
+  },
+  {
+    "tweet": "JUST IN: Colombia plans to euthanize dozens of Pablo Escobar's “cocaine hippos” to control their population.",
+    "score": 8,
+    "reasoning": "8  \n“Cocaine Hippos” is",
+    "tweetUrl": "https://x.com/Polymarket/status/2043771020302000403",
+    "suggestion": {
+      "name": "Cocaine Hippos",
+      "ticker": "COCAHIPPOS"
+    }
+  },
+  {
+    "tweet": "As The Worms Turn... https://www.zerohedge.com/geopolitical/worms-turn",
+    "score": 7,
+    "reasoning": "Score: 7  \n\nIt’s already a pul",
+    "tweetUrl": "https://x.com/zerohedge/status/2043786330748895730",
+    "suggestion": {
+      "name": "The Worms Turn",
+      "ticker": "WORMS"
+    }
+  },
+  {
+    "tweet": "🚨 NEW POLYMARKET: What will Trump say during his dinner with Dutch royals tonight?\nhttps://poly.market/NUkUXLB",
+    "score": 7,
+    "reasoning": "7  \n“Trump Royal Gaffe” is an",
+    "tweetUrl": "https://x.com/Polymarket/status/2043792061904601186",
+    "suggestion": {
+      "name": "Trump Royal Gaffe",
+      "ticker": "ROYALGAFFE"
+    }
+  },
+  {
+    "tweet": "The UK government is set to ban chicken nuggets and other deep-fried foods from school lunches\n\nPuddings must also contain at least 50% fruit",
+    "score": 8,
+    "reasoning": "8  \nA crispy, apocalyptic rally-cry",
+    "tweetUrl": "https://x.com/Dexerto/status/2043798546118238535",
+    "suggestion": {
+      "name": "Nuggetgeddon",
+      "ticker": "NUGGED"
     }
   }
 ]
