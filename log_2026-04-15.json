@@ -1,0 +1,52 @@
+[
+  {
+    "tweet": "Enjoy. \n\nCredit to @dinkin_flickaa for designing and shipping",
+    "score": 9,
+    "reasoning": "9\n“Enjoy.” plus the @dink",
+    "tweetUrl": "https://x.com/nikitabier/status/2044257325909938647",
+    "suggestion": {
+      "name": "Enjoy Coin",
+      "ticker": "ENJOY"
+    }
+  },
+  {
+    "tweet": "+ johnny somali getting sent to jail",
+    "score": 8,
+    "reasoning": "8",
+    "tweetUrl": "https://x.com/BillyM2k/status/2044266367856312644",
+    "suggestion": {
+      "name": "Locked Up Johnny",
+      "ticker": "JAILALI"
+    }
+  },
+  {
+    "tweet": "Hard Gay.",
+    "score": 9,
+    "reasoning": "Score: 9  \n\"Hard Gay\" is",
+    "tweetUrl": "https://twitter.com/AutismCapital/status/2044269941755654288",
+    "suggestion": {
+      "name": "Hard Gay",
+      "ticker": "HARDGAY"
+    }
+  },
+  {
+    "tweet": "BREAKING: Allbirds stock soars +238% after the company pivots from wool shoes to AI compute infrastructure.\n\n16% chance the AI bubble bursts this year. https://polymarket.com/event/ai-bubble-burst-by/ai-industry-downturn-by-december-31-2026-857?via=x-afr2",
+    "score": 7,
+    "reasoning": "7 – A shoe company flipping to “AI compute",
+    "tweetUrl": "https://x.com/Polymarket/status/2044410578228142341",
+    "suggestion": {
+      "name": "Wool To GPUs",
+      "ticker": "WOOLGPUS"
+    }
+  },
+  {
+    "tweet": "Linh Mai, the National Zoo’s first baby elephant in almost 25 years, is taking the stage. The 2-month-old Asian elephant calf has already faced multiple challenges, including health issues that were successfully treated with a fecal microbiota transplant. Read more:…",
+    "score": 7,
+    "reasoning": "7  \nCute-as-hell baby elephant with",
+    "tweetUrl": "https://twitter.com/washingtonpost/status/2044411814088163803",
+    "suggestion": {
+      "name": "Shitpilled Linh Mai",
+      "ticker": "SHITMAI"
+    }
+  }
+]

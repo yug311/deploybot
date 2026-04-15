@@ -228,5 +228,25 @@
       "name": "Nuggetgeddon",
       "ticker": "NUGGED"
     }
+  },
+  {
+    "tweet": "Eric Swalwell farting was one of the greatest moments in TV history",
+    "score": 8,
+    "reasoning": "8 – A nationally televised congressman audibly",
+    "tweetUrl": "https://twitter.com/libsoftiktok/status/2043814629445386350",
+    "suggestion": {
+      "name": "Fartwell",
+      "ticker": "FARTWELL"
+    }
+  },
+  {
+    "tweet": "Eric Swalwell farting was one of the greatest moments in TV history",
+    "score": 8,
+    "reasoning": "8  \nAn already-internet-famous on-air fart",
+    "tweetUrl": "https://x.com/libsoftiktok/status/2043814629445386350",
+    "suggestion": {
+      "name": "Swalwell Fart",
+      "ticker": "SWALFART"
+    }
   }
 ]

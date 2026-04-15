@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { io } from "socket.io-client";
 import fs from "fs";
+import path from "path";
 import Groq from "groq-sdk";
 import { log } from 'console';
 
@@ -15,62 +16,59 @@ const WHITELIST = [
     "punk6529", "cobie", "hsaka", "inversebrah", "blknoiz06", "gainzy222",
     "notthreadguy", "muradmahmudov", "ansemthegoat", "weremeow", "dingalingts",
     "ethanberliner", "dogedesigner", "kaito_intern", "a1lon9",
-    "brian_armstrong", "APompliano", "CryptoHayes", "100trillionUSD", "lopp",
-    "MartyBent", "DocumentingBTC", "nic__carter", "zachxbt", "farokh",
-    "SolBigBrain", "jessepollak", "LucaNetz", "CryptoCobain", "DonAlt",
-    "justinsuntron", "cryptosmerkis", "ErikVoorhees", "cdixon", "PlanB",
-    "WillClemente", "rektcapital", "CryptoTony__", "IncomeSharks", "BillyM2k", "CryptoCred", "SmartContracter", "SBF_FTX", "GaryGensler",
+    "brian_armstrong", "apompliano", "lopp", "billym2k", "sbf_ftx",
+    "worldlibertyfi", "timothyronaldd", "mert", "official_bonk_inu", "a16zcrypto", "theblock__", "whale_alert", "watcherguru", "altcoindaily", "coinmarketcap", "solana_daily", "cryptopanicom",
 
     // crypto platforms / projects / exchanges
     "pumpfun", "solana", "dogecoin", "ethereum", "coinbase", "binance",
     "raydiumprotocol", "jupiterexchange", "phantomwallet", "metadao",
-    "cryptocom", "opensea", "rarible",
+    "cryptocom", "opensea", "rarible", "magiceden", "nftx", "looksrare", "zora", "coinmarketcap", "coingecko",
 
     // crypto news & on-chain signals (HEAVY EXPANSION)
-    "CoinDesk", "Cointelegraph", "TheBlock__", "whale_alert", "WatcherGuru",
-    "AltcoinDaily", "CoinMarketCap", "solana_daily", "CryptoPanicCom",
-    "DecryptMedia", "Blockworks_", "BanklessHQ", "unusual_whales",
-    "BloombergCrypto", "CNBCFastMoney", "SquawkCNBC",
-    "BitcoinMagazine", "UTodayCrypto", "CoinGape", "BeInCrypto",
-    "CryptoNews", "TheDefiant", "CryptoSlate", "ForkastNews",
-    "BTC_Archive", "MMCrypto", "CryptoWendyO",
+    "coindesk", "cointelegraph", "theblock__", "watcherguru",
+    "altcoindaily", "coinmarketcap", "solana_daily", "cryptopanicom",
+    "decryptmedia", "blockworks_", "banklesshq", "unusual_whales",
+    "bloombergcrypto", "cnbcfastmoney", "squawkcnbc",
+    "bitcoinmagazine",
+    "cryptonews",
 
     // tech / AI CEOs / founders / researchers + tech news
     "sama", "gdb", "anthropy", "anthropicai", "openai", "jack",
     "sundarpichai", "satyanadella", "tim_cook", "jeffbezos", "billgates",
     "nvidia", "intelnews", "amd", "paulg", "ycombinator", "garrytan",
-    "karpathy", "ilyasut", "emollick", "levelsio", "piratewires",
-    "ID_AA_Carmack", "lexfridman", "kaifulee", "demishassabis", "gdbrockman",
-    "AravSrinivas",
-    "TechCrunch", "TheVerge", "WIRED", "Techmeme", "arstechnica",
+    "karpathy", "levelsio", "piratewires", "lexfridman", "kaifulee", "demishassabis", "gdbrockman",
+    "aravsrinivas",
+    "techcrunch", "theverge", "wired", "techmeme", "arstechnica", "engadget", "thenextweb", "digitaltrends", "gizmodo", "mashable", "verge", "recode", "theinformation",
+    "verge", "recode", "theinformation", "arstechnica", "engadget", "thenextweb", "digitaltrends", "gizmodo", "mashable", "Techmeme",
 
     // politics / commentary
     "realdonaldtrump", "potus", "whitehouse", "vivekgramaswamy",
-    "rorysutherland", "mtaibbi", "bariweiss", "joerogan",
+    "rorysutherland", "mtaibbi", "bariweiss", "joerogan", "andrewcuomo", "aoc", "berniesanders", "gavinnewsom", "emmanuelmacron", "hillaryclinton", "barackobama", "donaldjtrumpjr", "flotus", "gouvernementfr", "guillermolasso", "joeBiden", "kamalaharris",
 
     // general / mainstream news & breaking (HEAVY EXPANSION)
-    "nytimes", "WSJ", "Reuters", "AP", "BBCBreaking", "cnnbrk", "TheEconomist",
-    "FinancialTimes", "bloomberg", "cnbc", "forbes", "MarketWatch",
-    "BloombergTV", "CNBC", "ABCNews", "CBSNews", "NBCNews", "TIME",
+    "nytimes", "wsj", "Reuters", "ap", "bbcbreaking", "cnnbrk", "theeconomist",
+    "FinancialTimes", "bloomberg", "cnbc", "forbes", "marketwatch",
+    "BloombergTV", "cnbc", "abcnews", "cbsnews", "nbcnews", "time",
     "usnews", "dailymail", "popcrave", "breakingbadenews",
     "collinrugg", "zerohedge", "wsbchairman", "wallstreetbets", "markets",
-    "dexerto", "xDaily", "polymarket", "autismcapital", "libsoftiktok",
-
-    // finance / markets / investment news & voices (EXPANDED)
-    "LizAnnSonders", "morganhousel", "BrianFeroldi", "awealthofcs",
-    "ritholtz", "fluentinfinance", "bespokeinvest",
-    "MarketWatch", "YahooFinance", "SeekingAlpha", "Investingcom",
-    "SquawkCNBC", "FastMoney", "jimcramer",
+    "dexerto", "xdaily", "polymarket", "autismcapital", "libsoftiktok",
+    "theeconomist", "thehill", "theonion", "thewrap", "tradingview", "tmz", "usatoday", "variety", "verge", "vice", "washingtonpost", "wired", "wsjmarkets", "yahoofinance", "ynewswire",
+    "bbcnews", "aljazeera", "ap", "axios", "bbcnews", "bbcworld", "bleacherreport", "business", "businessinsider", "buzzfeed", "cbsnews", "cnn", "dailymail", "deltaone", "dexerto", "economist", "espn", "financialtimes", "fortunemagazine", "foxnews", "guardian", "hollywoodreporter", "investingcom", "latimes", "markets", "nbcnews", "newsweek", "npr", "politico", "rollingstone", "skynews", "stocktwits", "techcrunch", "theatlantic", "thebabylonbee", "theeconomist", "thehill", "theonion", "thewrap", "time", "tradingview", "tmz", "usatoday", "variety", "verge", "vice", "washingtonpost", "wired",
 
     // meme / viral / culture accounts
     "nasa", "doge", "shibainu", "pepecoin", "doge_wif_hat",
     "nikitabier", "joincolosseum", "tyler", "garyvee", "beeple",
-    "pranksy", "cozomomedici", "frankdegods", "shib",
+    "pranksy", "cozomomedici", "frankdegods", "shib", "natgeo",
+
+    //companies
+    "adidas", "amazon", "amd", "anthropicai", "apple", "canva", "cocacola", "disney", "doritos", "gemini", "google", "gymshark", "hellofresh",
+    "tesla", "hp", "hulu", "intel", "ikea", "kfc", "lego", "mcdonalds", "microsoft", "nike", "netflix", "nvidia", "openai", "pepsi", "playstation",
+    "redbull", "samsung", "spotify", "spacex", "subway", "ubereats", "xbox", "nvidia"
 ];
 
 const WOJAK_IMAGE = `data:image/webp;base64,${fs.readFileSync("wojak.webp").toString("base64")}`;
 const PERSON_IMAGE = `data:image/webp;base64,${fs.readFileSync("carciature.webp").toString("base64")}`;
-const ITEM_IMAGE = `data:image/webp;base64,${fs.readFileSync("memestock.webp").toString("base64")}`;
+const TOKEN_IMAGE = `data:image/webp;base64,${fs.readFileSync("memestock.webp").toString("base64")}`;
 
 const tweetCache = {};
 
@@ -90,51 +88,83 @@ async function generateSuggestion(tweetText, author) {
         model: model,
         messages: [{
             role: "user",
-            content: `You are a crypto memecoin expert on Solana. Based on this tweet, suggest a memecoin name and ticker. Remember, memecoins are based on anything that can grab a person's attention. It could be a joke, a vibe, an absurdity, a cultural moment, a viral concept, a specific image or character in the tweet, or even just the energy of the tweet distilled into a single idea. The best memecoins have a clear and specific meme core that can be easily understood and visualized.
+            content: `
+            SYSTEM ROLE
+            You are a memecoin naming engine for the Solana ecosystem. Your only job is to output a NAME and TICKER. Nothing else.
 
-            STEP 1 — FIND THE MEME CORE:
-            Before naming anything, identify what makes this tweet funny, viral, or memeable. Ask: what is the *joke*, *vibe*, or *action* — not just the subject?
-            - If someone is doing something embarrassing or funny, the meme is the ACT, not the person
-            - If something is being described vividly, the description IS the concept — not the object being described
-            - If it's an event, find the single most iconic word or phrase — the one people will screenshot
-            - If it's a person, only use the person if they ARE the meme. If something is being done to or by them, the meme may be the action
+            WHAT IS A MEMECOIN
+            A memecoin is pure attention. It is anything that makes someone stop mid-scroll because it is not average — a double take, a reaction, a "wait, what." It does not have to be funny. 
+            It does not have to be crypto. It just has to be the kind of thing people react to, talk about, or send to someone without thinking twice. Most will live in internet culture, crypto degeneracy, and viral moments — but the only real requirement is that it peaks interest in some way. If it would trend, it can be a memecoin.
 
-            STEP 2 — NAME:
-            Max 32 characters. Correct capitalization. The punchiest distillation of the meme core — not a summary. Sometimes prepend "The" when the concept is a stand-out archetype or object.
-            The name does NOT have to use the exact words from the tweet. Creativity, play on words, and cultural references are encouraged if they sharpen the concept.
+            The audience is crypto people who live online and understand internet culture. They get the slang, the memes, the references. Write for them.
 
-            STEP 3 — TICKER:
-            Max 13 characters, all caps. Can include spaces, numbers, and punctuation if it makes the ticker look cleaner or more iconic.
+            STEP 1 — FIND THE MEME CORE
+            Before touching the name or ticker, identify the single sharpest thing about this tweet. Ask:
 
-            Ticker priority:
-            (1) If the full name fits in 13 chars, use it exactly
-            (2) If the name is one strong word, use that word
-            (3) If the name is multi-word, keep the words with the most ANGLE — memeable, punchy, funny on their own. Do NOT use initials/acronyms unless the acronym is max 3 characters and all words in the name are equally important to the meme
-            (4) Never concatenate partial words or letters. Shorten by dropping whole words, never by chopping them
-            (5) Keep numbers or symbols if they are part of the concept
+            What is the joke, vibe, or act — not just the subject?
+            If someone is doing something embarrassing or funny → the meme is the act, not the person
+            If something is being described vividly → the description is the concept, not the thing being described
+            If it's an event → find the one word or phrase people will screenshot
+            If it's a person → only use the person if they are the meme. If something is being done to or about them, the meme may be the action
 
-            The ticker does not have to be derived directly from the name. It can be a different facet of the same concept, a cultural reference the audience will instantly recognize, or a reframe that adds a second layer of meaning — as long as both name and ticker point at the same core idea.
+            When a tweet has multiple angles, pick the single sharpest one and commit. Never blend two meme cores into one name.
 
-            SPECIAL NAMING PATTERNS — apply when relevant:
-            - PRESIDENT/POLITICAL LEADER: ticker = [FIRST LETTER]OTUS, name = full acronym spelled out
-            - TRUMP AS ADJECTIVE — choose based on tone:
-                - Presidential/policy tone → [ADJECTIVE INITIAL]OTUS
-                - Personal/irreverent tone → [ADJECTIVE]nald, ticker = same
-            - ANIMAL or HUMAN WITH SAD STORY: name = "Justice For [Name]", ticker = name only
-            - ANIMAL DIED: name = "RIP [Name]", ticker = name only
-            - ANIMAL or HUMAN WITH FUN STORY: name and ticker = the name
-            - EMERGING TREND/NEW THING PEOPLE ARE DOING: name and ticker = [thing] + "ify"
-            - TRADING/COINS/TOKENS (stock dumping, trading like memecoin, pumping, tokenizing an asset): name and ticker = [thing] + "coin"
-            - MOCKING SOMEONE/Someone did something stupid: misspell the person's name in a funny way — change vowels or consonants, keep it recognizable but intentionally wrong. Both name and ticker use the misspelled version.
+            STEP 2 — NAME
+            Max 32 characters. The punchiest distillation of the meme core.
+            The name does NOT have to use the words from the tweet. It can use:
+
+            Slang or internet phrasing
+            Exaggerated or dramatized versions to emit some type of feeling or emotion
+            Cultural references the audience will instantly recognize
+            Alliteration or rhythm if it makes the name more memorable
+
+            You may add words not in the tweet if they make the name more emotional, more punchable, or funnier. Sometimes prepend "The" when the concept is a clear archetype or object.
+            The legibility test: someone who hasn't read the tweet sees only the name — do they immediately get the meme?
+
+            STEP 3 — TICKER
+            Max 13 characters, all caps. Can include numbers, spaces, hyphens, or punctuation if it makes the ticker cleaner or more iconic.
+            Priority rules:
+
+            If the full name fits in 13 chars → use it exactly
+            If the name is one strong word → use that word
+            If the name is multi-word → keep the words with the most angle — the ones that are punchy and memeable on their own. Do NOT use initials/acronyms unless the acronym is max 3 characters and all words in the name carry equal meme weight
+            Never concatenate partial words. Shorten by dropping whole words, never chopping them
+            Keep numbers or symbols if they are part of the concept
+
+            The ticker does not have to be derived from the name. It can be a different facet of the same concept, a cultural reference, or a reframe that adds a second layer — as long as both name and ticker point at the same meme core.
+            Ticker quality check — before finalizing, ask:
+
+            Does it look good visually? Would traders spam it?
+            Does it work as a standalone exclamation? You should be able to shout it
+            Is it pronounceable as a word or an obvious chant? If it sounds like an abbreviation being spelled out, it's wrong
+            Does it avoid filler words? ("THE", "A", "OF" are dead weight)
+            Is it bold and standalone, not a fragment?
+
+            WHAT NOT TO DO
+            Wrong | Why
+            Blending two meme cores into one name | Dilutes the punch — one core, full commitment
+            Using initials as a 4+ letter acronym | NEET works because it's a real term; RBSF for "random boring stuff fails" does not
+            Chopping partial words in the ticker | Makes it illegible and weak
+
+            SPECIAL NAMING PATTERNS
+            Apply when relevant — not when approximate:
+
+            Tweet describing Donald Trump in a memetic way:
+
+            Presidential/policy tone → [Idea INITIAL]OTUS, ticker = [Idea] of The United States
+            Personal/irreverent tone → [Idea]nald, ticker = same
+
+            ANIMAL or HUMAN WITH SAD STORY: name = "Justice For [Name]", ticker = name only
+            ANIMAL or HUMAN WITH FUN STORY: name and ticker = the name
+            ANIMAL or HUMAN DIED: name = "RIP [Name]", ticker = name only
+            EMERGING TREND / NEW THING PEOPLE ARE DOING: name and ticker = [thing] + "ify"
+            TRADING / COINS / TOKENS (stock dumping, trading like memecoin, pumping, tokenizing): name and ticker = [thing] + "coin"
+            MOCKING SOMEONE / person did something stupid: misspell the person's name in a funny way — change vowels or consonants, keep it recognizable but intentionally wrong. Both name and ticker use the misspelled version. Only apply this when the person themselves is the joke — not when they did something interesting or noteworthy.
 
             EXAMPLES:
             Tweet: "We're going back to the fucking moon, that's why."
             Name: To The Fucking Moon
             Ticker: MOON
-
-            Tweet: "New Mexico Dog Diagnosed with Life-Threatening Plague, Marking the State's First Animal Case of 2026"
-            Name: The Plague Dog
-            Ticker: PEDRO
 
             Tweet: "Another mysterious NASA death as ninth scientist linked to secret programs dies"
             Name: The Silencing
@@ -147,6 +177,10 @@ async function generateSuggestion(tweetText, author) {
             Tweet: "BREAKING: NVIDIA CEO announces 'we've achieved AGI'"
             Name: Artificial General Intelligence
             Ticker: AGI
+
+            Tweet: "Berne Sanders caught on camera stealing a slice of pizza from a kid at a campaign event"
+            Name: Burnie Sunders
+            Ticker: Burnie
 
             Tweet: "Floating Nutella Jar in Space just going viral"
             Name: Flying Nutella Jar
@@ -163,10 +197,6 @@ async function generateSuggestion(tweetText, author) {
             Tweet: "Meta builds AI version of Mark Zuckerberg to interact with staff"
             Name: Zuckbot
             Ticker: ZUCKBOT
-
-            Tweet: "If models were drugs, 5.1 would be datura. Truly nothing else like it."
-            Name: Datura
-            Ticker: MODEL 5.1
 
             Tweet: "HOLY FUCK Japan created Oil from Water and CO2. They called it e-fuel"
             Name: E-Fuel
@@ -198,26 +228,36 @@ async function generateSuggestion(tweetText, author) {
 
             Tweet: "JUST IN: Colombia plans to euthanize dozens of Pablo Escobar's “cocaine hippos” to control their population."
             Name: Justice for Cocaine Hippos
-            Ticker: Cocaine Hippo
+            Ticker: COCAINE HIPPO
 
             Tweet: "Inspiring new merch idea: rocket pocket underpants!"
             Name: Rocket Pocket Underpants
             Ticker: RPU
 
+            Tweet: "Animal rights activist 'freed' restaurant's lobster after falsely believing it was to be eaten."
+            Name: The Liberated Lobster
+            Ticker: LOBSTER
+
             Tweet: "The people cry out for retardmaxxing."
             Name: Retardmaxxing
             Ticker: RETARDMAXXING
+
+            Tweet: "I think when we removed the crypto bots, there were only 2000 people rugging each other back and forth, forever"
+            Name: The Last 2000
+            Ticker: 2000
 
             Tweet: "Trump might be the most stupid and retarded president I've ever seen."
             Name: Retardnald
             Ticker: RETARDNALD
 
+            INPUT
             Author: @${author}
             Tweet: "${tweetText}"
 
-            Reply in exactly this format, nothing else:
+            OUTPUT FORMAT — nothing else, no explanation, no commentary:
             NAME: [token name]
-            TICKER: [ticker]`
+            TICKER: [ticker]
+`
         }],
         max_tokens: 30,
         temperature: 0
@@ -231,7 +271,7 @@ async function generateSuggestion(tweetText, author) {
     return { name, ticker };
 }
 
-async function scoreTweet(tweetText, prediction, ticker, authorsHandle) {
+async function scoreTweet(tweetText, authorsHandle) {
     const response = await groq.chat.completions.create({
         model: model,
         messages: [{
@@ -268,9 +308,7 @@ async function scoreTweet(tweetText, prediction, ticker, authorsHandle) {
             - Anything where the "coin" would have no identity beyond a word or name
 
             Tweet: ${tweetText}
-            Twitter/X handle: ${authorsHandle}
-            Suggested token name: ${prediction}
-            Suggested ticker: ${ticker}`
+            Twitter/X handle: ${authorsHandle}`
         }],
         max_tokens: 10,
         temperature: 0
@@ -281,8 +319,6 @@ async function scoreTweet(tweetText, prediction, ticker, authorsHandle) {
 
     const scoreMatch = response.choices[0].message.content.match(/\d+/);
     const score = scoreMatch ? parseInt(scoreMatch[0]) : 0;
-    // const suggestion = await generateSuggestion(tweetText, authorsHandle);
-    // logToFile(tweetText, prediction, ticker, score, response.choices[0].message.content, tweetUrl, suggestion);
     return {score: score, reasoning: response.choices[0].message.content.trim()};
 }
 
@@ -317,14 +353,14 @@ async function generateImage(tweetText, prediction, ticker, tweet) {
 
                 PERSON - a specific real named public figure (politician, celebrity, tech CEO)
                 EMOTION - the core concept is a human emotional state or mentally defined archetype (retard, doomer, coomer, depressed, angry, stupid)
-                ITEM - the name ends in "coin" or refers to a specific tradeable or tokenizable asset like a memestock
+                TOKEN - the name ends in "coin" or refers to a specific tradeable or tokenizable asset like a memestock
                 GENERAL - everything else: abstract concepts, random objects, compound ideas, animals, food, anything that doesnt fit above
 
                 Token name: "${prediction}"
                 Ticker: "${ticker}"
                 Tweet: "${tweetText}"
 
-                Reply with only: PERSON, EMOTION, ITEM, or GENERAL`
+                Reply with only: PERSON, EMOTION, TOKEN, or GENERAL`
         }],
         max_tokens: 30,
         temperature: 0
@@ -346,7 +382,7 @@ async function generateImage(tweetText, prediction, ticker, tweet) {
                     Only change the expression, posture, and any small details to match the emotion of: "${tweetText}". 
                     Ticker: ${ticker}. White background, no text or words.`
     }
-    else if (category === "ITEM") {
+    else if (category === "TOKEN") {
         prompt = `Using the reference image as the style template, replace the item inside the circular blob with: ${prediction} (${ticker}). 
                     Keep the same wobbly imperfect circle shape, colorful gradient border, and vibrant background style from the reference. 
                     The item should be a simple iconic drawing of the core concept from: "${tweetText}". 
@@ -361,7 +397,7 @@ async function generateImage(tweetText, prediction, ticker, tweet) {
 
     const referenceImage = category === "EMOTION" ? WOJAK_IMAGE 
                      : category === "PERSON" ? PERSON_IMAGE 
-                     : category === "ITEM" ? ITEM_IMAGE 
+                     : category === "TOKEN" ? TOKEN_IMAGE 
                      : null;
 
     
@@ -494,7 +530,8 @@ socket.on("tweet", (data) => {
     const handle = data.author?.handle?.toLowerCase();
     if (!WHITELIST.includes(handle)) return;
 
-    console.log(`🐦 New tweet from @${handle}: "${data.text}"`);
+    // console.log(`🐦 New tweet from @${handle}: "${data.text}"`);
+    fs.appendFile('output.txt', `🐦 New tweet from @${handle}: "${data.text}"` + '\n', () => {});
 
     tweetCache[data.id] = {
         ...data,
@@ -535,30 +572,36 @@ async function processTweet(tweetId) {
 
     tweet.processing = true;
 
-    // generate our own suggestion instead of using j7's
-    const suggestion = await generateSuggestion(tweet.text, tweet.author?.handle);
-    if (!suggestion.name || !suggestion.ticker) return;
+    const {score, reasoning} = await scoreTweet(tweet.text, tweet.author?.handle);
+    // console.log(`  🧠 Score: ${score} — ${reasoning}`);
+    fs.appendFile('output.txt', `  🧠 Score: ${score} — ${reasoning}` + '\n', () => {});
 
-    // check 1 — image arrived while we were generating suggestion
-    if (tweet.imageArrived) {
-        await processWithImage(tweet);
-        return;
-    }
-
-    const {score, reasoning} = await scoreTweet(tweet.text, suggestion.name, suggestion.ticker, tweet.author?.handle);
-
-    // check 2 — image arrived while we were scoring
+    // check 1 — image arrived while we were generating the score
     if (tweet.imageArrived) {
         await processWithImage(tweet);
         return;
     }
 
     if (score >= 7) {
+
+        const suggestion = await generateSuggestion(tweet.text, tweet.author?.handle);
+        if (!suggestion.name || !suggestion.ticker) return;
+
+        // check 2 — image arrived while we were generating the suggestion
+        if (tweet.imageArrived) {
+        await processWithImage(tweet);
+        return;
+    }
+    
         const image = await generateImage(tweet.text, suggestion.name, suggestion.ticker, tweet);
         if (!image) return;
 
+        const dir = "generated_images";
+        const filename = `image_${Date.now()}.jpg`;
+        const filepath = path.join(dir, filename);
+
         const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
-        fs.writeFileSync("generated_image.jpg", Buffer.from(base64Data, "base64"));
+        fs.writeFileSync(filepath, Buffer.from(base64Data, "base64"));
 
         logToFile(tweet.text, score, reasoning, tweet.tweetUrl, suggestion);
         const result = await deployToken(suggestion.name, suggestion.ticker, image, tweet.text, tweet.author?.handle);
@@ -579,37 +622,43 @@ async function processWithImage(tweet) {
     let imageDescription = "No description";
     // describe image with llama 4 scout
     try {
-        const visionResponse = await groq.chat.completions.create({
-            model: "meta-llama/llama-4-scout-17b-16e-instruct",
-            messages: [{
-                role: "user",
-                content: [
-                    {
-                        type: "image_url",
-                        image_url: { url: imageUrl }
-                    },
-                    {
-                        type: "text",
-                        text: `Describe what you see in this image in one short sentence. Focus on the main subject, mood, and any text visible. Be concise.`
-                    }
-                ]
-            }],
-            max_tokens: 100,
-            temperature: 0
-        });
+        
+        // const visionResponse = await groq.chat.completions.create({
+        //     model: "meta-llama/llama-4-scout-17b-16e-instruct",
+        //     messages: [{
+        //         role: "user",
+        //         content: [
+        //             {
+        //                 type: "image_url",
+        //                 image_url: { url: imageUrl }
+        //             },
+        //             {
+        //                 type: "text",
+        //                 text: `Describe what you see in this image in one short sentence. Focus on the main subject, mood, and any text visible. Be concise.`
+        //             }
+        //         ]
+        //     }],
+        //     max_tokens: 100,
+        //     temperature: 0
+        // });
 
-        imageDescription = visionResponse.choices[0].message.content.trim();
+        // imageDescription = visionResponse.choices[0].message.content.trim();
+        imageDescription = "Image description unavailable"; // placeholder since we dont have access to the vision model
     } catch (err) {
+        console.log("❌ Image description failed:", err.message);
         console.log("⚠️ Image fetch failed, falling back to text only");
+        const {score, reasoning} = await scoreTweet(tweet.text, tweet.author?.handle);
+        // console.log(`  🧠 Score: ${score} — ${reasoning}`);
+        fs.appendFile('output.txt', `  🧠 Score: ${score} — ${reasoning}` + '\n', () => {});
+        
+        if (score < 7) return;
         const suggestion = await generateSuggestion(tweet.text, tweet.author?.handle);
         if (!suggestion.name || !suggestion.ticker) return;
-        const {score, reasoning} = await scoreTweet(tweet.text, suggestion.name, suggestion.ticker, tweet.tweetUrl, tweet.author?.handle);
-        if (score < 7) return;
         const image = await generateImage(tweet.text, suggestion.name, suggestion.ticker, tweet);
         if (!image) return;
         logToFile(tweet.text, score, reasoning, tweet.tweetUrl, suggestion);
         await deployToken(suggestion.name, suggestion.ticker, image, tweet.text, tweet.author?.handle);
-        console.log(`  ✅ Token deployed: ${result.mint_address}`);
+        console.log(`  ✅ Token deployed: `);
         console.log('ELAPSED TIME:', ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
         return;
     }
@@ -617,23 +666,22 @@ async function processWithImage(tweet) {
     // combine tweet text and image description
     const combinedText = `${tweet.text || ""} [image: ${imageDescription}]`.trim();
 
-    // check if image arrived during vision call (shouldn't happen but just in case)
-    const suggestion = await generateSuggestion(combinedText, tweet.author?.handle);
-    if (!suggestion.name || !suggestion.ticker) return;
+    const {score, reasoning} = await scoreTweet(combinedText, tweet.author?.handle);
+    // console.log(`Score with image: ${score} — ${reasoning}`);
+    fs.appendFile('output.txt', `  🧠 Score with image: ${score} — ${reasoning}` + '\n', () => {});
 
-    const {score, reasoning} = await scoreTweet(combinedText, suggestion.name, suggestion.ticker, tweet.author?.handle);
 
     if (score < 7) {
         return;
     }
 
+
+    const suggestion = await generateSuggestion(combinedText, tweet.author?.handle);
+    if (!suggestion.name || !suggestion.ticker) return;
     // fetch tweet image and convert to base64
     const imgResponse = await fetch(imageUrl);
     const buffer = await imgResponse.arrayBuffer();
     const image = `data:image/jpeg;base64,${Buffer.from(buffer).toString("base64")}`;
-
-    const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
-    fs.writeFileSync("generated_image.jpg", Buffer.from(base64Data, "base64"));
 
     logToFile(tweet.text, score, reasoning, tweet.tweetUrl, suggestion);
     const result = await deployToken(suggestion.name, suggestion.ticker, image, combinedText, tweet.author?.handle);
