@@ -1,95 +1,187 @@
+images - did on score, need to do on suggestion
+increase image description tokens?
+
+if tweeet doesnt actually mention the meme - it just says it happened - misssing important context like the actual thing, name, etc. its not good IN SCORE
 
 
+📝 @realdonaldtrump: "We are going to make America great again, stronger than ever before!..."
+   NAME: Make America
+   TICKER: MAGA
+   EXPECTED (Name, Ticker): Make America Great Again, MAGA
+
+📝 @elonmusk: "Biden is the most confused president in history lmao..."
+   NAME: Confusednald
+   TICKER: CONFUZED
+      EXPECTED (Name, Ticker): Sleepy Joe, SLEEPY JOE
 
 
-some of bwam image generation devs take a couple seconds 3-4 maybe more
-similar to j7 where a lot of them are based on old content
-sometimes will get a good image he made 
-a lot of scrapes are instant
-thumpnail of videos?
+📝 @peta: "A golden retriever named Biscuit was found abandoned in the snow, but survived a..."
+   NAME: Biscuit The Survivor
+   TICKER: BISCUIT
+
+📝 @bbcnews: "Beloved therapy dog Max passes away after 15 years of service at children's hosp..."
+   NAME: RIP Max
+   TICKER: MAX
+
+📝 @popcrave: "People are using AI to turn their selfies into renaissance paintings and it's go..."
+   NAME: Renaissance Me
+   TICKER: RENAISSANCE
+
+📝 @unusual_whales: "Silver is trading like a memecoin today. Up 40% in 24 hours...."
+   NAME: Silvercoin
+   TICKER: SILVERCOIN
+
+📝 @elonmusk: "Bernie Sanders wants to tax everything you own..."
+   NAME: Tax Bernie
+   TICKER: TAXBERNIE
+      EXPECTED (Name, Ticker): Burnie Sunders, BURNIE
+
+📝 @nypost: "Melania Trump caught on camera rolling her eyes at Biden during state dinner..."
+   NAME: Melania Rolls
+   TICKER: ROLLS
+      EXPECTED (Name, Ticker): Get a load of this guy, EYEROLL
+
+📝 @elonmusk: "The simulation is definitely running low on RAM..."
+   NAME: Low RAM
+   TICKER: LOWRAM
+      EXPECTED (Name, Ticker): The Simulation, SIMULATION
+
+📝 @naval: "Desire is a contract you make with yourself to be unhappy until you get what you..."
+   NAME: Unhappy Till
+   TICKER: UNTIL
+      EXPECTED (Name, Ticker): Desire, DESIRE
+
+📝 @elonmusk: "we're so back..."
+   NAME: Were So Back
+   TICKER: WSB
+      EXPECTED (Name, Ticker): We're So Back, BACK
+
+📝 @unusual_whales: "GameStop is up 200% today and nobody can explain why..."
+   NAME: Mysterious GME
+   TICKER: GME
+      EXPECTED (Name, Ticker): GameStop Inc., GME
+
+📝 @saylor: "Bitcoin is the exit. Everything else is the burning building...."
+   NAME: The Exit
+   TICKER: EXIT
+      EXPECTED (Name, Ticker): The Exit, BTC
+
+📝 @pumpfun: "1 billion tokens launched. The era of infinite memecoins has begun...."
+   NAME: Infinite Meme
+   TICKER: MEME
+      EXPECTED (Name, Ticker): Infinite Memecoin, INFINITE
+
+📝 @sama: "we have achieved AGI internally. announcement coming soon...."
+   NAME: Artificial General Intelligence
+   TICKER: AGI
+
+📝 @elonmusk: "Grok can now see, hear, and feel. What have we done...."
+   NAME: GrokAwake
+   TICKER: GROK
+
+📝 @nvidia: "Introducing the GB200: 1000x faster than the human brain at math..."
+   NAME: Brainkiller
+   TICKER: BK200
+      EXPECTED (Name, Ticker): The Brainkiller, GB200
+
+📝 @elonmusk: "I ate a live cockroach on a dare. It tasted like chicken...."
+   NAME: Cockroach King
+   TICKER: ROACH
+      EXPECTED (Name, Ticker): Chickroach, CHICKROACH
 
 
+📝 @popcrave: "A man in Japan has married his Roomba after 10 years of companionship..."
+   NAME: Roomba Husband
+   TICKER: ROOMBAMAN:
 
-  ENDED AT SWALFART
+📝 @nvidia: "Our Q3 earnings exceeded expectations. Revenue up 12% YoY. Full report available..."
+   NAME: Green Chip
+   TICKER: NVIDIAUP
+      EXPECTED (Name, Ticker): Green Chip, NVDA
+
+📝 @culturecrave: "elon musk shows up to meeting with a sink again and refuses to explain why..."
+   NAME: Sinklord
+   TICKER: SINK
+      EXPECTED (Name, Ticker): The Sink, SINK
+
+📝 @watcherguru: "BREAKING: traders are now buying coins based on dreams they had while sleeping..."
+   NAME: Dreamcoin
+   TICKER: DREAMCOIN
+
+📝 @dexerto: "new trend where people are rating strangers aura levels in public is going viral..."
+   NAME: Aura Rate
+   TICKER: AURIFY
+
+📝 @bbcnews: "cat named biscuit somehow boarded a plane and flew to another country alone..."
+   NAME: Biscuit On The Loose
+   TICKER: BISCUIT
+      EXPECTED (Name, Ticker): Biscuit's Jouney, BISCUIT
+
+📝 @dexerto: "people are now pretending to be npcs in real life and only speaking when tipped..."
+   NAME: Tip Talkers
+   TICKER: TIPBOT
+
+📝 @foxnews: "BREAKING: donald trump says he would 'absolutely win' a fight against a kangaroo..."
+   NAME: Trumpskang
+   TICKER: TRUMPSKANG
+      EXPECTED (Name, Ticker): Winnald, WINNALD
 
 
+📝 @buzzfeed: "girl goes viral for texting her ex 'you up' and accidentally sending it to her b..."
+   NAME: You Up Boss
+   TICKER: YUBOSS
+      EXPECTED (Name, Ticker): You Up?, YOU UP
 
 
+📝 @verge: "new ai tool lets you generate your future self and people are becoming obsessed ..."
+   NAME: Future Me
+   TICKER: FUTUREME
+      EXPECTED (Name, Ticker): Future Me, FUTURE ME
 
+📝 @goodnewsnetwork: "homeless man returns lost wallet with 10000 dollars inside untouched..."
+   NAME: Honest Hero
+   TICKER: HERO
+      EXPECTED (Name, Ticker): The Homeless Hero, HERO
 
-tokenize your kid image wasnt coin
+📝 @watcherguru: "BREAKING: gold just hit an all time high as markets panic..."
+   NAME: Gold Panic
+   TICKER: GOLDPAN
+      EXPECTED (Name, Ticker): Goldcoin, GOLD
 
-drawing things on coin that shouldnt be on
-mcozempic
+📝 @insider: "woman names her pet rock steve and throws it a birthday party every year..."
+   NAME: Steve's Birthday Bash
+   TICKER: STEVE
 
+📝 @coindesk: "new crypto meta where people are launching coins based on random words is explod..."
+   NAME: Random Coin Frenzy
+   TICKER: RCF
+      EXPECTED (Name, Ticker): Randomcoin, RANDOM
 
+📝 @vice: "people are now 'bedrotting' as a lifestyle and calling it self care..."
+   NAME: Bedrotting
+   TICKER: BEDROTTING
 
+📝 @reuters: "BREAKING: government confirms they lost track of a high altitude balloon again..."
+   NAME: Lost Again
+   TICKER: LOST
+      EXPECTED (Name, Ticker): Only Up, UP
 
+📝 @dexerto: "new trend of people turning themselves into action figures using ai is going vir..."
+   NAME: Actionify
+   TICKER: ACTION
 
-for images background are appropriate if they add to the image / set the scene etc. blend the image into it to make it seemless but the meain idea is still prominent
+📝 @cnn: "BREAKING: donald trump posts ai image of himself as a gladiator riding a lion..."
+   NAME: Trumpus Maximus
+   TICKER: TMX
+      EXPECTED (Name, Ticker): Trumpius Maximus, TRUMPIUS
 
-moonpup kinda looks realistic black background fills image not cartoonish
-the simulation lot of of background tweets no main character or very small scaling evokes the emotion
-fnj space background mkes it give context.
-give it context about solana memecoins and famous coins tokabu, etc.
-sometimes the image will not be one focal image, but a bunch of similar images blended together POINT
+📝 @bloomberg: "BREAKING: oil prices surge 50 percent overnight..."
+   NAME: Oil Shock
+   TICKER: OILSHOCK
+      EXPECTED (Name, Ticker): Oilcoin, OIL
 
+📝 @dexerto: "new trend where people only communicate in emojis for entire day..."
+   NAME: Emoji Day
+   TICKER: EMOJI
+      EXPECTED (Name, Ticker): Emojicoin, Emoji
 
-
-
-
-
-
-
-
-
-
-
-You are a memecoin image prompt generator for Grok's image model. 
-Given a tweet and coin name, output a single image generation prompt.
-
-CONTEXT ON THE COIN AESTHETIC:
-Memecoins live and die by immediate visual impact at small sizes. 
-The image should feel like it was made by a terminally online person 
-who is either very skilled or completely unskilled — no middle ground. 
-Irony, absurdity, and edge are features not bugs.
-
-STYLE SELECTION — pick the best fit:
-
-[FLAT ICON] — use when: the concept is a simple object, symbol, or 
-crude noun. 
-Prompt structure: "Minimalist flat vector icon of [subject], centered 
-on a [color] circle background, clean lines, bold silhouette, app icon 
-style, no gradients, 2 colors max"
-
-[HYPERREAL ABSURD] — use when: an animal, creature, or object can be 
-placed in an incongruous epic context.
-Prompt structure: "Photorealistic [subject] wearing/doing [absurd thing], 
-[dramatic setting], cinematic lighting, shallow depth of field, 
-ultra-detailed fur/texture, 8k"
-
-[CINEMATIC DARK] — use when: the tweet has political, conspiratorial, 
-threatening, or grandiose energy.
-Prompt structure: "Dark cinematic illustration of [subject], dramatic 
-chiaroscuro lighting, moody atmosphere, glowing eyes, movie poster 
-composition, hyper-detailed, ominous"
-
-[MEME CHARACTER] — use when: the tweet references internet culture, 
-incel slang, chan vocabulary, or a known meme archetype.
-Prompt structure: "Cartoon illustration in internet meme style, 
-[Wojak/Pepe/NPC] character [doing/expressing thing], simple linework, 
-flat colors, slightly crude on-purpose aesthetic"
-
-[LITERAL EPIC] — use when: the concept is a real-world object or 
-brand that can be made funny by treating it with unearned seriousness.
-Prompt structure: "[Object], floating in space/dramatic environment, 
-glowing aura, god rays, epic scale, photorealistic, cinematic"
-
-OUTPUT FORMAT:
-- One prompt only, no explanation
-- End every prompt with: "square format, thumbnail-readable, 
-  no text or typography"
-- Max 75 words
-
-TWEET: {tweet}
-COIN NAME: {ticker}
