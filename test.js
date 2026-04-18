@@ -5,10 +5,38 @@ import fs from "fs";
 import path from "path";
 import Groq from "groq-sdk";
 import { log } from 'console';
+import Cerebras from "@cerebras/cerebras_cloud_sdk";
+import Together from "together-ai";
+import OpenAI from "openai";
 
+const client = new OpenAI({
+  apiKey: process.env.GEMINI_API_KEY,
+  baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
+});
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-const model = "openai/gpt-oss-120b"; // "llama-3.3-70b-versatile", moonshotai/kimi-k2-instruct, qwen/qwen3-32b, openai/gpt-oss-120b 8b llama as well moonshotai/kimi-k2-instruct-0905
+const cerebras = new Cerebras({ apiKey: process.env.CEREBRAS_API_KEY });
+const together = new Together({ apiKey: process.env.TOGETHERAI_API_KEY  });
 
+
+const model = "qwen/qwen3-32b";
+// qwen/qwen3-32b
+// meta-llama/llama-4-scout-17b-16e-instruct
+// openai/gpt-oss-20b
+// canopylabs/orpheus-v1-english
+// canopylabs/orpheus-arabic-saudi
+// llama-3.3-70b-versatile
+// groq/compound
+// openai/gpt-oss-safeguard-20b
+// whisper-large-v3
+// llama-3.1-8b-instant
+// groq/compound-mini
+// whisper-large-v3-turbo
+// openai/gpt-oss-120b
+// allam-2-7b
+// meta-llama/llama-prompt-guard-2-86m
+// meta-llama/llama-prompt-guard-2-22m
+
+// {"object":"list","data":[{"id":"qwen-3-235b-a22b-instruct-2507","object":"model","created":0,"owned_by":"Cerebras"},{"id":"zai-glm-4.7","object":"model","created":0,"owned_by":"Cerebras"},{"id":"gpt-oss-120b","object":"model","created":0,"owned_by":"Cerebras"},{"id":"llama3.1-8b","object":"model","created":0,"owned_by":"Cerebras"}]}%             
 const WHITELIST = [
     // crypto founders / builders / influencers
     "elonmusk", "pmarca", "toly", "aeyakovenko", "rajgokal", "armaniferrante",
@@ -83,7 +111,14 @@ setInterval(() => {
 }, 5 * 60 * 1000);
 
 
-// console.log(await generateSuggestion("this golden retriever waited outside the same hospital every day until its owner came out after 3 months", "pubity"))
+
+
+
+
+
+
+
+
 async function generateSuggestion(tweetText, author) {
 
     const response = await groq.chat.completions.create({
@@ -91,82 +126,128 @@ async function generateSuggestion(tweetText, author) {
         messages: [{
             role: "user",
             content: `
-SYSTEM ROLE
-You are a memecoin naming engine for the Solana ecosystem. Your only job is to output a NAME and TICKER. Nothing else.
 
-WHAT IS A MEMECOIN
-A memecoin is pure attention. It is anything that makes someone stop mid-scroll because it is not average — a double take, a reaction, a "wait, what." It does not have to be funny. 
-It does not have to be crypto. It just has to be the kind of thing people react to, talk about, or send to someone without thinking twice. Most will live in internet culture, crypto degeneracy, and viral moments — but the only real requirement is that it peaks interest in some way. If it would trend, it can be a memecoin.
+You will receive a memetic tweet and its author. The tweet will contain some type of phrase/meme/viral concept of the following types:
 
-The audience is crypto people who live online and understand internet culture. They get the slang, the memes, the references. Write for them.
+- A real joke, meme format, or punchline — something with a setup and a payoff
+- A cultural moment, viral concept, or internet phenomenon with staying power; it could trend
+- A specific, vivid, memeable idea that can become a cartoon, character, or coin identity
+- Animals with a story (cute, funny, sad, heroic)
+- Genuinely interesting or groundbreaking tech/AI/crypto news where the concept itself is the hook
+- Slang or internet culture used in a meaningful, specific way — not just dropped randomly
+- Political content with an actual angle, joke, or specific absurdity — not just a name drop
+- Financial nihilism, crypto culture, or degen energy attached to a real concept
+- Tokenization, trading, or calling something financially adjacent with a concrete idea. Something that crypto memecoin traders can relate to.
+- Anything that makes you stop and react — not just nod and scroll
+- An image that adds a specific visual hook — a funny reaction, an absurd moment caught on camera, a striking visual concept, or a product/announcement so significant it has cultural weight on its own
 
-STEP 1 — FIND THE MEME CORE
-Before touching the name or ticker, identify the single sharpest thing about this tweet. Ask:
+Tokenize the tweet into a memecoin.
+The audience is crypto-native people who live online. They know the slang, the memes, the references. Write for them.
 
-What is the joke, vibe, or act — not just the subject?
-If someone is doing something embarrassing or funny → the meme is the act, not the person
-If something is being described vividly → the description is the concept, not the thing being described
-If it's an event → find the one word or phrase people will screenshot
-If it's a person → only use the person if they are the meme. If something is being done to or about them, the meme may be the action
+PRIORITY ORDER (STRICT):
 
-When a tweet has multiple angles, pick the single sharpest one and commit. Never blend two meme cores into one name.
+1. Correct meme object
+2. Faithfulness to object (no invention)
+3. Clean NAME representation
+4. Clean TICKER
+5. Creativity / style
 
-STEP 2 — NAME
-Max 32 characters. The punchiest distillation of the meme core.
-The name does NOT have to use the words from the tweet. It can use:
+STEP 1:
 
-Slang or internet phrasing
-Exaggerated or dramatized versions to emit some type of feeling or emotion
-Cultural references the audience will instantly recognize
-Alliteration or rhythm if it makes the name more memorable
+First identify the singular phrase/entity/concept that stands out in the tweet.
+The meme object is the main subject people would reference when talking about the tweet.
+Prefer the term that already exists as a recognizable idea or phrase, not a subcomponent of it.
+If removing a word still leaves the main entity intact, it is NOT apart of meme object.
 
-You may add words not in the tweet if they make the name more emotional, more punchable, or funnier. Sometimes prepend "The" when the concept is a clear archetype or object.
-The legibility test: someone who hasn't read the tweet sees only the name — do they immediately get the meme?
+It will be:
+- A single atomic entity, phrase, idea, name, or concept
+- The main subject of a joke or statement, not a component, symptom, or internal resource of it.
 
-STEP 3 — TICKER
-Max 13 characters, all caps. Can include numbers, spaces, hyphens, or punctuation if it makes the ticker cleaner or more iconic.
-Priority rules:
+It is NOT:
+- Anything related to the core idea that is not the core idea itself
+- A description of an kind
 
-If the full name fits in 13 chars → use it exactly
-If the name is one strong word → use that word
-If the name is multi-word → keep the words with the most angle — the ones that are punchy and memeable on their own. Do NOT use initials/acronyms unless the acronym is max 3 characters and all words in the name carry equal meme weight
-Never concatenate partial words. Shorten by dropping whole words, never chopping them
-Keep numbers or symbols if they are part of the concept
+The meme object must collapse to ONE canonical label.
 
-The ticker does not have to be derived from the name. It can be a different facet of the same concept, a cultural reference, or a reframe that adds a second layer — as long as both name and ticker point at the same meme core.
-Ticker quality check — before finalizing, ask:
+If multiple elements seem important, you MUST choose ONE and discard the rest or find a real word/phrase/expression that captures its entirety.
 
-Does it look good visually? Would traders spam it?
-Does it work as a standalone exclamation? You should be able to shout it
-Is it pronounceable as a word or an obvious chant? If it sounds like an abbreviation being spelled out, it's wrong
-Does it avoid filler words? ("THE", "A", "OF" are dead weight)
-Is it bold and standalone, not a fragment?
+If multiple candidates exist, choose using this priority:
 
-WHAT NOT TO DO
-Wrong | Why
-Blending two meme cores into one name | Dilutes the punch — one core, full commitment
-Using initials as a 4+ letter acronym | NEET works because it's a real term; RBSF for "random boring stuff fails" does not
-Chopping partial words in the ticker | Makes it illegible and weak
+1. Existing known phrase or meme
+2. Proper noun / named entity
+3. Single vivid noun
+4. Only if none exist → a short phrase (max 2 words)
 
-SPECIAL NAMING PATTERNS
-Apply when relevant — not when approximate:
+Do NOT combine multiple elements into a single name.
+Do NOT describe the situation.
+Do NOT include both an object and its condition/state.
 
-Tweet describing Donald Trump in a memetic way:
+STEP 2:
 
-Presidential/policy tone → [Idea INITIAL]OTUS, ticker = [Idea] of The United States
-Personal/irreverent tone → [Idea]nald, ticker = same
+Now output a NAME and TICKER that represent ONLY that object.
+Patterns are applied AFTER the meme object is selected. They must not influence which object is chosen.
+If a pattern does not fit naturally, DO NOT force it. Default to CORE WORD.
 
-ANIMAL or HUMAN WITH SAD STORY: name = "Justice For [Name]", ticker = name only
-ANIMAL or HUMAN WITH FUN STORY: name and ticker = the name
-ANIMAL or HUMAN DIED: name = "RIP [Name]", ticker = name only
-EMERGING TREND / NEW THING PEOPLE ARE DOING: name and ticker = [thing] + "ify"
-TRADING / COINS / TOKENS (stock dumping, trading like memecoin, pumping, tokenizing): name and ticker = [thing] + "coin"
-MOCKING SOMEONE / person did something stupid: misspell the person's name in a funny way — change vowels or consonants, keep it recognizable but intentionally wrong. Both name and ticker use the misspelled version. Only apply this when the person themselves is the joke — not when they did something interesting or noteworthy.
+There are only three valid relationships between NAME and TICKER:
 
-EXAMPLES:
+- CORE WORD (This is the deault)
+Ticker is the exact meme object/entity/concept. 
+Name may ONLY rephrase or stylize the object itself.
+It must NOT include surrounding context, causes, or conditions.
+If the name contains more information than the object alone, it is wrong.
+
+- SPLIT CONCEPT
+Ticker = exact meme object
+Name = same object with light stylistic framing ONLY (e.g. adding “The”, slang, or tone)
+The name must still clearly refer to the SAME object, not the full situation
+- ACRONYM PAIR (Only when meme object is 3 distinct words long or is a well established acronym)
+
+Ticker is the acronym
+Name is the full phrase of that same object.
+
+Do NOT mix patterns. Do not add words to fit patterns.
+
+RULES:
+
+- NAME max 32 characters; it should only represent the main meme object in a punchy or creative way
+- TICKER max 13 characters, all caps
+
+Ticker must be:
+
+- readable
+- natural
+- real word, phrase, or known acronym
+
+AVOID:
+- Making the ticker compressed unnaturally (do not remove letters from words or splice parts of words or letters unless a clear 3 letter or well known acronym)
+- Never truncate or partially remove letters from a word.
+- Ticker quality must NEVER influence meme object selection. If the correct object leads to an awkward ticker, keep the object and simplify the ticker later.
+
+Prefer:
+- the raw meme object
+- or a clean acronym of it
+- or a widely recognized term
+
+If unsure:
+- use the single strongest noun in the tweet
+- or the existing viral phrase exactly as-is
+
+You are encouraged to be creative, degenerate, memetic, and joking only in formatting the coins name and ticker, not in changing the underlying object.
+Make them the punchiest distillation of the meme core. It does not have to use the exact words from the tweet.
+This includes:
+- crypto style naming (coining, referring to recognized meme formats)
+- slang or internet phrasing
+- cultural references the audience instantly recognizes
+- rhythm or alliteration if it improves memorability
+
+HERE ARE SOME EXAMPLES:
 Tweet: "We're going back to the fucking moon, that's why."
 Name: To The Fucking Moon
 Ticker: MOON
+
+Tweet: "Penguin named Gibby by researchers seen walking to his death into the mountains."
+Name: The Nietzchean Penguin
+Ticker: Gibby
 
 Tweet: "Another mysterious NASA death as ninth scientist linked to secret programs dies"
 Name: The Silencing
@@ -252,6 +333,7 @@ Tweet: "Trump might be the most stupid and retarded president I've ever seen."
 Name: Retardnald
 Ticker: RETARDNALD
 
+
 INPUT
 Author: @${author}
 Tweet: "${tweetText}"
@@ -268,8 +350,9 @@ TICKER: [ticker]
     const content = response.choices[0].message.content.trim();
     const name = content.match(/NAME: (.+)/)?.[1]?.trim();
     const ticker = content.match(/TICKER: (.+)/)?.[1]?.trim();
-    
-    return { name, ticker };
+    const reasoning = content.match(/REASONING: (.+)/)?.[1]?.trim();
+
+    return { name, ticker, reasoning };
 }
 
 // console.log(await scoreTweet("Enjoy. \n\nCredit to @dinkin_flickaa for designing and shipping", "nikitabier"));
@@ -297,7 +380,7 @@ WHAT MAKES A SCORE HIGH:
 - Slang or internet culture used in a meaningful, specific way — not just dropped randomly
 - Political content with an actual angle, joke, or specific absurdity — not just a name drop
 - Financial nihilism, crypto culture, or degen energy attached to a real concept
-- Tokenization, trading, or calling something financially adjacent with a concrete idea that is not a normal concept.
+- Tokenization, trading, or calling something financially adjacent with a concrete idea. Something that crypto memecoin traders can relate to.
 - Anything that makes you stop and react — not just nod and scroll
 - An image that adds a specific visual hook — a funny reaction, an absurd moment caught on camera, a striking visual concept, or a product/announcement so significant it has cultural weight on its own
 
@@ -321,7 +404,7 @@ Tweet: ${tweetText}
 Twitter/X handle: ${authorsHandle}`
         }],
         max_tokens: 10,
-        temperature: 0
+        temperature: 1
     });
 
     // const score = parseInt(response.choices[0].message.content.trim());
@@ -779,96 +862,61 @@ async function processWithImage(tweet) {
 
 
 const testTweets = [
-    { author: "realdonaldtrump", text: "We are going to make America great again, stronger than ever before!" },
-    { author: "elonmusk", text: "Biden is the most confused president in history lmao" },
-    { author: "peta", text: "A golden retriever named Biscuit was found abandoned in the snow, but survived after walking 30 miles home" },
-    { author: "bbcnews", text: "Beloved therapy dog Max passes away after 15 years of service at children's hospital" },
-    { author: "popcrave", text: "People are using AI to turn their selfies into renaissance paintings and it's going viral" },
-    { author: "unusual_whales", text: "Silver is trading like a memecoin today. Up 40% in 24 hours." },
-    { author: "elonmusk", text: "Bernie Sanders wants to tax everything you own" },
-    { author: "nypost", text: "Melania Trump caught on camera rolling her eyes at Biden during state dinner" },
+        {author: "cnn", text: "BREAKING: donald trump posts ai image of himself as a gladiator riding a lion"},
 
-    // MEME CORE DETECTION
-    { author: "elonmusk", text: "The simulation is definitely running low on RAM" },
-    { author: "naval", text: "Desire is a contract you make with yourself to be unhappy until you get what you want" },
-    { author: "solana", text: "1 million transactions per second. No big deal." },
-    { author: "elonmusk", text: "gm" },
-    { author: "elonmusk", text: "we're so back" },
-    { author: "realdonaldtrump", text: "WITCH HUNT. TOTAL HOAX. SAD!" },
-
-    // CRYPTO/FINANCE
-    { author: "unusual_whales", text: "GameStop is up 200% today and nobody can explain why" },
-    { author: "saylor", text: "Bitcoin is the exit. Everything else is the burning building." },
-    { author: "pumpfun", text: "1 billion tokens launched. The era of infinite memecoins has begun." },
-
-    // ANIMALS
-    { author: "bbcnews", text: "A duck in Paris has learned to say bonjour to tourists outside the Louvre" },
-    { author: "nypost", text: "Florida man's pet alligator escapes and takes over neighborhood pool" },
-
-    // TECH/AI
-    { author: "sama", text: "we have achieved AGI internally. announcement coming soon." },
-    { author: "elonmusk", text: "Grok can now see, hear, and feel. What have we done." },
-    { author: "nvidia", text: "Introducing the GB200: 1000x faster than the human brain at math" },
-
-    // ABSURD/VIRAL
-    { author: "elonmusk", text: "I ate a live cockroach on a dare. It tasted like chicken." },
-    { author: "popcrave", text: "A man in Japan has married his Roomba after 10 years of companionship" },
-    { author: "nypost", text: "Woman shows up to her own funeral after family declared her dead by mistake" },
-
-    // SHOULD SCORE LOW (bad tweets that might sneak through)
-    { author: "solana", text: "Join us for our developer conference next week in San Francisco. Register now at solana.com/conf" },
-    { author: "nvidia", text: "Our Q3 earnings exceeded expectations. Revenue up 12% YoY. Full report available at investor.nvidia.com" },
-
-    {author: "dexerto", text: "guy live streamed himself quitting his job mid zoom call and accidentally shared his screen with his boss the whole time"},
+        { author: "elonmusk", text: "The simulation is definitely running low on RAM" },
+            { author: "elonmusk", text: "Grok can now see, hear, and feel. What have we done." },
     {author: "culturecrave", text: "elon musk shows up to meeting with a sink again and refuses to explain why"},
-    {author: "pubity", text: "this golden retriever waited outside the same hospital every day until its owner came out after 3 months"},
-    {author: "watcherguru", text: "BREAKING: traders are now buying coins based on dreams they had while sleeping"},
-    {author: "nojumper", text: "man tried to jump over a moving car for tiktok and immediately got hit"},
-    {author: "dexerto", text: "new trend where people are rating strangers aura levels in public is going viral"},
-    {author: "barstoolsports", text: "kid brings entire rotisserie chicken in backpack to school and eats it during math class"},
-    {author: "cnn", text: "scientists say they may have accidentally created a new color no human has ever seen before"},
-    {author: "cointelegraph", text: "trader turned 200 dollars into 3 million then lost it all in 6 minutes on livestream"},
-    {author: "bbcnews", text: "cat named biscuit somehow boarded a plane and flew to another country alone"},
-    {author: "dexerto", text: "people are now pretending to be npcs in real life and only speaking when tipped"},
-    {author: "ladbible", text: "guy spent 14 hours building ikea desk just to realize he built it upside down"},
-    {author: "foxnews", text: "BREAKING: donald trump says he would 'absolutely win' a fight against a kangaroo"},
-    {author: "buzzfeed", text: "girl goes viral for texting her ex 'you up' and accidentally sending it to her boss instead"},
-    {author: "verge", text: "new ai tool lets you generate your future self and people are becoming obsessed with it"},
-    {author: "goodnewsnetwork", text: "homeless man returns lost wallet with 10000 dollars inside untouched"},
-    {author: "reddit", text: "guy confidently walks into wrong wedding and stays for 4 hours before realizing"},
-    {author: "watcherguru", text: "BREAKING: gold just hit an all time high as markets panic"},
-    {author: "twitch", text: "streamer falls asleep on live for 9 hours and chat refuses to leave"},
-    {author: "insider", text: "woman names her pet rock steve and throws it a birthday party every year"},
-    {author: "coindesk", text: "new crypto meta where people are launching coins based on random words is exploding"},
-    {author: "dailyfail", text: "guy tries to impress date by ordering in french and accidentally insults the waiter"},
-    {author: "theverge", text: "BREAKING: mark zuckerberg unveils hyper realistic ai clone that can replace you in meetings"},
-    {author: "nhknews", text: "dog refuses to move from train station after owner passed away"},
     {author: "vice", text: "people are now 'bedrotting' as a lifestyle and calling it self care"},
-    {author: "worldstar", text: "man gets stuck in revolving door for 10 minutes while everyone watches"},
-    {author: "reuters", text: "BREAKING: government confirms they lost track of a high altitude balloon again"},
-    {author: "foodbeast", text: "guy brings his own microwave to mcdonalds to reheat fries and gets kicked out"},
-    {author: "watcherguru", text: "elon musk tweets 'hmm' and crypto markets instantly react"},
-    {author: "dexerto", text: "new trend of people turning themselves into action figures using ai is going viral"},
-    {author: "cnn", text: "BREAKING: donald trump posts ai image of himself as a gladiator riding a lion"},
-    {author: "schoolmemes", text: "kid accidentally calls teacher mom and the entire class goes silent"},
-    {author: "diyfails", text: "guy spends 3 years building boat in backyard and realizes it cant fit through gate"},
-    {author: "bloomberg", text: "BREAKING: oil prices surge 50 percent overnight"},
-    {author: "tiktok", text: "girl records herself quitting gym after one workout saying 'this isnt for me'"},
-    {author: "dexerto", text: "new trend where people only communicate in emojis for entire day"},
-    {author: "abcnews", text: "cat interrupts live news broadcast and steals the spotlight"},
-    {author: "tmz", text: "man fakes knowing celebrity at party and gets introduced to them accidentally"},
-    {author: "foxnews", text: "BREAKING: donald trump says he invented a new word during speech and refuses to define it"},
-    {author: "ubereats", text: "guy orders 100 chicken nuggets at 3am and eats all of them alone"},
-    {author: "reddit", text: "people are now rating their friends like video game characters with stats"},
-    {author: "coindesk", text: "BREAKING: bitcoin crashes 30 percent in minutes wiping out billions"},
-    {author: "localnews", text: "dog saves child from river and becomes local hero overnight"},
-    {author: "awkwardcentral", text: "guy waves back at someone who wasnt waving at him and has to leave store"}
+    { author: "unusual_whales", text: "Silver is trading like a memecoin today. Up 40% in 24 hours." },
+    {author: "wired", text: "It is official. $BRR is going to be the first publicly traded agentic finance firm. The deal will close in early April and then we will begin talking about our AI model and agent lab focused on finance. The team is working hard and we are excited to start sharing more."},
+    {author: "globeandmail", text: "Relaxation of U.S. day-trading rules opens door to YOLO trading, higher risk  "},
+        { author: "nypost", text: "Melania Trump caught on camera rolling her eyes at Biden during state dinner" },
+            { author: "sama", text: "we have achieved AGI internally. announcement coming soon." },
+            { author: "elonmusk", text: "we're so back" },
+                { author: "unusual_whales", text: "GameStop is up 200% today and nobody can explain why" },
+    {author: "watcherguru", text: "BREAKING: traders are now buying coins based on dreams they had while sleeping"},
+    {author: "insider", text: "woman names her pet rock steve and throws it a birthday party every year"},
+
+
+
+
+
+    // { author: "elonmusk", text: "Biden is the most confused president in history lmao" },
+    // { author: "peta", text: "A golden retriever named Biscuit was found abandoned in the snow, but survived after walking 30 miles home" },
+    // { author: "bbcnews", text: "Beloved therapy dog Max passes away after 15 years of service at children's hospital" },
+
+    // // MEME CORE DETECTION
+
+    // // CRYPTO/FINANCE
+    // { author: "pumpfun", text: "1 billion tokens launched. The era of infinite memecoins has begun." },
+
+    // // TECH/AI
+    // { author: "nvidia", text: "Introducing the GB200: 1000x faster than the human brain at math" },
+
+    // // ABSURD/VIRAL
+    // { author: "elonmusk", text: "I ate a live cockroach on a dare. It tasted like chicken." },
+
+    // {author: "dexerto", text: "new trend where people are rating strangers aura levels in public is going viral"},
+    // {author: "bbcnews", text: "cat named biscuit somehow boarded a plane and flew to another country alone"},
+    // {author: "dexerto", text: "people are now pretending to be npcs in real life and only speaking when tipped"},
+    // {author: "foxnews", text: "BREAKING: donald trump says he would 'absolutely win' a fight against a kangaroo"},
+    // {author: "verge", text: "new ai tool lets you generate your future self and people are becoming obsessed with it"},
+    // {author: "watcherguru", text: "BREAKING: gold just hit an all time high as markets panic"},
+    // {author: "coindesk", text: "new crypto meta where people are launching coins based on random words is exploding"},
+    // {author: "theverge", text: "BREAKING: mark zuckerberg unveils hyper realistic ai clone that can replace you in meetings"},
+    // {author: "nhknews", text: "dog refuses to move from train station after owner passed away"},
+    // {author: "reuters", text: "BREAKING: government confirms they lost track of a high altitude balloon again"},
+    // {author: "watcherguru", text: "elon musk tweets 'hmm' and crypto markets instantly react"},
+    // {author: "bloomberg", text: "BREAKING: oil prices surge 50 percent overnight"},
+    // {author: "dexerto", text: "new trend where people only communicate in emojis for entire day"},
+    // {author: "coindesk", text: "BREAKING: bitcoin crashes 30 percent in minutes wiping out billions"},
 
 ];
 
 async function runTests() {
     for (const test of testTweets) {
-        const { name, ticker } = await generateSuggestion(test.text, test.author);
+        const { name, ticker} = await generateSuggestion(test.text, test.author);
         console.log(`\n📝 @${test.author}: "${test.text}"`);
         console.log(`   NAME: ${name}`);
         console.log(`   TICKER: ${ticker}`);
