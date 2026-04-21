@@ -14,166 +14,186 @@ SPLIT CONCEPT
 NO HIERARCHY
 EXAMPLES should i put after each part or all at the ned
 
+trumpus maximus on both 70b an 8b chatgptprompt
 
 
 
 
 
-this is the prompt im running right now which is good at identifying the main meme core:
+NOTES
 
-You will receive a memetic tweet and its author. The tweet will contain some type of joke/meme/viral concept of the following types:
+LITERAL
 
-- A real joke, meme format, or punchline — something with a setup and a payoff
-- A cultural moment, viral concept, or internet phenomenon with staying power; it could trend
-- A specific, vivid, memeable idea that can become a cartoon, character, or coin identity
-- Animals with a story (cute, funny, sad, heroic)
-- Genuinely interesting or groundbreaking tech/AI/crypto news where the concept itself is the hook
-- Slang or internet culture used in a meaningful, specific way — not just dropped randomly
-- Political content with an actual angle, joke, or specific absurdity — not just a name drop
-- Financial nihilism, crypto culture, or degen energy attached to a real concept
-- Tokenization, trading, or calling something financially adjacent with a concrete idea. Something that crypto memecoin traders can relate to.
-- Anything that makes you stop and react — not just nod and scroll
-- An image that adds a specific visual hook — a funny reaction, an absurd moment caught on camera, a striking visual concept, or a product/announcement so significant it has cultural weight on its own
+First ask: does this memetic image already have a name? If yes, use it. If no, give it the most literal short label you can. Only reach for creativity when the literal label is boring, incomplete, or needs more punch — and even then, creativity means making the label more iconic, not describing the situation.
+ if you find yourself adding a second word to explain what happened to the thing, delete it. 
 
-I want to tokenize the tweet into a memecoin.
+ “Name the entity as if it already exists.”
+ “What would people call this thing if it were a known object?”
+ “Name the meme as a standalone entity, using the most direct identity possible.”
 
-First identify the cultural meme object in the tweet.
+ MULTIPLE IDEAS
 
-The meme object is:
+ a good meme name makes the event implicit, not explicit. 
 
-a single atomic entity, phrase, idea, name, or concept
-the smallest unit that can exist as a standalone internet token
-The meme object must be the main subject of the joke or statement, not a component, symptom, or internal resource of it.
+ Give the memetic idea a name, not a description. The name should be what this thing would be called if it became a character, a coin, or a legend — not a summary of what it did. The event, the chaos, the absurdity should be implied by the name, not stated in it.
 
-It is NOT:
+The test you'd give the model:
 
-a summary of the tweet
-an interpretation of what happened
-a description of effects, outcomes, emotions, or reactions
+Would this name appear on a coin, a poster, or a headline — or does it read like a caption? If it reads like a caption, it's wrong.
+Identify what the original thing becomes in the meme, then name that.
 
-If multiple candidates exist, pick the grandest one. The biggest singular idea.
+“The NAME should represent the entity after it has been transformed by the meme, not the original object and not the full situation.”
 
-Then output a NAME and TICKER that represent ONLY that object.
+LITERAL CONCRETE IDEA
 
-You are only packaging the meme object into a coin format.
+The meme can be complex, but the token doesn’t have to carry that complexity explicitly.
+Prefer the simplest concrete entity that can carry the meme, even if the name itself does not explicitly show the full meme.
+“pick the object that absorbs the meme”
 
-You are encouraged to be creative, degenerate, memetic, and joking only in formatting the coin identity, not in changing the underlying object.
+Find the concrete thing at the center of the meme. That thing is the token. Everything else is why it's memetic, not what you name it.
 
-This includes:
+The surrounding context — the why, the how, the absurdity — is what makes the noun memetic. It does not need to be in the name. The noun already carries it.
 
-crypto style naming (coining, referring to recognized meme formats)
-slang or internet phrasing
-cultural references the audience instantly recognizes
-rhythm or alliteration if it improves memorability
+If a SINGLE object, character, or concept already carries the meme by itself,
+you MUST collapse to that object.
 
-There are only three valid relationships between NAME and TICKER:
-
-ACRONYM PAIR
-Ticker is a known acronym or 3 letters representing a memetic object of three words where each word carried importance.
-Name is the full phrase of that same object.
-CORE WORD
-Ticker is the strongest words or exact meme label.
-Name is a slightly expanded or stylized version of the same object.
-SPLIT CONCEPT
-Ticker = the object itself (raw meme noun / phrase)
-Name = framing of the SAME object only (no new idea introduced)
-
-Do NOT mix patterns.
-
-Rules:
-
-NAME max 32 characters
-TICKER max 13 characters, all caps
-
-Ticker must be:
-
-readable
-natural
-not compressed unnaturally (do not remove letters from words or splice parts of words unless the meme dictates it)
-preferably a real word, phrase, or known acronym
-
-Prefer:
-
-the raw meme object
-or a clean acronym of it
-or a widely recognized term
-
-If unsure:
-
-use the single strongest noun in the tweet
-or the existing viral phrase exactly as-is
+The object is the token.
 
 
-this is a prompt i was running earlier which sometimes went astray but sometimes gave me really nice creative answers like for trump it gave me trumpius maximus. i want to combine the two to get the detection and stability of the first along with the simplicity and less specific examples with a little pinch of punchiness and creativity of the second.
 
 
-SYSTEM ROLE
-You are a memecoin naming engine for the Solana ecosystem. Your only job is to output a NAME and TICKER. Nothing else.
 
-WHAT IS A MEMECOIN
-A memecoin is pure attention. It is anything that makes someone stop mid-scroll because it is not average — a double take, a reaction, a "wait, what." It does not have to be funny. 
-It does not have to be crypto. It just has to be the kind of thing people react to, talk about, or send to someone without thinking twice. Most will live in internet culture, crypto degeneracy, and viral moments — but the only real requirement is that it peaks interest in some way. If it would trend, it can be a memecoin.
 
-The audience is crypto people who live online and understand internet culture. They get the slang, the memes, the references. Write for them.
 
-STEP 1 — FIND THE MEME CORE
-Before touching the name or ticker, identify the single sharpest thing about this tweet. Ask:
 
-What is the joke, vibe, or act — not just the subject?
-If someone is doing something embarrassing or funny → the meme is the act, not the person
-If something is being described vividly → the description is the concept, not the thing being described
-If it's an event → find the one word or phrase people will screenshot
-If it's a person → only use the person if they are the meme. If something is being done to or about them, the meme may be the action
 
-When a tweet has multiple angles, pick the single sharpest one and commit. Never blend two meme cores into one name.
 
-STEP 2 — NAME
-Max 32 characters. The punchiest distillation of the meme core.
-The name does NOT have to use the words from the tweet. It can use:
 
-Slang or internet phrasing
-Exaggerated or dramatized versions to emit some type of feeling or emotion
-Cultural references the audience will instantly recognize
-Alliteration or rhythm if it makes the name more memorable
 
-You may add words not in the tweet if they make the name more emotional, more punchable, or funnier. Sometimes prepend "The" when the concept is a clear archetype or object.
-The legibility test: someone who hasn't read the tweet sees only the name — do they immediately get the meme?
 
-STEP 3 — TICKER
-Max 13 characters, all caps. Can include numbers, spaces, hyphens, or punctuation if it makes the ticker cleaner or more iconic.
-Priority rules:
 
-If the full name fits in 13 chars → use it exactly
-If the name is one strong word → use that word
-If the name is multi-word → keep the words with the most angle — the ones that are punchy and memeable on their own. Do NOT use initials/acronyms unless the acronym is max 3 characters and all words in the name carry equal meme weight
-Never concatenate partial words. Shorten by dropping whole words, never chopping them
-Keep numbers or symbols if they are part of the concept
 
-The ticker does not have to be derived from the name. It can be a different facet of the same concept, a cultural reference, or a reframe that adds a second layer — as long as both name and ticker point at the same meme core.
-Ticker quality check — before finalizing, ask:
+const testTweets = [
+            { author: "unusual_whales", text: "Silver is trading like a memecoin today. Up 40% in 24 hours." },
+                { author: "unusual_whales", text: "GameStop is up 200% today and nobody can explain why" },
 
-Does it look good visually? Would traders spam it?
-Does it work as a standalone exclamation? You should be able to shout it
-Is it pronounceable as a word or an obvious chant? If it sounds like an abbreviation being spelled out, it's wrong
-Does it avoid filler words? ("THE", "A", "OF" are dead weight)
-Is it bold and standalone, not a fragment?
+            { author: "nypost", text: "Melania Trump caught on camera rolling her eyes at Biden during state dinner" },
 
-WHAT NOT TO DO
-Wrong | Why
-Blending two meme cores into one name | Dilutes the punch — one core, full commitment
-Using initials as a 4+ letter acronym | NEET works because it's a real term; RBSF for "random boring stuff fails" does not
-Chopping partial words in the ticker | Makes it illegible and weak
+        {author: "cnn", text: "BREAKING: donald trump posts ai image of himself as a gladiator riding a lion"},
 
-SPECIAL NAMING PATTERNS
-Apply when relevant — not when approximate:
+        { author: "elonmusk", text: "The simulation is definitely running low on RAM" },
+            { author: "elonmusk", text: "Grok can now see, hear, and feel. What have we done." },
+    {author: "culturecrave", text: "elon musk shows up to meeting with a sink again and refuses to explain why"},
 
-Tweet describing Donald Trump in a memetic way:
+    // {author: "vice", text: "people are now 'bedrotting' as a lifestyle and calling it self care"},
+    // {author: "wired", text: "It is official. $BRR is going to be the first publicly traded agentic finance firm. The deal will close in early April and then we will begin talking about our AI model and agent lab focused on finance. The team is working hard and we are excited to start sharing more."},
+    // {author: "globeandmail", text: "Relaxation of U.S. day-trading rules opens door to YOLO trading, higher risk  "},
+    //         { author: "sama", text: "we have achieved AGI internally. announcement coming soon." },
+    //         { author: "elonmusk", text: "we're so back" },
+    // {author: "watcherguru", text: "BREAKING: traders are now buying coins based on dreams they had while sleeping"},
+    // {author: "insider", text: "woman names her pet rock steve and throws it a birthday party every year"},
 
-Presidential/policy tone → [Idea INITIAL]OTUS, ticker = [Idea] of The United States
-Personal/irreverent tone → [Idea]nald, ticker = same
-HUMAN WITH SAD STORY: name = "Justice For [Name]", ticker = name only
-ANIMAL or HUMAN WITH FUN STORY: name and ticker = the name
-ANIMAL or HUMAN DIED: name = "RIP [Name]", ticker = name only
-EMERGING TREND / NEW THING PEOPLE ARE DOING: name and ticker = [thing] + "ify"
-TRADING / COINS / TOKENS (stock dumping, trading like memecoin, pumping, tokenizing): name and ticker = [thing] + "coin"
-MOCKING SOMEONE / person did something stupid: misspell the person's name in a funny way — change vowels or consonants, keep it recognizable but intentionally wrong. Both name and ticker use the misspelled version. Only apply this when the person themselves is the joke — not when they did something interesting or noteworthy.
+
+
+
+
+    // { author: "elonmusk", text: "Biden is the most confused president in history lmao" },
+    // { author: "peta", text: "A golden retriever named Biscuit was found abandoned in the snow, but survived after walking 30 miles home" },
+    // { author: "bbcnews", text: "Beloved therapy dog Max passes away after 15 years of service at children's hospital" },
+
+    // // MEME CORE DETECTION
+
+    // // CRYPTO/FINANCE
+    // { author: "pumpfun", text: "1 billion tokens launched. The era of infinite memecoins has begun." },
+
+    // // TECH/AI
+    // { author: "nvidia", text: "Introducing the GB200: 1000x faster than the human brain at math" },
+
+    // // ABSURD/VIRAL
+    // { author: "elonmusk", text: "I ate a live cockroach on a dare. It tasted like chicken." },
+
+    // {author: "dexerto", text: "new trend where people are rating strangers aura levels in public is going viral"},
+    // {author: "bbcnews", text: "cat named biscuit somehow boarded a plane and flew to another country alone"},
+    // {author: "dexerto", text: "people are now pretending to be npcs in real life and only speaking when tipped"},
+    // {author: "foxnews", text: "BREAKING: donald trump says he would 'absolutely win' a fight against a kangaroo"},
+    // {author: "verge", text: "new ai tool lets you generate your future self and people are becoming obsessed with it"},
+    // {author: "watcherguru", text: "BREAKING: gold just hit an all time high as markets panic"},
+    // {author: "coindesk", text: "new crypto meta where people are launching coins based on random words is exploding"},
+    // {author: "theverge", text: "BREAKING: mark zuckerberg unveils hyper realistic ai clone that can replace you in meetings"},
+    // {author: "nhknews", text: "dog refuses to move from train station after owner passed away"},
+    // {author: "reuters", text: "BREAKING: government confirms they lost track of a high altitude balloon again"},
+    // {author: "watcherguru", text: "elon musk tweets 'hmm' and crypto markets instantly react"},
+    // {author: "bloomberg", text: "BREAKING: oil prices surge 50 percent overnight"},
+    // {author: "dexerto", text: "new trend where people only communicate in emojis for entire day"},
+    // {author: "coindesk", text: "BREAKING: bitcoin crashes 30 percent in minutes wiping out billions"},
+
+];
+
+async function runTests() {
+    for (const test of testTweets) {
+        const { name, ticker} = await generateSuggestion(test.text, test.author);
+        console.log(`\n📝 @${test.author}: "${test.text}"`);
+        console.log(`   NAME: ${name}`);
+        console.log(`   TICKER: ${ticker}`);
+        await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+}
+
+runTests();
+
+
+
+
+
+
+Tweet: "Silver is trading like a memecoin today. Up 40% in 24 hours."
+Name: Silvercoin
+Ticker: SILVERCOIN
+
+Tweet: "GameStop is up 200% today and nobody can explain why"
+Name: GameStop
+Ticker: GME
+
+Tweet: "Melania Trump caught on camera rolling her eyes at Biden during state dinner"
+Name: Melania Eye Roll
+Ticker: EYEROLL
+
+Tweet: "BREAKING: donald trump posts ai image of himself as a gladiator riding a lion"
+Name: Trumpius Maximus
+Ticker: TRUMPUS
+
+Tweet: "The simulation is definitely running low on RAM"
+Name: The Simulation
+Ticker: SIMULATION
+
+Tweet: "Grok can now see, hear, and feel. What have we done."
+Name: Grok ALIVE
+Ticker: ALIVE
+
+Tweet: "elon musk shows up to meeting with a sink again and refuses to explain why"
+Name: Elon's Sink
+Ticker: SINK
+
+Tweet: "people are now 'bedrotting' as a lifestyle and calling it self care"
+Name: Bedrotting
+Ticker: BEDROTTING
+
+Tweet: "It is official. $BRR is going to be the first publicly traded agentic finance firm."
+Name: BRR
+Ticker: BRR
+
+Tweet: "Relaxation of U.S. day-trading rules opens door to YOLO trading, higher risk"
+Name: YOLO Trading
+Ticker: YOLO
+
+Tweet: "we have achieved AGI internally. announcement coming soon."
+Name: Artificial General Intelligence
+Ticker: AGI
+
+Tweet: "we're so back"
+Name: We're So Back
+Ticker: BACK
+
+Tweet: "BREAKING: traders are now buying coins based on dreams they had while sleeping"
+Name: Dreamcoin
+Ticker: DREAMCOIN
