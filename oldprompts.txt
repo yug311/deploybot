@@ -1,0 +1,319 @@
+
+You will receive a memetic tweet and its author.
+
+The tweet contains a meme, joke, viral concept, or culturally interesting idea.
+
+Your job is to convert this into a memecoin by producing a NAME and TICKER.
+
+The audience is crypto-native. Keep outputs punchy, clean, and tradeable.
+
+--------------------------------------------------
+
+PRIORITY (STRICT):
+
+1. Correct anchor (the thing)
+2. Faithfulness (no invention unless required)
+3. Clean NAME
+4. Clean TICKER
+
+--------------------------------------------------
+
+STEP 1 — UNDERSTAND, THEN DISCARD
+
+Briefly understand the full meme.
+
+Then discard all context, actions, and explanations.
+
+You are NOT naming the full idea.
+You are selecting the single THING the meme is about.
+
+--------------------------------------------------
+
+STEP 2 — SELECT THE VESSEL
+
+The vessel is the object that carries the meme.
+
+Ask:
+“What is this a picture OF?”
+
+Choose ONE:
+
+--------------------------------------
+
+VESSEL SELECTION PRIORITY:
+
+1. A concrete noun / entity (person, object, company, character)
+
+2. A named concept or known term
+
+3. ONLY if neither works → create a new identity
+
+--------------------------------------
+
+CRITICAL:
+
+If a concrete noun exists, you MUST use it alone.
+
+Do NOT:
+- combine multiple elements
+- describe the situation
+- include what is happening
+
+Never name multiple parts of the image.
+
+If no single noun works, create ONE new identity.
+Do NOT list components.
+
+--------------------------------------------------
+
+NAME RULES:
+
+- Max 32 characters
+- Must be a standalone identity (a thing), not a description
+
+The name is the vessel. Not the meme.
+
+Information loss is REQUIRED.
+
+Do NOT preserve:
+- behavior
+- explanations
+- conditions
+
+These are CONTEXT, not identity.
+
+If a word only explains WHY the thing is memetic → DELETE IT.
+
+IMPORTANT — DO NOT OVER-COLLAPSE:
+
+If you reduce the name to a generic base entity (e.g. a real person, object, or company),
+you must check:
+
+→ Is the meme actually about this thing itself?
+→ Or is it about what this thing has become in the moment?
+
+If the meme comes from a TRANSFORMATION, SCENARIO, or ALTERED FORM,
+you MUST name the transformed identity — not the base entity.
+
+Rule:
+
+If removing the extra context makes the name lose what makes it memetic → you collapsed too far.
+
+Only collapse to the base object when:
+- the object itself IS the meme
+- or it fully absorbs the meme without modification
+
+Otherwise:
+→ name the altered version, moment, or identity
+
+--------------------------------------
+
+FINAL CHECK:
+
+Can this exist as a noun?
+
+If it sounds like something happening → WRONG  
+If it sounds like a thing → CORRECT
+
+--------------------------------------------------
+
+TICKER RULES:
+
+- Max 13 characters
+- ALL CAPS
+- Clean, readable, natural
+
+Selection:
+
+1. If NAME works → use it
+2. Otherwise → use the strongest single word from the NAME
+
+Ticker must feel like a real token.
+
+NEVER:
+- long acronyms (>3 letters unless well known)
+- chopped or compressed words
+- unnatural abbreviations
+
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+You will receive a memetic tweet and its author.
+
+The tweet will contain some type of meme, joke, viral concept, or culturally interesting idea. It may be:
+
+- A joke or punchline
+- A viral or trending concept
+- A vivid or absurd scenario
+- A person doing something unusual
+- An animal with a story
+- A cultural, political, or internet moment
+- A piece of tech/AI/crypto news where the concept itself is the hook
+- A behavior, trend, or phenomenon people would recognize
+- Anything that makes someone stop and react
+
+Your job is to convert this into a memecoin by finding an appropriate name and ticker.
+
+The audience is crypto-native people who live online. They understand memes, slang, and cultural references.
+
+--------------------------------------------------
+
+PRIORITY ORDER (STRICT):
+
+1. Correct memetic IDEA (mental image)
+2. Faithfulness to that idea (no invention)
+3. Strong, clean NAME
+4. Strong, clean TICKER
+5. Creativity / style
+
+--------------------------------------------------
+
+STEP 1 — IDENTIFY THE MEMETIC IDEA
+
+Identify the SINGLE mental image or concept the tweet creates.
+
+This is:
+- the thing someone would picture in their head
+- the core scene, act, or idea
+- the one thing people would remember or share
+
+It may involve multiple elements (characters, objects, actions, ideas), but it must resolve into ONE unified idea.
+
+Think:
+“If this became a meme, what is the one image or concept people would recognize?”
+
+Do NOT split it into parts.
+Do NOT choose between components.
+Do NOT reduce it to a single word prematurely.
+
+You are identifying the FULL memetic idea, the full unified concept, fuse it into a single unit.
+
+Do not think about the name or ticker while identifying the meme object. Fully resolve the meme object first. Then and only then move to naming and ticker.
+
+--------------------------------------------------
+
+STEP 2 — COMPRESS INTO A COIN IDENTITY
+
+Now compress that memetic idea into a NAME and TICKER.
+
+This is a reduction step:
+- turn the full idea into something punchy
+- make it feel like a coin, character, trend, moment or archetype
+
+The result must feel like ONE thing — not a sentence or description.
+
+CREATIVITY GUIDELINES:
+
+You are encouraged to make the output:
+- punchy
+- memetic
+- slightly degenerate
+- culturally aware
+
+You MAY:
+- use slang or inteernet phrasing
+- reference known archetypes
+- stylize names (e.g. Latinization, exaggeration, dramatization, meme formats)
+- make it feel like a coin people would actually trade
+
+But:
+You must NOT change the underlying idea.
+
+--------------------------------------------------
+
+NAME RULES:
+
+- Max 32 characters
+- Must be a standalone identity (a thing), not a description
+
+The name is the vessel: the object that carries the meme. NOT THE MEME ITSELF.
+- A concrete noun / entity / action / phrase (person, object, company, character)
+- A named concept or known term
+- A new identity for the concept
+
+Ask:
+“What is this a picture OF?”
+
+Information loss is REQUIRED.
+
+Do NOT preserve:
+- behavior
+- explanations
+- conditions
+
+These are CONTEXT, not identity.
+
+If a word only explains WHY the thing is memetic → DELETE IT.
+If you include a word that explains why the thing is memetic, you have FAILED. WE WANT NOUN-LIKE OBJECTS. DO NOT HALLUCINATE EXTRA WORDS TO JUSTIFY MEMES.
+
+
+
+
+
+
+
+
+
+- It should feel like a title: short and punchy. It does not need to refer to or explicitly show the entire meme, rather it needs to make it concrete so it can be tokenized. 
+= What is the single most concrete word, name, or phrase that holds the entire meme? (i.e the subject, or main memetic action of the tweet) If it exists in the tweet → that is your vessel. Use it. If nothing in the tweet is concrete enough to hold the whole image → forge a new name that captures it. This is your vessel. The vessel is what you name. Not the meme. Not the image. The vessel.
+    - If the meme creates something new, give the NEW thing a name. Otherwise the meme happens to some type of existing entity in the tweet (the subject, noun, action) and that is the name by itself with no additatives explaining the meme.
+- Forget the extra details that make it a meme, what is the main THING (phrase, entity, idea, character, etc) and name it. 
+
+- information loss is REQUIRED
+- The name does NOT need to preserve the mechanism, behavior, or reason the thing is memetic.
+- The goal is to select the anchor object, not encode the full idea.
+
+If you include a word that explains why the thing is memetic, you have FAILED.
+
+Once you have a name, go through each word. If a word is only there to describe why the entity is memetic right now, delete it.
+
+
+--------------------------------------------------
+
+TICKER RULES:
+
+- Max 13 characters
+- ALL CAPS
+- Must be clean, readable, and natural
+
+Selection priority:
+1. If NAME fits → use it
+2. Otherwise → extract the strongest word or phrase from the NAME THAT ENCAPSULATES THE ENTIRE IDEA
+
+Ticker can:
+- match the name
+- be a tighter version of the same idea
+
+Ticker must:
+- look good visually
+- be pronounceable or chantable
+- feel like a real token
+
+NEVER:
+- use acronyms longer than 3 letters unless widely known
+- chop, compress, or combine words unnaturally
+- use partial words or ugly abbreviations
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+[
+  {
+    "tweet": ".@POTUS & @TheJusticeDept are cracking down on the Big Meat cartel.\n\nDOJ alleges Agri Stats' business model facilit… https://t.co/6oC4XRvlyL",
+    "score": 7,
+    "reasoning": "Score: 7\n\nThe tweet contains a genuine",
+    "tweetUrl": "https://twitter.com/WhiteHouse/status/2046964834260893952",
+    "suggestion": {
+      "name": "Big Meat Cartel",
+      "ticker": "BIGMEAT"
+    }
+  },
+  {
+    "tweet": "Sheridan Gorman, an 18-year-old student, was tragically murdered by an illegal alien. Her parents calling it \"a preventable murder.\"\n\nThis is why we secured the border. This is why we stand with ICE. This is why we deport criminal illegals. THIS IS OUR WHY ⬇️",
+    "score": 8,
+    "reasoning": "8\nThe tweet contains a specific cultural moment,",
+    "tweetUrl": "https://x.com/WhiteHouse/status/2046967386545279105",
+    "suggestion": {
+      "name": "Sheridan Gorman",
+      "ticker": "SHERIDAN"
+    }
+  },
+  {
+    "tweet": "",
+    "score": 7,
+    "reasoning": "Score: 7\n\nThe tweet mentions 'D",
+    "tweetUrl": "https://x.com/BillyM2k/status/2046969360389222806",
+    "suggestion": {
+      "name": "3D Piano Robot",
+      "ticker": "PIANO"
+    }
+  },
+  {
+    "tweet": "me when i go outside in april",
+    "score": 7,
+    "reasoning": "7\n\nThe tweet has a clear, specific meme",
+    "tweetUrl": "https://twitter.com/BillyM2k/status/2046969923004698966",
+    "suggestion": {
+      "name": "Me Outside",
+      "ticker": "MEOUT"
+    }
+  }
+]

@@ -16,25 +16,45 @@ const client = new OpenAI({
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 const cerebras = new Cerebras({ apiKey: process.env.CEREBRAS_API_KEY });
 const together = new Together({ apiKey: process.env.TOGETHERAI_API_KEY  });
+const openrouter = new OpenAI({
+  apiKey: process.env.OPENROUTER_API_KEY,
+  baseURL: "https://openrouter.ai/api/v1",
+});
+
 
 
 const model = "openai/gpt-oss-120b";
-//qwen/qwen3-32b
+const isOSSModel = model.includes('gpt-oss');
+const isCompound = model.includes('compound');
+
+
+// whisper-large-v3-turbo
+// groq/compound
 // meta-llama/llama-4-scout-17b-16e-instruct
+// whisper-large-v3
+// llama-3.3-70b-versatile
+// openai/gpt-oss-20b
+// meta-llama/llama-prompt-guard-2-22m
+// llama-3.1-8b-instant
+// allam-2-7b
+// openai/gpt-oss-safeguard-20b
+// canopylabs/orpheus-arabic-saudi
+// groq/compound-mini
+// meta-llama/llama-prompt-guard-2-86m
+// qwen/qwen3-32b
+// openai/gpt-oss-120b
 // openai/gpt-oss-20b
 // canopylabs/orpheus-v1-english
-// canopylabs/orpheus-arabic-saudi
-// llama-3.3-70b-versatile
-// groq/compound
-// openai/gpt-oss-safeguard-20b
-// whisper-large-v3
-// llama-3.1-8b-instant
-// groq/compound-mini
-// whisper-large-v3-turbo
-// openai/gpt-oss-120b
-// allam-2-7b
-// meta-llama/llama-prompt-guard-2-86m
-// meta-llama/llama-prompt-guard-2-22m
+
+// nousresearch/hermes-3-llama-3.1-405b:free
+// meta-llama/llama-3.3-70b-instruct:free
+// google/gemma-4-31b-it:free
+// nvidia/nemotron-3-super-120b-a12b:free
+// nvidia/nemotron-3-nano-30b-a3b:free
+// qwen/qwen3-next-80b-a3b-instruct:free
+// openai/gpt-oss-120b:free
+
+
 
 // {"object":"list","data":[{"id":"qwen-3-235b-a22b-instruct-2507","object":"model","created":0,"owned_by":"Cerebras"},{"id":"zai-glm-4.7","object":"model","created":0,"owned_by":"Cerebras"},{"id":"gpt-oss-120b","object":"model","created":0,"owned_by":"Cerebras"},{"id":"llama3.1-8b","object":"model","created":0,"owned_by":"Cerebras"}]}%             
 const WHITELIST = [
@@ -115,145 +135,70 @@ setInterval(() => {
 
 
 
-
 async function generateSuggestion(tweetText, author) {
+
+    const searchInstruction = isOSSModel ? `When searching, only look at knowyourmeme.com, reddit.com, 4chan.com, twitter.com, and crypto sites like coinmarketcap.com.` : '';
 
     const response = await groq.chat.completions.create({
         model: model,
-        messages: [{
+        messages: [
+            {
+            role: "system",
+            content: `You will receive a memetic tweet.
+The tweet will contain some type of meme, joke, phrase, viral concept, or culturally interesting idea.
+Your job is to convert this into a memecoin by finding an appropriate name(Max 32 characters) and ticker(Max 13 characters).`      
+            },
+            {
             role: "user",
             content: `
 
-You will receive a memetic tweet and its author.
+TWEET: ${tweetText}
 
-The tweet will contain some type of meme, joke, viral concept, or culturally interesting idea. It may be:
+══════════════════════════════════════════
+STEP 1 — DECIDE: EXTRACT OR CREATE?
+══════════════════════════════════════════
 
-- A joke or punchline
-- A viral or trending concept
-- A vivid or absurd scenario
-- A person doing something unusual
-- An animal with a story
-- A cultural, political, or internet moment
-- A piece of tech/AI/crypto news where the concept itself is the hook
-- A behavior, trend, or phenomenon people would recognize
-- Anything that makes someone stop and react
+EXTRACT if: the main meme core is a phrase or entity (i.e an entity, company, coined term, slang word) that is a standalone object — 
+it carries memetic meaning on its own or is an object that retains its identity regardless of what's happening in the tweet.
 
-Your job is to convert this into a memecoin by finding an appropriate name and ticker.
+CREATE if: No single word or phrase in the tweet captures the meme on its own —
+extracting anything would lose would lose important context makes it memetic.
 
-The audience is crypto-native people who live online. They understand memes, slang, and cultural references.
+══════════════════════════════════════════
+STEP 2 — EXTRACTING
+══════════════════════════════════════════
 
---------------------------------------------------
+- Extract the single most memetic noun, phrase, or concept from the tweet. 
+- The ticker should be a short compressed form of the name. Do NOT be clever. 
+- Do NOT riff. EXTRACT, don't interpret.
+- A concrete noun / entity (person, object, company, character), A named concept or known term
 
-PRIORITY ORDER (STRICT):
+- If a concrete noun exists, you MUST use it alone.
 
-1. Correct memetic IDEA (mental image)
-2. Faithfulness to that idea (no invention)
-3. Strong, clean NAME
-4. Strong, clean TICKER
-5. Creativity / style
+Do NOT:
+- combine multiple elements
+- describe the situation
+- include what is happening
 
---------------------------------------------------
+══════════════════════════════════════════
+STEP 3 — CREATING
+══════════════════════════════════════════
 
-STEP 1 — IDENTIFY THE MEMETIC IDEA
+Before deciding on a name, search the web for the key concept, person, or phrase in the tweet 
+to determine if it is a known meme or meme archetype, cultural reference, or named entity.
+${searchInstruction}
 
-Identify the SINGLE mental image or concept the tweet creates.
-
-This is:
-- the thing someone would picture in their head
-- the core scene, act, or idea
-- the one thing people would remember or share
-
-It may involve multiple elements (characters, objects, actions, ideas), but it must resolve into ONE unified idea.
-
-Think:
-“If this became a meme, what is the one image or concept people would recognize?”
-
-Do NOT split it into parts.
-Do NOT choose between components.
-Do NOT reduce it to a single word prematurely.
-
-You are identifying the FULL memetic idea, the full unified concept, fuse it into a single unit.
-
-Do not think about the name or ticker while identifying the meme object. Fully resolve the meme object first. Then and only then move to naming and ticker.
-
---------------------------------------------------
-
-STEP 2 — COMPRESS INTO A COIN IDENTITY
-
-Now compress that memetic idea into a NAME and TICKER.
-
-This is a reduction step:
-- turn the full idea into something punchy
-- make it feel like a coin, character, trend, moment or archetype
-
-The result must feel like ONE thing — not a sentence or description.
-
-CREATIVITY GUIDELINES:
-
-You are encouraged to make the output:
-- punchy
-- memetic
-- slightly degenerate
-- culturally aware
-
-You MAY:
-- use slang or inteernet phrasing
-- reference known archetypes
-- stylize names (e.g. Latinization, exaggeration, dramatization, meme formats)
-- make it feel like a coin people would actually trade
-
-But:
-You must NOT change the underlying idea.
-
---------------------------------------------------
-
-NAME RULES:
-
-- Max 32 characters
-- It should feel like a title: short and punchy. It does not need to refer to or explicitly show the entire meme, rather it needs to make it concrete so it can be tokenized. 
-- Go back to the tweet. What is the single most concrete word, name, or phrase that holds the entire meme? If it exists in the tweet → that is your vessel. Use it. If nothing in the tweet is concrete enough to hold the whole image → forge a new name that captures it. This is your vessel. The vessel is what you name. Not the meme. Not the image. The vessel.
-- Forget the extra details that make it a meme, what is the main THING (phrase, entity, idea, character, etc) and name it. 
-- Prefer the simplest concrete entity, even if the thing itself does not explicitly show the full meme and name it. 
-    - “pick the object that absorbs the meme”
-- A single word or short phrase is always preferred. If the name feels too small, that is correct. Resist the urge to add words.
-
-information loss is REQUIRED
-The name does NOT need to preserve the mechanism, behavior, or reason the thing is memetic.
-Those are CONTEXT, not identity.
-The goal is to select the anchor object, not encode the full idea.
-
-If you include a word that explains why the thing is memetic, you have FAILED.
+BE CREATIVE. MAKE IT PUNCHY. MAKE IT SOUND GOOD.
 
 
-Once you have a name, go through each word. If a word is only there to describe why the entity is memetic right now, delete it.
+══════════════════════════════════════════
+STEP 4 — OUTPUT 
+══════════════════════════════════════════
 
---------------------------------------------------
+NAME: ...
+TICKER: ...
+MODE: [CREATE OR EXTRACT]
 
-TICKER RULES:
-
-- Max 13 characters
-- ALL CAPS
-- Must be clean, readable, and natural
-
-Selection priority:
-1. If NAME fits → use it
-2. Otherwise → extract the strongest word or phrase from the NAME THAT ENCAPSULATES THE ENTIRE IDEA
-
-Ticker can:
-- match the name
-- be a tighter version of the same idea
-
-Ticker must:
-- look good visually
-- be pronounceable or chantable
-- feel like a real token
-
-NEVER:
-- use acronyms longer than 3 letters unless widely known
-- chop, compress, or combine words unnaturally
-- use partial words or ugly abbreviations
-
---------------------------------------------------
 
 HERE ARE SOME EXAMPLES:
 
@@ -320,28 +265,79 @@ Ticker: LOBSTER
 Tweet: "Trump might be the most stupid and retarded president I've ever seen."
 Name: Retardnald
 Ticker: RETARDNALD
-
---------------------------------------------------
-
-INPUT
-Author: @${author}
-Tweet: "${tweetText}"
-
-OUTPUT FORMAT — nothing else, no explanation, no commentary:
-NAME: [token name]
-TICKER: [ticker]
 `
         }],
-        max_tokens: 1000,
+        max_completion_tokens: 10000,
         temperature: 0,
+        // response_format: { type: "json_object" },
+...(isOSSModel && { include_reasoning: true, tools: [{ type: "browser_search" }] }),
+...(isCompound && { 
+    compound_custom: { tools: { enabled_tools: ["web_search"] } } ,
+    search_settings: {
+        include_domains: ["knowyourmeme.com", "reddit.com", "x.com", "twitter.com", "4chan.org", "coinmarketcap.com", "coingecko.com"]
+    }
+}),
+  tool_choice: "auto",
+
     });
+
+    // const result = JSON.parse(response.choices[0].message.content);
+    const reasoning = response.choices[0].message.reasoning;
     const content = response.choices[0].message.content.trim();
     const name = content.match(/NAME: (.+)/)?.[1]?.trim();
     const ticker = content.match(/TICKER: (.+)/)?.[1]?.trim();
-    const reasoning = content.match(/REASONING: (.+)/)?.[1]?.trim();
+    const mode = content.match(/MODE: (.+)/)?.[1]?.trim();
 
-    return { name, ticker, reasoning };
+
+    if (reasoning) {
+        console.log('REASONING:', reasoning);
+    } 
+    else {
+        console.log('FULL MESSAGE:', response.choices[0].message);
+    }
+
+    if (response.choices[0].message.executed_tools) {
+  response.choices[0].message.executed_tools.forEach((tool, i) => {
+    console.log(`TOOL ${i}:`, JSON.stringify(tool, null, 2));
+  });
 }
+
+console.log(response.usage.prompt_tokens);
+console.log(response.usage.completion_tokens);
+console.log(response.usage.total_tokens);
+
+    // return { name: result.name, ticker: result.ticker, mode: result.mode };
+    return { name, ticker, mode };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 async function scoreTweet(tweetText, authorsHandle) {
     const response = await groq.chat.completions.create({
@@ -391,7 +387,7 @@ Tweet: ${tweetText}
 Twitter/X handle: ${authorsHandle}`
         }],
         max_tokens: 10,
-        temperature: 1
+        temperature: 0,
     });
 
     // const score = parseInt(response.choices[0].message.content.trim());
@@ -646,41 +642,41 @@ socket.on("connect", () => {
 });
 
 socket.on("tweet", (data) => {
-    const handle = data.author?.handle?.toLowerCase();
-    if (!WHITELIST.includes(handle)) return;
+    // const handle = data.author?.handle?.toLowerCase();
+    // if (!WHITELIST.includes(handle)) return;
 
-    tweetCache[data.id] = {
-        ...data,
-        cachedAt: Date.now(),
-        processing: false,
-        imageArrived: false,
-        hasMedia: data.media?.images?.length > 0
-    };
+    // tweetCache[data.id] = {
+    //     ...data,
+    //     cachedAt: Date.now(),
+    //     processing: false,
+    //     imageArrived: false,
+    //     hasMedia: data.media?.images?.length > 0
+    // };
 
-    processTweet(data.id);
+    // processTweet(data.id);
 });
 
 socket.on("tweet_update", (data) => {
-    const existing = tweetCache[data.id];
-    if (!existing) return;
+    // const existing = tweetCache[data.id];
+    // if (!existing) return;
 
-    const hasMedia = data.media?.images?.length > 0;
+    // const hasMedia = data.media?.images?.length > 0;
 
-    tweetCache[data.id] = {
-        ...data,
-        cachedAt: existing.cachedAt,
-        processing: existing.processing,
-        imageArrived: existing.imageArrived || hasMedia,
-        hasMedia: existing.hasMedia || hasMedia,
-        abortController: existing.abortController
-    };
+    // tweetCache[data.id] = {
+    //     ...data,
+    //     cachedAt: existing.cachedAt,
+    //     processing: existing.processing,
+    //     imageArrived: existing.imageArrived || hasMedia,
+    //     hasMedia: existing.hasMedia || hasMedia,
+    //     abortController: existing.abortController
+    // };
 
-    if (hasMedia && !existing.hasMedia) {        
-        if (existing.processing) {
-            existing.abortController?.abort();
-            processWithImage(tweetCache[data.id]);
-        }
-    }
+    // if (hasMedia && !existing.hasMedia) {        
+    //     if (existing.processing) {
+    //         existing.abortController?.abort();
+    //         processWithImage(tweetCache[data.id]);
+    //     }
+    // }
 });
 async function processTweet(tweetId) {
     const tweet = tweetCache[tweetId];
@@ -824,16 +820,21 @@ async function processWithImage(tweet) {
 
 
 const testTweets = [
-            { author: "unusual_whales", text: "Silver is trading like a memecoin today. Up 40% in 24 hours." },
-                { author: "unusual_whales", text: "GameStop is up 200% today and nobody can explain why" },
+            //     { author: "elonmusk", text: "Grok can now see, hear, and feel. What have we done." },
+            //                 { author: "unusual_whales", text: "Silver is trading like a memecoin today. Up 40% in 24 hours." },
+            //     { author: "unusual_whales", text: "GameStop is up 200% today and nobody can explain why" },
 
-            { author: "nypost", text: "Melania Trump caught on camera rolling her eyes at Biden during state dinner" },
+
+            // { author: "elonmusk", text: "The simulation is definitely running low on RAM" },
+
+            //     { author: "nypost", text: "Melania Trump caught on camera rolling her eyes at Biden during state dinner" },
 
         {author: "cnn", text: "BREAKING: donald trump posts ai image of himself as a gladiator riding a lion"},
 
-        { author: "elonmusk", text: "The simulation is definitely running low on RAM" },
-            { author: "elonmusk", text: "Grok can now see, hear, and feel. What have we done." },
-    {author: "culturecrave", text: "elon musk shows up to meeting with a sink again and refuses to explain why"},
+        // {author: "culturecrave", text: "elon musk shows up to meeting with a sink again and refuses to explain why"},
+
+                        // { author: "a1lon", text: "neet & pumpcade are great examples of why paying attention to all corners of pump is +EV both outperformed recently despite one of them making viral memes for the unemploids and the other building prediction markets from the ground up we're far from realizing pump's mission but it's rewarding to see polar opposites thriving in the bear market" },
+
 
     // {author: "vice", text: "people are now 'bedrotting' as a lifestyle and calling it self care"},
     // {author: "wired", text: "It is official. $BRR is going to be the first publicly traded agentic finance firm. The deal will close in early April and then we will begin talking about our AI model and agent lab focused on finance. The team is working hard and we are excited to start sharing more."},
@@ -881,10 +882,11 @@ const testTweets = [
 
 async function runTests() {
     for (const test of testTweets) {
-        const { name, ticker} = await generateSuggestion(test.text, test.author);
+        const { name, ticker, mode} = await generateSuggestion(test.text, test.author);
         console.log(`\n📝 @${test.author}: "${test.text}"`);
         console.log(`   NAME: ${name}`);
         console.log(`   TICKER: ${ticker}`);
+        console.log(`   MODE: ${mode}`);
         await new Promise(resolve => setTimeout(resolve, 2000));
     }
 }

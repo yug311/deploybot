@@ -1,0 +1,22 @@
+[
+  {
+    "tweet": "A man wearing an oversized cannabis costume was detained by police during the annual Hyde Park 420 rally in London",
+    "score": 7,
+    "reasoning": "7\nA culturally significant moment with staying power,",
+    "tweetUrl": "https://x.com/Dexerto/status/2046611403092484120",
+    "suggestion": {
+      "name": "Cannabis Crusader",
+      "ticker": "CANNABIS"
+    }
+  },
+  {
+    "tweet": "Agave 4.7?",
+    "score": 7,
+    "reasoning": "7\nThe tweet potentially contains a specific meme core",
+    "tweetUrl": "https://twitter.com/toly/status/2046674855442141330",
+    "suggestion": {
+      "name": "Agave 4.7",
+      "ticker": "AGAVE47"
+    }
+  }
+]
