@@ -1,3 +1,9 @@
+
+
+
+
+
+
 tools
 reasoning effort + reasoning output
 structured outputs schema json non schea
@@ -205,16 +211,6 @@ Ticker: LOBSTER
 Tweet: "Trump might be the most stupid and retarded president I've ever seen."
 Name: Retardnald
 Ticker: RETARDNALD
-
-
-
-
-
-
-
-
-
-
 
 
 

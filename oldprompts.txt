@@ -317,3 +317,168 @@ NEVER:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function generateSuggestion(tweetText, author) {
+
+const searchInstruction = isOSSModel
+  ? `Search knowyourmeme.com, reddit.com, twitter.com for the core concept.`
+  : `Draw on your knowledge of memes, internet culture, and crypto naming.`;
+
+    const response = await groq.chat.completions.create({
+        model: model,
+        messages: [
+            {
+            role: "system",
+            content: `You are a memecoin naming expert with deep knowledge of internet culture, viral moments, memes, and crypto.
+Given a tweet, output the single best memecoin NAME and TICKER.
+Respond with ONLY two lines, no explanation:
+NAME: ...
+TICKER: ...`      
+            },
+            {
+            role: "user",
+            content: `
+TWEET: "${tweetText}"
+
+${searchInstruction}
+
+In one sentence, identify the most memetic element — then name it. Use puns, cultural phrases, internet archetypes, or punchy inventions if they fit better than a literal noun.
+
+EXAMPLES:
+
+Tweet: "We're going back to the fucking moon, that's why."
+Name: To The Fucking Moon
+Ticker: MOON
+
+Tweet: "Penguin named Gibby by researchers seen walking to his death into the mountains."
+Name: The Nietzchean Penguin
+Ticker: Gibby
+
+Tweet: "Another mysterious NASA death as ninth scientist linked to secret programs dies"
+Name: The Silencing
+Ticker: SILENCING
+
+Tweet: "gold just hit an all time high as markets panic"
+Name: Goldcoin
+Ticker: GOLDCOIN
+
+Tweet: "Seven stolen dogs go viral after escaping and making 17km journey home"
+Name: The Wandering 7
+Ticker: 7
+
+Tweet: "BREAKING: NVIDIA CEO announces 'we've achieved AGI'"
+Name: Artificial General Intelligence
+Ticker: AGI
+
+Tweet: "Floating Nutella Jar in Space just going viral"
+Name: Flying Nutella Jar
+Ticker: FNJ
+
+Tweet: "People using openai ghibli tool to turn images into ghibli style is becoming a viral trend right now."
+Name: ghiblify
+Ticker: GHIBlLiFY        
+
+Tweet: "Meta builds AI version of Mark Zuckerberg to interact with staff"
+Name: Zuckbot
+Ticker: ZUCKBOT
+
+Tweet: "Optimistic Minion. The newest viral reaction image."
+Name: Optimistic Minion
+Ticker: OPTIMISTIC
+
+Tweet: "yes low conviction, lettuce 🥬 hands"
+Name: Lettuce Hands
+Ticker: LETTUCE        
+
+Tweet: "After attacking Pope Leo XIV, President Trump posted an AI image to TruthSocial portraying himself as Jesus Christ"
+Name: Donald Jesus Trump
+Ticker: DJT
+
+Tweet: "JUST IN: Colombia plans to euthanize dozens of Pablo Escobar's “cocaine hippos” to control their population."
+Name: Justice for Cocaine Hippos
+Ticker: COCAINE HIPPO
+
+Tweet: "Inspiring new merch idea: rocket pocket underpants!"
+Name: Rocket Pocket Underpants
+Ticker: RPU
+
+Tweet: "Animal rights activist 'freed' restaurant's lobster after falsely believing it was to be eaten."
+Name: The Liberated Lobster
+Ticker: LOBSTER
+
+Tweet: "Trump might be the most stupid and retarded president I've ever seen."
+Name: Retardnald
+Ticker: RETARDNALD
+
+NAME:
+`
+        }],
+        max_completion_tokens: 100,
+        temperature: 0.4,
+        // response_format: { type: "json_object" },
+...(isOSSModel && { include_reasoning: true, tools: [{ type: "browser_search" }] }),
+...(isCompound && { 
+    compound_custom: { tools: { enabled_tools: ["web_search"] } } ,
+    search_settings: {
+        include_domains: ["knowyourmeme.com", "reddit.com", "x.com", "twitter.com", "4chan.org", "coinmarketcap.com", "coingecko.com"]
+    }
+}),
+  tool_choice: "auto",
+
+    });
+
+    // const result = JSON.parse(response.choices[0].message.content);
+    const reasoning = response.choices[0].message.reasoning;
+    const content = response.choices[0].message.content.trim();
+    const name = content.match(/NAME: (.+)/)?.[1]?.trim();
+    const ticker = content.match(/TICKER: (.+)/)?.[1]?.trim();
+    const mode = content.match(/MODE: (.+)/)?.[1]?.trim();
+
+
+    if (reasoning) {
+        console.log('REASONING:', reasoning);
+    } 
+    else {
+        console.log('FULL MESSAGE:', response.choices[0].message);
+    }
+
+    if (response.choices[0].message.executed_tools) {
+  response.choices[0].message.executed_tools.forEach((tool, i) => {
+    console.log(`TOOL ${i}:`, JSON.stringify(tool, null, 2));
+  });
+}
+
+console.log(response.usage.prompt_tokens);
+console.log(response.usage.completion_tokens);
+console.log(response.usage.total_tokens);
+
+    // return { name: result.name, ticker: result.ticker, mode: result.mode };
+    return { name, ticker, mode };
+}
+
+
+
+

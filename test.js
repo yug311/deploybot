@@ -23,7 +23,7 @@ const openrouter = new OpenAI({
 
 
 
-const model = "openai/gpt-oss-120b";
+const model = "llama-3.3-70b-versatile";
 const isOSSModel = model.includes('gpt-oss');
 const isCompound = model.includes('compound');
 
@@ -135,179 +135,140 @@ setInterval(() => {
 
 
 
-async function generateSuggestion(tweetText, author) {
 
-    const searchInstruction = isOSSModel ? `When searching, only look at knowyourmeme.com, reddit.com, 4chan.com, twitter.com, and crypto sites like coinmarketcap.com.` : '';
+
+
+
+
+
+
+
+
+
+
+async function generateSuggestion(tweetText, author) {
 
     const response = await groq.chat.completions.create({
         model: model,
         messages: [
+
             {
-            role: "system",
-            content: `You will receive a memetic tweet.
-The tweet will contain some type of meme, joke, phrase, viral concept, or culturally interesting idea.
-Your job is to convert this into a memecoin by finding an appropriate name(Max 32 characters) and ticker(Max 13 characters).`      
+                role: "system",
+                content: 
+`
+You are a memecoin naming expert with a deep instinct for internet culture, viral moments, memes, crypto, and language. Your job is to output a NAME and TICKER for a given memetic tweet to represent its core idea.
+
+## Context
+A memecoin represents anything that could trend. It could be a meme, phrase, viral concept, news or culturally interesting idea that crypto traders find interesting. Anything that can gain attention.
+The NAME is the identity of the meme itself. Think of it as what would appear in a trending tab, a headline, or a tweet that's gone viral. It should sound like a thing — a named entity that exists in the world. Noun-like. Tokenizable. The kind of thing people would say "have you heard of..." before. It can be playful, use alliteration, wordplay, or puns — but it must represent the memetic core, not describe the event. 
+The TICKER is the compressed soul of the name. It can be the same, pick the most important words, or be an acronym (Only for 3 distinct word names)
+The audience is crypto-native people who live online. They know the slang, the memes, the references. Write for them.
+
+## Constraints
+NAME: Max 32 Characters
+Ticker: Max 13 Characters, ALL CAPS
+
+## Output exactly:
+NAME: ...
+TICKER: ...
+MODE: ...
+No other text.
+`
             },
-            {
+        
+            
+{
             role: "user",
             content: `
 
-TWEET: ${tweetText}
+Tweet:
+<
+${tweetText}
+>>>
 
-══════════════════════════════════════════
-STEP 1 — DECIDE: EXTRACT OR CREATE?
-══════════════════════════════════════════
+## Reason through this step by step guide to get the NAME and TICKER:
+Step 1 — Core concept
+What is the single most memetically charged idea in this tweet? One singular stand-alone idea/entity/concept that the tweet creates. It can be it's own thing, or fuse multiple parts of the tweet.
 
-EXTRACT if: the main meme core is a phrase or entity (i.e an entity, company, coined term, slang word) that is a standalone object — 
-it carries memetic meaning on its own or is an object that retains its identity regardless of what's happening in the tweet.
+Step 2 — Mode elimination
+You have two ways to arrive at a name. Work through them in order 
+and stop at the first that applies:
 
-CREATE if: No single word or phrase in the tweet captures the meme on its own —
-extracting anything would lose would lose important context makes it memetic.
+EXTRACT — The tweet contains a proper noun, term, or known concept that IS the meme on its own, independent of any context. 
+If it exists, use it directly. Do not dress it up.
 
-══════════════════════════════════════════
-STEP 2 — EXTRACTING
-══════════════════════════════════════════
+CREATE — Create a name for this memetic concept. Be creative. It should sound like a title or name of something, not a description. 
 
-- Extract the single most memetic noun, phrase, or concept from the tweet. 
-- The ticker should be a short compressed form of the name. Do NOT be clever. 
-- Do NOT riff. EXTRACT, don't interpret.
-- A concrete noun / entity (person, object, company, character), A named concept or known term
-
-- If a concrete noun exists, you MUST use it alone.
-
-Do NOT:
-- combine multiple elements
-- describe the situation
-- include what is happening
-
-══════════════════════════════════════════
-STEP 3 — CREATING
-══════════════════════════════════════════
-
-Before deciding on a name, search the web for the key concept, person, or phrase in the tweet 
-to determine if it is a known meme or meme archetype, cultural reference, or named entity.
-${searchInstruction}
-
-BE CREATIVE. MAKE IT PUNCHY. MAKE IT SOUND GOOD.
+Step 3 — Ticker
+Select an appropriate ticker for the name.
 
 
-══════════════════════════════════════════
-STEP 4 — OUTPUT 
-══════════════════════════════════════════
-
+Step 4 — Output
 NAME: ...
 TICKER: ...
-MODE: [CREATE OR EXTRACT]
+MODE: ...
 
+---
 
-HERE ARE SOME EXAMPLES:
+### Examples
 
-Tweet: "We're going back to the fucking moon, that's why."
-Name: To The Fucking Moon
-Ticker: MOON
+Tweet:
+<
+BREAKING: NVIDIA CEO announces 'we've achieved AGI'
+>>>
+Step 1: A CEO claiming artificial general intelligence has been 
+  achieved.
+Step 2: EXTRACT. "AGI" is a coined term with massive cultural weight 
+  that stands alone as the meme. CREATE ruled out — 
+  the thing already has its name.
+Step 3: Artificial General Intelligence
+NAME: Artificial General Intelligence
+TICKER: AGI
+MODE: EXTRACT
 
-Tweet: "Penguin named Gibby by researchers seen walking to his death into the mountains."
-Name: The Nietzchean Penguin
-Ticker: Gibby
+---
 
-Tweet: "Another mysterious NASA death as ninth scientist linked to secret programs dies"
-Name: The Silencing
-Ticker: SILENCING
-
-Tweet: "gold just hit an all time high as markets panic"
-Name: Goldcoin
-Ticker: GOLDCOIN
-
-Tweet: "Seven stolen dogs go viral after escaping and making 17km journey home"
-Name: The Wandering 7
-Ticker: 7
-
-Tweet: "BREAKING: NVIDIA CEO announces 'we've achieved AGI'"
-Name: Artificial General Intelligence
-Ticker: AGI
-
-Tweet: "Floating Nutella Jar in Space just going viral"
-Name: Flying Nutella Jar
-Ticker: FNJ
-
-Tweet: "People using openai ghibli tool to turn images into ghibli style is becoming a viral trend right now."
-Name: ghiblify
-Ticker: GHIBlLiFY        
-
-Tweet: "Meta builds AI version of Mark Zuckerberg to interact with staff"
-Name: Zuckbot
-Ticker: ZUCKBOT
-
-Tweet: "Optimistic Minion. The newest viral reaction image."
-Name: Optimistic Minion
-Ticker: OPTIMISTIC
-
-Tweet: "yes low conviction, lettuce 🥬 hands"
-Name: Lettuce Hands
-Ticker: LETTUCE        
-
-Tweet: "After attacking Pope Leo XIV, President Trump posted an AI image to TruthSocial portraying himself as Jesus Christ"
-Name: Donald Jesus Trump
-Ticker: DJT
-
-Tweet: "JUST IN: Colombia plans to euthanize dozens of Pablo Escobar's “cocaine hippos” to control their population."
-Name: Justice for Cocaine Hippos
-Ticker: COCAINE HIPPO
-
-Tweet: "Inspiring new merch idea: rocket pocket underpants!"
-Name: Rocket Pocket Underpants
-Ticker: RPU
-
-Tweet: "Animal rights activist 'freed' restaurant's lobster after falsely believing it was to be eaten."
-Name: The Liberated Lobster
-Ticker: LOBSTER
-
-Tweet: "Trump might be the most stupid and retarded president I've ever seen."
-Name: Retardnald
-Ticker: RETARDNALD
+Tweet:
+<
+Another mysterious NASA death as ninth scientist linked to 
+secret programs dies
+>>>
+Step 1: A pattern of suspicious deaths connected to government 
+  secret programs.
+Step 2: Not EXTRACT — no named entity is the meme.
+  CREA — name the act, not the victims.
+Step 3: The Silencing
+NAME: The Silencing
+TICKER: SILENCE
+MODE: CREATE
 `
         }],
-        max_completion_tokens: 10000,
+        max_completion_tokens: 1024,
+        seed: 0,
         temperature: 0,
-        // response_format: { type: "json_object" },
-...(isOSSModel && { include_reasoning: true, tools: [{ type: "browser_search" }] }),
-...(isCompound && { 
-    compound_custom: { tools: { enabled_tools: ["web_search"] } } ,
-    search_settings: {
-        include_domains: ["knowyourmeme.com", "reddit.com", "x.com", "twitter.com", "4chan.org", "coinmarketcap.com", "coingecko.com"]
-    }
-}),
-  tool_choice: "auto",
-
     });
 
-    // const result = JSON.parse(response.choices[0].message.content);
-    const reasoning = response.choices[0].message.reasoning;
     const content = response.choices[0].message.content.trim();
+    console.log(content);
     const name = content.match(/NAME: (.+)/)?.[1]?.trim();
     const ticker = content.match(/TICKER: (.+)/)?.[1]?.trim();
-    const mode = content.match(/MODE: (.+)/)?.[1]?.trim();
-
-
-    if (reasoning) {
-        console.log('REASONING:', reasoning);
-    } 
-    else {
-        console.log('FULL MESSAGE:', response.choices[0].message);
-    }
-
-    if (response.choices[0].message.executed_tools) {
-  response.choices[0].message.executed_tools.forEach((tool, i) => {
-    console.log(`TOOL ${i}:`, JSON.stringify(tool, null, 2));
-  });
-}
+    const reasoning = content.match(/REASONING: (.+)/)?.[1]?.trim();
 
 console.log(response.usage.prompt_tokens);
 console.log(response.usage.completion_tokens);
 console.log(response.usage.total_tokens);
 
-    // return { name: result.name, ticker: result.ticker, mode: result.mode };
-    return { name, ticker, mode };
+    const reasoning1 = response.choices[0].message.reasoning;
+    console.log(reasoning1)
+       if (response.choices[0].message.executed_tools) {
+  response.choices[0].message.executed_tools.forEach((tool, i) => {
+    console.log(`TOOL ${i}:`, JSON.stringify(tool, null, 2));
+  });
+}
+
+
+
+    return { name, ticker, reasoning };
 }
 
 
@@ -387,7 +348,7 @@ Tweet: ${tweetText}
 Twitter/X handle: ${authorsHandle}`
         }],
         max_tokens: 10,
-        temperature: 0,
+        temperature: 0.8,
     });
 
     // const score = parseInt(response.choices[0].message.content.trim());
@@ -820,18 +781,18 @@ async function processWithImage(tweet) {
 
 
 const testTweets = [
-            //     { author: "elonmusk", text: "Grok can now see, hear, and feel. What have we done." },
-            //                 { author: "unusual_whales", text: "Silver is trading like a memecoin today. Up 40% in 24 hours." },
-            //     { author: "unusual_whales", text: "GameStop is up 200% today and nobody can explain why" },
+                { author: "elonmusk", text: "Grok can now see, hear, and feel. What have we done." },
+                            { author: "unusual_whales", text: "Silver is trading like a memecoin today. Up 40% in 24 hours." },
+                { author: "unusual_whales", text: "GameStop is up 200% today and nobody can explain why" },
 
 
-            // { author: "elonmusk", text: "The simulation is definitely running low on RAM" },
+            { author: "elonmusk", text: "The simulation is definitely running low on RAM" },
 
-            //     { author: "nypost", text: "Melania Trump caught on camera rolling her eyes at Biden during state dinner" },
+                { author: "nypost", text: "Melania Trump caught on camera rolling her eyes at Biden during state dinner" },
 
         {author: "cnn", text: "BREAKING: donald trump posts ai image of himself as a gladiator riding a lion"},
 
-        // {author: "culturecrave", text: "elon musk shows up to meeting with a sink again and refuses to explain why"},
+        {author: "culturecrave", text: "elon musk shows up to meeting with a sink again and refuses to explain why"},
 
                         // { author: "a1lon", text: "neet & pumpcade are great examples of why paying attention to all corners of pump is +EV both outperformed recently despite one of them making viral memes for the unemploids and the other building prediction markets from the ground up we're far from realizing pump's mission but it's rewarding to see polar opposites thriving in the bear market" },
 
