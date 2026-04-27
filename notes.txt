@@ -1,23 +1,17 @@
 
 
 
-
-
-
-tools
-reasoning effort + reasoning output
-structured outputs schema json non schea
-messaging system role etc.
-
-
-
-
-
 need to get quoted info
-relation to trading financial denerate speak balloon going up -> only up both in score and suggestino
 need to look at vids/thumbnails etc
-FEW SHOT LEARNING FOR SCORING
+LOTS OF THESE DEVS USE AI TO FIGURE OUT THE NAME AND TICKER BUT THE IMAGE IS JUST SCRAPED OR OLD
+    sometimes edits the scrape or old image -> not a lot of image generation
+j7 tech is pure extraction very little creation - justice for, etc. very specific patterns only
+toly tweet coins coming in about 2-3 seconds first was bad image the others were good name (not j7 but correct) + old images
 
+bwam
+scrapes are quick 3-4 seconds 2 second old image
+6 seconds for scrape with creative name sf1, 
+uses old images but also uses old nams
 
 
 
@@ -35,22 +29,70 @@ FEW SHOT LEARNING FOR SCORING
 Tweet: "Another mysterious NASA death as ninth scientist linked to secret programs dies"
 Tweet: "Meta builds AI version of Mark Zuckerberg to interact with staff"
 
-CREATING IS HARD BECAUSE THERE ARE MULTIPLE IDEAS SO YOU HAVE TO EITHER PUT THEM TOGETHER OR FIND A NEW NAME FOR THE ENTIRE THING
-- Name the coin after that concept as directly and literally as possible. THIS MAKES THE MODEL PUT COIN AT THE END OF EVERYTHING
 
+Tweet: "We're going back to the fucking moon, that's why."
+Name: To The Fucking Moon
+Ticker: MOON
 
+Tweet: "Penguin named Gibby by researchers seen walking to his death into the mountains."
+Name: The Nietzchean Penguin
+Ticker: Gibby
 
+Tweet: "Another mysterious NASA death as ninth scientist linked to secret programs dies"
+Name: The Silencing
+Ticker: SILENCING
 
+Tweet: "gold just hit an all time high as markets panic"
+Name: Goldcoin
+Ticker: GOLDCOIN
 
+Tweet: "Seven stolen dogs go viral after escaping and making 17km journey home"
+Name: The Wandering 7
+Ticker: 7
 
+Tweet: "BREAKING: NVIDIA CEO announces 'we've achieved AGI'"
+Name: Artificial General Intelligence
+Ticker: AGI
 
-// The name is the main memetic idea. Keep it punchy. 3 words MAX. It should sound like a title or something. It should call attention to main memetic idea in the tweet. 
+Tweet: "Floating Nutella Jar in Space just going viral"
+Name: Flying Nutella Jar
+Ticker: FNJ
 
-// If there are multiple main memetic components, you must either find a way to relate them grammatically in the name, drop the less relevant components in favor of the anchor/core of the meme, or pick a new name for the joint concept.
+Tweet: "People using openai ghibli tool to turn images into ghibli style is becoming a viral trend right now."
+Name: ghiblify
+Ticker: GHIBlLiFY        
 
-// You can be creative, be very literal, whatever. The only rule is it should read/sound like an entity - like its noun-like. Like its a thing to be tokenized.
+Tweet: "Meta builds AI version of Mark Zuckerberg to interact with staff"
+Name: Zuckbot
+Ticker: ZUCKBOT
 
-// Extract the single most memetic noun, phrase, or concept from the tweet. Name the coin after that concept as directly and literally as possible. The ticker should be a short compressed form of the name. Do NOT be clever. Do NOT riff. EXTRACT, don't interpret. BE CREATIVE. MAKE IT PUNCHY. MAKE IT SOUJND GOOD.
+Tweet: "Optimistic Minion. The newest viral reaction image."
+Name: Optimistic Minion
+Ticker: OPTIMISTIC
+
+Tweet: "yes low conviction, lettuce 🥬 hands"
+Name: Lettuce Hands
+Ticker: LETTUCE        
+
+Tweet: "After attacking Pope Leo XIV, President Trump posted an AI image to TruthSocial portraying himself as Jesus Christ"
+Name: Donald Jesus Trump
+Ticker: DJT
+
+Tweet: "JUST IN: Colombia plans to euthanize dozens of Pablo Escobar's “cocaine hippos” to control their population."
+Name: Justice for Cocaine Hippos
+Ticker: COCAINE HIPPO
+
+Tweet: "Inspiring new merch idea: rocket pocket underpants!"
+Name: Rocket Pocket Underpants
+Ticker: RPU
+
+Tweet: "Animal rights activist 'freed' restaurant's lobster after falsely believing it was to be eaten."
+Name: The Liberated Lobster
+Ticker: LOBSTER
+
+Tweet: "Trump might be the most stupid and retarded president I've ever seen."
+Name: Retardnald
+Ticker: RETARDNALD
 
 
 

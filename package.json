@@ -4,6 +4,7 @@
     "dotenv": "^17.4.2",
     "groq-sdk": "^1.1.2",
     "openai": "^6.34.0",
+    "play-sound": "^1.1.6",
     "socket.io-client": "^4.8.3",
     "together-ai": "^0.39.0",
     "ws": "^8.20.0"

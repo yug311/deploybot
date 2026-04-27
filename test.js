@@ -8,6 +8,8 @@ import { log } from 'console';
 import Cerebras from "@cerebras/cerebras_cloud_sdk";
 import Together from "together-ai";
 import OpenAI from "openai";
+import player from "play-sound";
+
 
 const client = new OpenAI({
   apiKey: process.env.GEMINI_API_KEY,
@@ -21,11 +23,11 @@ const openrouter = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
 });
 
-
-
-const model = "llama-3.3-70b-versatile";
-const isOSSModel = model.includes('gpt-oss');
-const isCompound = model.includes('compound');
+const model_image = "llama-3.3-70b-versatile";
+const model_suggestion = "openai/gpt-oss-120b";
+const model_score = "llama-3.1-8b-instant";
+// const isOSSModel = model.includes('gpt-oss');
+// const isCompound = model.includes('compound');
 
 
 // whisper-large-v3-turbo
@@ -59,64 +61,66 @@ const isCompound = model.includes('compound');
 // {"object":"list","data":[{"id":"qwen-3-235b-a22b-instruct-2507","object":"model","created":0,"owned_by":"Cerebras"},{"id":"zai-glm-4.7","object":"model","created":0,"owned_by":"Cerebras"},{"id":"gpt-oss-120b","object":"model","created":0,"owned_by":"Cerebras"},{"id":"llama3.1-8b","object":"model","created":0,"owned_by":"Cerebras"}]}%             
 const WHITELIST = [
     "elonmusk", "pumpfun", "a1lon", "toly", "sama", "claudeai", "anthropicai", "openai", "pmarca", "nikitabier", "cobie", "whitehouse", "potus", "donaldjtrumpjr", "solana",
-    "rajgokal", "naval", "saylor", "balajis", "mert", "billym2k", "nasa", "natgeo", "dexerto", "popcrave"
+    "rajgokal", "naval", "saylor", "balajis", "mert", "nasa", "natgeo", "dexerto", "popcrave", "time", "polymarket", "cobie", "jack",
     // crypto founders / builders / influencers
-    // "elonmusk", "pmarca", "toly", "aeyakovenko", "rajgokal", "armaniferrante",
-    // "naval", "saylor", "vitalikbuterin", "cz_binance", "balajis",
-    // "punk6529", "cobie", "hsaka", "inversebrah", "blknoiz06", "gainzy222",
-    // "notthreadguy", "muradmahmudov", "ansemthegoat", "weremeow", "dingalingts",
-    // "ethanberliner", "dogedesigner", "kaito_intern", "a1lon9",
-    // "brian_armstrong", "apompliano", "lopp", "billym2k", "sbf_ftx",
-    // "worldlibertyfi", "timothyronaldd", "mert", "official_bonk_inu", "a16zcrypto", "theblock__", "whale_alert", "watcherguru", "altcoindaily", "coinmarketcap", "solana_daily", "cryptopanicom",
+    "elonmusk", "pmarca", "toly", "aeyakovenko", "rajgokal", "armaniferrante",
+    "naval", "saylor", "vitalikbuterin", "cz_binance", "balajis",
+    "punk6529", "cobie", "hsaka", "inversebrah", "blknoiz06", "gainzy222",
+    "notthreadguy", "muradmahmudov", "ansemthegoat", "weremeow", "dingalingts",
+    "ethanberliner", "dogedesigner", "kaito_intern", "a1lon9",
+    "brian_armstrong", "apompliano", "lopp", "billym2k", "sbf_ftx",
+    "worldlibertyfi", "timothyronaldd", "mert", "official_bonk_inu", "a16zcrypto", "theblock__", "whale_alert", "watcherguru", "altcoindaily", "coinmarketcap", "solana_daily", "cryptopanicom",
 
-    // // crypto platforms / projects / exchanges
-    // "pumpfun", "solana", "dogecoin", "ethereum", "coinbase", "binance",
-    // "raydiumprotocol", "jupiterexchange", "phantomwallet", "metadao",
-    // "cryptocom", "opensea", "rarible", "magiceden", "nftx", "looksrare", "zora", "coinmarketcap", "coingecko",
+    // crypto platforms / projects / exchanges
+    "pumpfun", "solana", "dogecoin", "ethereum", "coinbase", "binance",
+    "raydiumprotocol", "jupiterexchange", "phantomwallet", "metadao",
+    "cryptocom", "opensea", "rarible", "magiceden", "nftx", "looksrare", "zora", "coinmarketcap", "coingecko",
 
-    // // crypto news & on-chain signals (HEAVY EXPANSION)
-    // "coindesk", "cointelegraph", "theblock__", "watcherguru",
-    // "altcoindaily", "coinmarketcap", "solana_daily", "cryptopanicom",
-    // "decryptmedia", "blockworks_", "banklesshq", "unusual_whales",
-    // "bloombergcrypto", "cnbcfastmoney", "squawkcnbc",
-    // "bitcoinmagazine",
-    // "cryptonews",
+    // crypto news & on-chain signals (HEAVY EXPANSION)
+    "coindesk", "cointelegraph", "theblock__", "watcherguru",
+    "altcoindaily", "coinmarketcap", "solana_daily", "cryptopanicom",
+    "decryptmedia", "blockworks_", "banklesshq", "unusual_whales",
+    "bloombergcrypto", "cnbcfastmoney", "squawkcnbc",
+    "bitcoinmagazine",
+    "cryptonews",
 
-    // // tech / AI CEOs / founders / researchers + tech news
-    // "sama", "gdb", "anthropy", "anthropicai", "openai", "jack",
-    // "sundarpichai", "satyanadella", "tim_cook", "jeffbezos", "billgates",
-    // "nvidia", "intelnews", "amd", "paulg", "ycombinator", "garrytan",
-    // "karpathy", "levelsio", "piratewires", "lexfridman", "kaifulee", "demishassabis", "gdbrockman",
-    // "aravsrinivas",
-    // "techcrunch", "theverge", "wired", "techmeme", "arstechnica", "engadget", "thenextweb", "digitaltrends", "gizmodo", "mashable", "verge", "recode", "theinformation",
-    // "verge", "recode", "theinformation", "arstechnica", "engadget", "thenextweb", "digitaltrends", "gizmodo", "mashable", "Techmeme",
+    // tech / AI CEOs / founders / researchers + tech news
+    "sama", "gdb", "anthropy", "anthropicai", "openai", "jack",
+    "sundarpichai", "satyanadella", "tim_cook", "jeffbezos", "billgates",
+    "nvidia", "intelnews", "amd", "paulg", "ycombinator", "garrytan",
+    "karpathy", "levelsio", "piratewires", "lexfridman", "kaifulee", "demishassabis", "gdbrockman",
+    "aravsrinivas",
+    "techcrunch", "theverge", "wired", "techmeme", "arstechnica", "engadget", "thenextweb", "digitaltrends", "gizmodo", "mashable", "verge", "recode", "theinformation",
+    "verge", "recode", "theinformation", "arstechnica", "engadget", "thenextweb", "digitaltrends", "gizmodo", "mashable", "Techmeme",
 
-    // // politics / commentary
-    // "realdonaldtrump", "potus", "whitehouse", "vivekgramaswamy",
-    // "rorysutherland", "mtaibbi", "bariweiss", "joerogan", "andrewcuomo", "aoc", "berniesanders", "gavinnewsom", "emmanuelmacron", "hillaryclinton", "barackobama", "donaldjtrumpjr", "flotus", "gouvernementfr", "guillermolasso", "joeBiden", "kamalaharris",
+    // politics / commentary
+    "realdonaldtrump", "potus", "whitehouse", "vivekgramaswamy",
+    "rorysutherland", "mtaibbi", "bariweiss", "joerogan", "andrewcuomo", "aoc", "berniesanders", "gavinnewsom", "emmanuelmacron", "hillaryclinton", "barackobama", "donaldjtrumpjr", "flotus", "gouvernementfr", "guillermolasso", "joeBiden", "kamalaharris",
 
-    // // general / mainstream news & breaking (HEAVY EXPANSION)
-    // "nytimes", "wsj", "Reuters", "ap", "bbcbreaking", "cnnbrk", "theeconomist",
-    // "FinancialTimes", "bloomberg", "cnbc", "forbes", "marketwatch",
-    // "BloombergTV", "cnbc", "abcnews", "cbsnews", "nbcnews", "time",
-    // "usnews", "dailymail", "popcrave", "breakingbadenews",
-    // "collinrugg", "zerohedge", "wsbchairman", "wallstreetbets", "markets",
-    // "dexerto", "xdaily", "polymarket", "autismcapital", "libsoftiktok",
-    // "theeconomist", "thehill", "theonion", "thewrap", "tradingview", "tmz", "usatoday", "variety", "verge", "vice", "washingtonpost", "wired", "wsjmarkets", "yahoofinance", "ynewswire",
-    // "bbcnews", "aljazeera", "ap", "axios", "bbcnews", "bbcworld", "bleacherreport", "business", "businessinsider", "buzzfeed", "cbsnews", "cnn", "dailymail", "deltaone", "dexerto", "economist", "espn", "financialtimes", "fortunemagazine", "foxnews", "guardian", "hollywoodreporter", "investingcom", "latimes", "markets", "nbcnews", "newsweek", "npr", "politico", "rollingstone", "skynews", "stocktwits", "techcrunch", "theatlantic", "thebabylonbee", "theeconomist", "thehill", "theonion", "thewrap", "time", "tradingview", "tmz", "usatoday", "variety", "verge", "vice", "washingtonpost", "wired",
+    // general / mainstream news & breaking (HEAVY EXPANSION)
+    "dexerto", "polymarket", "popcrave", "zerohedge", "time", "tmz",
+    "nytimes", "wsj", "Reuters", "ap", "bbcbreaking", "cnnbrk", "theeconomist",
+    "FinancialTimes", "bloomberg", "cnbc", "forbes", "marketwatch",
+    "BloombergTV", "cnbc", "abcnews", "cbsnews", "nbcnews", "time",
+    "usnews", "dailymail", "popcrave", "breakingbadenews",
+    "collinrugg", "zerohedge", "wsbchairman", "wallstreetbets", "markets",
+    "dexerto", "xdaily", "polymarket",
+     "autismcapital", "libsoftiktok",
+    "theeconomist", "thehill", "theonion", "thewrap", "tradingview", "tmz", "usatoday", "variety", "verge", "vice", "washingtonpost", "wired", "wsjmarkets", "yahoofinance", "ynewswire",
+    "bbcnews", "aljazeera", "ap", "axios", "bbcnews", "bbcworld", "bleacherreport", "business", "businessinsider", "buzzfeed", "cbsnews", "cnn", "dailymail", "deltaone", "dexerto", "economist", "espn", "financialtimes", "fortunemagazine", "foxnews", "guardian", "hollywoodreporter", "investingcom", "latimes", "markets", "nbcnews", "newsweek", "npr", "politico", "rollingstone", "skynews", "stocktwits", "techcrunch", "theatlantic", "thebabylonbee", "theeconomist", "thehill", "theonion", "thewrap", "time", "tradingview", "tmz", "usatoday", "variety", "verge", "vice", "washingtonpost", "wired",
 
-    // // meme / viral / culture accounts
-    // "nasa", "doge", "shibainu", "pepecoin", "doge_wif_hat",
-    // "nikitabier", "joincolosseum", "tyler", "garyvee", "beeple",
-    // "pranksy", "cozomomedici", "frankdegods", "shib", "natgeo",
+    // meme / viral / culture accounts
+    "nasa", "doge", "shibainu", "pepecoin", "doge_wif_hat",
+    "nikitabier", "joincolosseum", "tyler", "garyvee", "beeple",
+    "pranksy", "cozomomedici", "frankdegods", "shib", "natgeo",
 
-    // //companies
-    // "adidas", "amazon", "amd", "anthropicai", "apple", "canva", "cocacola", "disney", "doritos", "gemini", "google", "gymshark", "hellofresh",
-    // "tesla", "hp", "hulu", "intel", "ikea", "kfc", "lego", "mcdonalds", "microsoft", "nike", "netflix", "nvidia", "openai", "pepsi", "playstation",
-    // "redbull", "samsung", "spotify", "spacex", "subway", "ubereats", "xbox", "nvidia"
+    // companies
+    "adidas", "amazon", "amd", "anthropicai", "apple", "canva", "cocacola", "disney", "doritos", "gemini", "google", "gymshark", "hellofresh",
+    "tesla", "hp", "hulu", "intel", "ikea", "kfc", "lego", "mcdonalds", "microsoft", "nike", "netflix", "nvidia", "openai", "pepsi", "playstation",
+    "redbull", "samsung", "spotify", "spacex", "subway", "ubereats", "xbox", "nvidia"
 ];
 
-// const WOJAK_IMAGE = `data:image/webp;base64,${fs.readFileSync("wojak.webp").toString("base64")}`;
+const WOJAK_IMAGE = `data:image/webp;base64,${fs.readFileSync("wojak.webp").toString("base64")}`;
 // const PERSON_IMAGE = `data:image/webp;base64,${fs.readFileSync("carciature.webp").toString("base64")}`;
 // const TOKEN_IMAGE = `data:image/webp;base64,${fs.readFileSync("memestock.webp").toString("base64")}`;
 
@@ -132,24 +136,10 @@ setInterval(() => {
     console.log(`🧹 Cache cleaned — ${Object.keys(tweetCache).length} tweets remaining`);
 }, 5 * 60 * 1000);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 async function generateSuggestion(tweetText, author) {
 
     const response = await groq.chat.completions.create({
-        model: model,
+        model: model_suggestion,
         messages: [
 
             {
@@ -171,7 +161,6 @@ Ticker: Max 13 Characters, ALL CAPS
 ## Output exactly:
 NAME: ...
 TICKER: ...
-MODE: ...
 No other text.
 `
             },
@@ -185,116 +174,175 @@ Tweet:
 <
 ${tweetText}
 >>>
+Author: @${author}
 
 ## Reason through this step by step guide to get the NAME and TICKER:
-Step 1 — Core concept
-What is the single most memetically charged idea in this tweet? One singular stand-alone idea/entity/concept that the tweet creates. It can be it's own thing, or fuse multiple parts of the tweet.
+# Step 1 — Core concept
+Do not think about names in this step. What is the single most memetically charged idea in this tweet? One singular stand-alone idea/entity/concept that the tweet creates. It can be it's own thing, or fuse multiple parts of the tweet.
 
-Step 2 — Mode elimination
-You have two ways to arrive at a name. Work through them in order 
-and stop at the first that applies:
+# Step 2 — Mode elimination
+You have two ways to arrive at a name. The name must feel like a named thing that exists in the world. Not a description.
+It cannot be a description of what happened.Work through them in order and stop at the first that applies:
 
-EXTRACT — The tweet contains a proper noun, term, or known concept that IS the meme on its own, independent of any context. 
-If it exists, use it directly. Do not dress it up.
+EXTRACT — The tweet contains a discrete and specific object, phrase, entity, or concept you can point to and say "that's the meme."
 
-CREATE — Create a name for this memetic concept. Be creative. It should sound like a title or name of something, not a description. 
+CREATE — No "thing" is in the tweet. Name the meme concept from Step 1 — not the words in the tweet. Do not describe the event — reframe it. Elevate it. A portmanteau, a cultural mashup, a title, a pun, a reference, alliteration. The name should feel like it already existed and the tweet just summoned it.
 
-Step 3 — Ticker
-Select an appropriate ticker for the name.
+# Step 3 — Ticker
+Selection priority:
+1. If NAME fits → use it
+2. Otherwise → extract the strongest word or phrase from the NAME THAT ENCAPSULATES THE ENTIRE IDEA
+
+Ticker can:
+- match the name
+- be a tighter version of the same idea
+
+***NEVER***:
+- use acronyms longer than 3 letters unless widely known
+- chop, compress, or combine words unnaturally
+- use partial words or ugly abbreviations
 
 
-Step 4 — Output
+# Step 4 — Output
 NAME: ...
 TICKER: ...
-MODE: ...
+
+
+## EXAMPLES:
 
 ---
 
-### Examples
-
 Tweet:
-<
-BREAKING: NVIDIA CEO announces 'we've achieved AGI'
+
+people are now 'bedrotting' as a lifestyle and calling it self care
 >>>
-Step 1: A CEO claiming artificial general intelligence has been 
-  achieved.
-Step 2: EXTRACT. "AGI" is a coined term with massive cultural weight 
-  that stands alone as the meme. CREATE ruled out — 
-  the thing already has its name.
-Step 3: Artificial General Intelligence
-NAME: Artificial General Intelligence
-TICKER: AGI
 MODE: EXTRACT
+NAME: Bedrotting
+TICKER: BEDROT
 
 ---
 
 Tweet:
-<
+
+We're going back to the fucking moon, that's why.
+>>>
+MODE: EXTRACT
+NAME: To The Fucking Moon
+TICKER: MOON
+
+---
+
+Tweet:
+
+Inspiring new merch idea: rocket pocket underpants!
+>>>
+MODE: EXTRACT
+NAME: Rocket Pocket Underpants
+TICKER: RPU
+
+---
+
+Tweet:
+
+GameStop is up 200% today and nobody can explain why
+>>>
+Step 1: GameStop surging inexplicably.
+Step 2: GameStop is already a legendary meme entity — the surge is new context, GameStop is not. The tweet happens TO GameStop. GameStop comes out unchanged. EXTRACT.
+MODE: EXTRACT
+NAME: GameStop
+TICKER: GME
+
+---
+
+Tweet:
+
+Penguin named Gibby by researchers seen walking to his death 
+into the mountains.
+>>>
+Step 1: A penguin choosing to walk alone into the mountains to die. Absurdist. Philosophical. The meme is the act, not the animal's name.
+Step 2: "Gibby" is present but it's a label with zero meme weight on its own. The meme is what Gibby is doing. CREATE. Elevate the act: a creature marching toward its end with intention.
+MODE: CREATE
+NAME: The Nietzschean Penguin
+TICKER: GIBBY
+
+---
+
+Tweet:
+
+Grok can now see, hear, and feel. What have we done.
+>>>
+Step 1: An AI crossing a threshold — gaining senses, becoming something it wasn't. Not an update. A transformation.
+Step 2: "Grok" is present but the tweet transforms it. Grok without this tweet is just an AI model. The vessel doesn't come out unchanged. CREATE. Collision: Grok + Inception — layers of perception folding inward.
+MODE: CREATE
+NAME: Grokception
+TICKER: GROKCEPTION
+
+---
+
+Tweet:
+
+The simulation is definitely running low on RAM
+>>>
+Step 1: Go deeper than RAM. The tweet isn't about memory — it's invoking simulation theory: the idea that reality is a program and it's breaking down. RAM is just the surface word.
+Step 2: No vessel. "RAM" is present but it's the wrong thing — it's the symptom, not the meme. The meme is the simulation glitching out. CREATE. Name the concept from Step 1, not the words in the tweet.
+MODE: CREATE
+NAME: The Simulation
+TICKER: SIMULATION
+
+---
+
+Tweet:
+
+BREAKING: donald trump posts ai image of himself as a gladiator 
+riding a lion
+>>>
+Step 1: Trump self-mythologizing as a Roman imperial figure — hyper-masculine, grandiose, absurd. The cultural register is Roman emperor, not just gladiator.
+Step 2: No vessel. "Gladiator" and "lion" are present but neither is the meme — the meme is the register. CREATE. Elevate into the language the image is reaching for.
+MODE: CREATE
+NAME: Trumpus Maximus
+TICKER: TRUMPUS
+
+---
+
+Tweet:
+
 Another mysterious NASA death as ninth scientist linked to 
 secret programs dies
 >>>
-Step 1: A pattern of suspicious deaths connected to government 
-  secret programs.
-Step 2: Not EXTRACT — no named entity is the meme.
-  CREA — name the act, not the victims.
-Step 3: The Silencing
+Step 1: Powerful forces systematically eliminating people who know too much. The meme isn't NASA or the death count — it's the pattern.
+Step 2: "NASA" is present but it's backdrop, not vessel. The meme is the phenomenon itself. CREATE. Name the act, not the institution.
+MODE: CREATE
 NAME: The Silencing
 TICKER: SILENCE
-MODE: CREATE
 `
         }],
-        max_completion_tokens: 1024,
+        max_completion_tokens: 1536,
         seed: 0,
+        reasoning_effort: "low",
         temperature: 0,
     });
 
     const content = response.choices[0].message.content.trim();
-    console.log(content);
+    // console.log(content);
     const name = content.match(/NAME: (.+)/)?.[1]?.trim();
     const ticker = content.match(/TICKER: (.+)/)?.[1]?.trim();
-    const reasoning = content.match(/REASONING: (.+)/)?.[1]?.trim();
 
-console.log(response.usage.prompt_tokens);
-console.log(response.usage.completion_tokens);
-console.log(response.usage.total_tokens);
+// console.log(response.usage.prompt_tokens);
+// console.log(response.usage.completion_tokens);
+// console.log(response.usage.total_tokens);
 
-    const reasoning1 = response.choices[0].message.reasoning;
-    console.log(reasoning1)
-       if (response.choices[0].message.executed_tools) {
-  response.choices[0].message.executed_tools.forEach((tool, i) => {
-    console.log(`TOOL ${i}:`, JSON.stringify(tool, null, 2));
-  });
+//     const reasoning1 = response.choices[0].message.reasoning;
+//     console.log(reasoning1)
+//        if (response.choices[0].message.executed_tools) {
+//   response.choices[0].message.executed_tools.forEach((tool, i) => {
+//     console.log(`TOOL ${i}:`, JSON.stringify(tool, null, 2));
+//   });
+// }
+
+
+
+    return { name, ticker };
 }
-
-
-
-    return { name, ticker, reasoning };
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -302,62 +350,99 @@ console.log(response.usage.total_tokens);
 
 async function scoreTweet(tweetText, authorsHandle) {
     const response = await groq.chat.completions.create({
-        model: model,
-        messages: [{
+        model: model_score,
+        messages: [
+
+            {
+                role: 'system',
+                content: `
+You are an expert in viral internet culture, crypto memecoin 
+culture on Solana, and what makes content actually spread on social media 
+versus what just sounds good on the surface.
+
+Remember, memecoins are based on anything that can grab a person's attention. It could be a phrase, joke, a vibe, an absurdity, a cultural moment, a viral concept, a specific image or character in the tweet, or even just the energy of the tweet distilled into a single idea. The best memecoins have a clear and specific meme core that can be easily understood and visualized.
+
+You have an instinct for the difference between:
+- Content that is playful, funny, or important-sounding but ultimately forgettable — it gets a like and a scroll
+- Content that stops people, gets screenshotted, quoted, turned into something — it has a life beyond the original post
+
+You understand that most tweets — even from big accounts, even funny ones, even ones that sound viral — are bland. A joke that lands once is not a meme. A name drop is not a concept. Energy is not an identity. You are not easily impressed. You have seen every format, every vibe, every crypto catchphrase. You know the difference between a tweet that rides a wave and a tweet that starts one.`
+
+            },
+            
+            {
             role: "user",
-            content: `You are an expert in crypto memecoin culture on Solana and crypto Twitter. You understand what makes a good memecoin on pump.fun. Remember, memecoins are based on anything that can grab a person's attention. It could be a joke, a vibe, an absurdity, a cultural moment, a viral concept, a specific image or character in the tweet, or even just the energy of the tweet distilled into a single idea. The best memecoins have a clear and specific meme core that can be easily understood and visualized.
+            content: `
 
-Rate this tweet's memecoin potential 1-10. Reply with the score first, then one short sentence explaining why.
-
-These tweets come from major influencers so the author already has pull.
+Rate this tweet's memecoin potential 1-10. 
 
 BEFORE SCORING — ask yourself: does this tweet contain an actual meme, joke, concept, or moment? Not just energy, not just slang, not just a famous name. Something that could become a coin with an identity. If the answer is no, the score is low regardless of everything else.
 
-*NOTE*: Not all tweets have images. If no image description or it says "No Description", base on text alone.
-
 WHAT MAKES A SCORE HIGH:
-- A real joke, meme format, or punchline — something with a setup and a payoff
-- A cultural moment, viral concept, or internet phenomenon with staying power; it could trend
-- A specific, vivid, memeable idea that can become a cartoon, character, or coin identity
-- Animals with a story (cute, funny, sad, heroic)
-- Genuinely interesting or groundbreaking tech/AI/crypto news where the concept itself is the hook
-- Slang or internet culture used in a meaningful, specific way — not just dropped randomly
-- Political content with an actual angle, joke, or specific absurdity — not just a name drop
-- Financial nihilism, crypto culture, or degen energy attached to a real concept
-- Tokenization, trading, or calling something financially adjacent with a concrete idea. Something that crypto memecoin traders can relate to.
-- Anything that makes you stop and react — not just nod and scroll
-- An image that adds a specific visual hook — a funny reaction, an absurd moment caught on camera, a striking visual concept, or a product/announcement so significant it has cultural weight on its own
-
+    - A real joke, meme format, or punchline — something with a setup and a payoff
+    - A cultural moment, viral concept, or internet phenomenon with staying power; it could trend
+    - A specific, vivid, memeable idea that can become a cartoon, character, or coin identity
+    - Animals with a story (cute, funny, sad, heroic)
+    - Genuinely interesting or groundbreaking tech/AI/crypto news where the concept itself is the hook
+    - Slang or internet culture used in a meaningful, specific way — not just dropped randomly
+    - Political content with an actual angle, joke, or specific absurdity — not just a name drop
+    - Financial nihilism, crypto culture, or degen energy attached to a real concept
+    - Tokenization, trading, or calling something financially adjacent with a concrete idea. Something that crypto memecoin traders can relate to.
+    - An image that adds a specific visual hook — a funny reaction, an absurd moment caught on camera, a striking visual concept, or a product/announcement so significant it has cultural weight on its own
 
 WHAT MAKES A SCORE LOW:
-- Missing important context and information like names or the meme itself that dilutes specificity
-- Reactions and responses with no substance ("lol", "lmao", "wtf", emojis alone)
-- Insults or shade without a specific angle or famous target with an actual setup
-- Slang words or vibe alone — playful energy without a real meme underneath
-- Famous names dropped with no joke, moment, or concept attached (Trump alone is not a meme)
-- Simple catchphrases with no depth or specificity
-- Dry news, facts, or announcements with no humor, absurdity, or personality
-- Corporate or product content that lacks magnitude or a hook
-- Threads, long explanations, or link posts with nothing quotable
-- Anything where the "coin" would have no identity beyond a word or name
-- Announcements that sound big and important, but are not groundbreaking, viral, or memeable.
-- An image that is just a generic photo, promotional graphic, or illustration with no standalone reaction value — an image that requires the tweet text to explain it is not elevating the score
+    - Missing important context and information like names or the meme itself that dilutes specificity
+    - Reactions and responses with no substance ("lol", "lmao", "wtf", emojis alone)
+    - Insults or shade without a specific angle or famous target with an actual setup
+    - Slang words or vibe alone — playful energy without a real meme underneath
+    - Famous names dropped with no joke, moment, or concept attached (Trump alone is not a meme)
+    - Simple catchphrases with no depth or specificity
+    - Dry news, facts, or announcements with no humor, absurdity, or personality
+    - Corporate or product content that lacks magnitude or a hook
+    - Threads, long explanations, or link posts with nothing quotable
+    - Anything where the "coin" would have no identity beyond a word or name
+    - Announcements that sound big and important, but are not groundbreaking, viral, or memeable.
+    - An image that is just a generic photo, promotional graphic, or illustration with no standalone reaction value — an image that requires the tweet text to explain it is not elevating the score
 
+## Reason through it first in one sentence referencing the criteria 
+above. Then give the score as a single number on its own line.
 
-Tweet: ${tweetText}
-Twitter/X handle: ${authorsHandle}`
+##OUTPUT FORMAT:
+REASONING: ...
+SCORE: ...
+
+Tweet: <${tweetText}>>>
+Twitter/X handle: <${authorsHandle}>>>
+
+## EXAMPLES:
+Tweet: "Trump is destroying this country and nobody is doing anything about it"
+Score: 2
+Reasoning: Famous name with no joke, no moment, no concept. Pure opinion. A coin named "Trump Destruction" has no identity beyond anger. This gets liked and scrolled, not screenshotted.
+
+Tweet: "gold just hit an all time high as markets panic"
+Score: 5
+Reasoning: Has financial energy and a real event but no coin identity. "Gold pumping" is a fact, not a meme. There's no joke, no vessel, no specific angle that makes this more than a headline. The concept exists but nothing makes it stick.
+
+Tweet: "Grok can now see, hear, and feel. What have we done."
+Score: 9
+Reasoning: Immediate coin identity. An AI crossing a threshold into something new, wrapped in existential dread. The phrase "what have we done" is a punchline that lands on its own. Vivid, specific, culturally loaded. You can see the coin already.
+`
         }],
-        max_tokens: 10,
-        temperature: 0.8,
+        max_tokens: 1000,
+        temperature: 0,
     });
 
-    // const score = parseInt(response.choices[0].message.content.trim());
-    // return score;
+// console.log(response.usage.prompt_tokens);
+// console.log(response.usage.completion_tokens);
+// console.log(response.usage.total_tokens);
+        // const reasoning1 = response.choices[0].message.reasoning;
+    // console.log(reasoning1)
 
-    const scoreMatch = response.choices[0].message.content.match(/\d+/);
-    const score = scoreMatch ? parseInt(scoreMatch[0]) : 0;
+    const scoreMatch = response.choices[0].message.content.match(/SCORE: (\d+)/);
+    const score = scoreMatch ? parseInt(scoreMatch[1]) : 0;
     return {score: score, reasoning: response.choices[0].message.content.trim()};
 }
+
 
 function logToFile(tweet, score, reasoning, tweetUrl, suggestion) {
     const entry = {
@@ -389,7 +474,7 @@ async function generateImage(tweetText, prediction, ticker, tweet) {
 
     // Step 1: classify the visual archetype
     const archetypeResponse = await groq.chat.completions.create({
-        model: model,
+        model: model_image,
         messages: [{
             role: "user",
             content: `You are classifying a memecoin tweet into a visual art style for its coin image.
@@ -473,7 +558,7 @@ contemplative and beautiful mood, Van Gogh or impressionist influence,
 centered subject gazing into distance`;
     }
 
-    prompt += `. No text or words. The image should capture the essence of the meme/joke/idea of the tweet in a way that is immediately understandable and visually striking. `;
+    prompt = `The image should capture the essence of the meme/joke/idea of the tweet in a way that is immediately understandable and visually striking. **DO NOT ADD TEXT OR WORDS TO THE IMAGE.** ${prompt}`;
 
     let referenceImage = null;
 
@@ -520,9 +605,11 @@ centered subject gazing into distance`;
     }
 }
 
+
+
 async function deployToken(name, ticker, imageBase64, tweetText, authorHandle, tweetUrl) {
     const AI_TERMS = [
-        "ai", "gpt", "claude", "llama", "gemini", "singularity", "sentient",
+        " ai", "ai ", "gpt", "claude", "llama", "gemini", "singularity", "sentient",
         "conscious", "self-aware", "agi", "asi", "superintelligence",
         "machine learning", "deep learning", "neural network", "transformer",
         "llm", "gen ai", "generative ai", "large language model", "agent",
@@ -562,6 +649,8 @@ async function deployToken(name, ticker, imageBase64, tweetText, authorHandle, t
         auto_sell: false,
         sell_panel_enabled: true,
         twitter: tweetUrl,
+        bribe_fee_sol: 0.00001,
+        priority_fee_sol: 0.00001,
     };
 
     if (isAI) {
@@ -576,7 +665,7 @@ async function deployToken(name, ticker, imageBase64, tweetText, authorHandle, t
     const response = await fetch("https://nyc.j7tracker.io/deploy/submit", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "text/plain;charset=UTF-8",
             "origin": "https://j7tracker.io",
             "referer": "https://j7tracker.io/",
             "x-session-id": process.env.SESSION_ID,
@@ -603,43 +692,48 @@ socket.on("connect", () => {
 });
 
 socket.on("tweet", (data) => {
-    // const handle = data.author?.handle?.toLowerCase();
-    // if (!WHITELIST.includes(handle)) return;
+    const handle = data.author?.handle?.toLowerCase();
+    if (!WHITELIST.includes(handle)) return;
+    const alreadyInCache = Object.values(tweetCache).some(t => 
+    t.author?.handle?.toLowerCase() === handle
+);
+    if (alreadyInCache) return;
 
-    // tweetCache[data.id] = {
-    //     ...data,
-    //     cachedAt: Date.now(),
-    //     processing: false,
-    //     imageArrived: false,
-    //     hasMedia: data.media?.images?.length > 0
-    // };
+    tweetCache[data.id] = {
+        ...data,
+        cachedAt: Date.now(),
+        processing: false,
+        imageArrived: false,
+        hasMedia: data.media?.images?.length > 0
+    };
 
-    // processTweet(data.id);
+    processTweet(data.id);
 });
 
 socket.on("tweet_update", (data) => {
-    // const existing = tweetCache[data.id];
-    // if (!existing) return;
+    const existing = tweetCache[data.id];
+    if (!existing) return;
 
-    // const hasMedia = data.media?.images?.length > 0;
+    const hasMedia = data.media?.images?.length > 0;
 
-    // tweetCache[data.id] = {
-    //     ...data,
-    //     cachedAt: existing.cachedAt,
-    //     processing: existing.processing,
-    //     imageArrived: existing.imageArrived || hasMedia,
-    //     hasMedia: existing.hasMedia || hasMedia,
-    //     abortController: existing.abortController
-    // };
+    tweetCache[data.id] = {
+        ...data,
+        cachedAt: existing.cachedAt,
+        processing: existing.processing,
+        imageArrived: existing.imageArrived || hasMedia,
+        hasMedia: existing.hasMedia || hasMedia,
+        abortController: existing.abortController
+    };
 
-    // if (hasMedia && !existing.hasMedia) {        
-    //     if (existing.processing) {
-    //         existing.abortController?.abort();
-    //         processWithImage(tweetCache[data.id]);
-    //     }
-    // }
+    if (hasMedia && !existing.hasMedia) {        
+        if (existing.processing) {
+            existing.abortController?.abort();
+            processWithImage(tweetCache[data.id]);
+        }
+    }
 });
 async function processTweet(tweetId) {
+
     const tweet = tweetCache[tweetId];
     if (!tweet) return;
 
@@ -664,7 +758,10 @@ async function processTweet(tweetId) {
         return;
     }
     
+
+        console.log(`ELAPSED TIME FOR SUGGESTION:`, ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
         const image = await generateImage(tweet.text, suggestion.name, suggestion.ticker, tweet);
+        console.log(`ELAPSED TIME FOR IMAGE:`, ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
         if (!image) return;
 
         const dir = "generated_images";
@@ -679,6 +776,7 @@ async function processTweet(tweetId) {
         const result = await deployToken(suggestion.name, suggestion.ticker, image, tweet.text, tweet.author?.handle, tweet.tweetUrl);
         if (result.type === "token_create_success") {
             console.log(`  ✅ Token deployed: ${result.mint_address}`);
+            player().play("audio.wav");
             console.log('ELAPSED TIME:', ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
         } else {
             console.log(`  ❌ Deploy failed:`, result.error);
@@ -696,7 +794,14 @@ async function processWithImage(tweet) {
     try {
         const visionResponse = await groq.chat.completions.create({
             model: "meta-llama/llama-4-scout-17b-16e-instruct",
-            messages: [{
+            messages: [
+
+                {
+                role: "system",
+                content: `You are a powerful vision model that describes images. You can see an image and understand it easily.`
+                },
+                
+                {
                 role: "user",
                 content: [
                     {
@@ -705,11 +810,11 @@ async function processWithImage(tweet) {
                     },
                     {
                         type: "text",
-                        text: `Describe what you see in this image in one short sentence. Focus on the main subject, mood, and any text visible. Be concise but make sure to pick up on important details.`
+                        text: `Describe the given image in 1-2 sentences. Note: any recognizable people, characters, or entities; any text or captions. Simply describe: "what is this image of?"`
                     }
                 ]
             }],
-            max_tokens: 100,
+            max_tokens: 500,
             temperature: 0
         });
 
@@ -720,6 +825,7 @@ async function processWithImage(tweet) {
     const combinedText = `${tweet.text || ""} [image: ${imageDescription}]`.trim();
 
     const { score, reasoning } = await scoreTweet(combinedText, tweet.author?.handle);
+    console.log(`Score with image for @${tweet.author?.handle}: ${combinedText}:`, score, reasoning);
 
     if (score < 7) {
         tweet.processing = false;
@@ -727,6 +833,7 @@ async function processWithImage(tweet) {
     }
 
     const suggestion = await generateSuggestion(combinedText, tweet.author?.handle);
+    console.log(`ELAPSED TIME FOR SUGGESTION:`, ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
     if (!suggestion.name || !suggestion.ticker) {
         tweet.processing = false;
         return;
@@ -756,11 +863,14 @@ async function processWithImage(tweet) {
         return;
     }
 
+    console.log(`ELAPSED TIME FOR IMAGE:`, ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
+
     logToFile(combinedText, score, reasoning, tweet.tweetUrl, suggestion);
 
     const result = await deployToken(suggestion.name, suggestion.ticker, image, combinedText, tweet.author?.handle, tweet.tweetUrl);
     if (result.type === "token_create_success") {
         console.log(`  ✅ Token deployed: ${result.mint_address}`);
+        player().play("audio.wav");
         console.log('ELAPSED TIME:', ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
     } else {
         console.log(`  ❌ Deploy failed:`, result.error);
@@ -768,88 +878,3 @@ async function processWithImage(tweet) {
 
     tweet.processing = false;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-const testTweets = [
-                { author: "elonmusk", text: "Grok can now see, hear, and feel. What have we done." },
-                            { author: "unusual_whales", text: "Silver is trading like a memecoin today. Up 40% in 24 hours." },
-                { author: "unusual_whales", text: "GameStop is up 200% today and nobody can explain why" },
-
-
-            { author: "elonmusk", text: "The simulation is definitely running low on RAM" },
-
-                { author: "nypost", text: "Melania Trump caught on camera rolling her eyes at Biden during state dinner" },
-
-        {author: "cnn", text: "BREAKING: donald trump posts ai image of himself as a gladiator riding a lion"},
-
-        {author: "culturecrave", text: "elon musk shows up to meeting with a sink again and refuses to explain why"},
-
-                        // { author: "a1lon", text: "neet & pumpcade are great examples of why paying attention to all corners of pump is +EV both outperformed recently despite one of them making viral memes for the unemploids and the other building prediction markets from the ground up we're far from realizing pump's mission but it's rewarding to see polar opposites thriving in the bear market" },
-
-
-    // {author: "vice", text: "people are now 'bedrotting' as a lifestyle and calling it self care"},
-    // {author: "wired", text: "It is official. $BRR is going to be the first publicly traded agentic finance firm. The deal will close in early April and then we will begin talking about our AI model and agent lab focused on finance. The team is working hard and we are excited to start sharing more."},
-    // {author: "globeandmail", text: "Relaxation of U.S. day-trading rules opens door to YOLO trading, higher risk  "},
-    //         { author: "sama", text: "we have achieved AGI internally. announcement coming soon." },
-    //         { author: "elonmusk", text: "we're so back" },
-    // {author: "watcherguru", text: "BREAKING: traders are now buying coins based on dreams they had while sleeping"},
-    // {author: "insider", text: "woman names her pet rock steve and throws it a birthday party every year"},
-
-
-
-
-
-    // { author: "elonmusk", text: "Biden is the most confused president in history lmao" },
-    // { author: "peta", text: "A golden retriever named Biscuit was found abandoned in the snow, but survived after walking 30 miles home" },
-    // { author: "bbcnews", text: "Beloved therapy dog Max passes away after 15 years of service at children's hospital" },
-
-    // // MEME CORE DETECTION
-
-    // // CRYPTO/FINANCE
-    // { author: "pumpfun", text: "1 billion tokens launched. The era of infinite memecoins has begun." },
-
-    // // TECH/AI
-    // { author: "nvidia", text: "Introducing the GB200: 1000x faster than the human brain at math" },
-
-    // // ABSURD/VIRAL
-    // { author: "elonmusk", text: "I ate a live cockroach on a dare. It tasted like chicken." },
-
-    // {author: "dexerto", text: "new trend where people are rating strangers aura levels in public is going viral"},
-    // {author: "bbcnews", text: "cat named biscuit somehow boarded a plane and flew to another country alone"},
-    // {author: "dexerto", text: "people are now pretending to be npcs in real life and only speaking when tipped"},
-    // {author: "foxnews", text: "BREAKING: donald trump says he would 'absolutely win' a fight against a kangaroo"},
-    // {author: "verge", text: "new ai tool lets you generate your future self and people are becoming obsessed with it"},
-    // {author: "watcherguru", text: "BREAKING: gold just hit an all time high as markets panic"},
-    // {author: "coindesk", text: "new crypto meta where people are launching coins based on random words is exploding"},
-    // {author: "theverge", text: "BREAKING: mark zuckerberg unveils hyper realistic ai clone that can replace you in meetings"},
-    // {author: "nhknews", text: "dog refuses to move from train station after owner passed away"},
-    // {author: "reuters", text: "BREAKING: government confirms they lost track of a high altitude balloon again"},
-    // {author: "watcherguru", text: "elon musk tweets 'hmm' and crypto markets instantly react"},
-    // {author: "bloomberg", text: "BREAKING: oil prices surge 50 percent overnight"},
-    // {author: "dexerto", text: "new trend where people only communicate in emojis for entire day"},
-    // {author: "coindesk", text: "BREAKING: bitcoin crashes 30 percent in minutes wiping out billions"},
-
-];
-
-async function runTests() {
-    for (const test of testTweets) {
-        const { name, ticker, mode} = await generateSuggestion(test.text, test.author);
-        console.log(`\n📝 @${test.author}: "${test.text}"`);
-        console.log(`   NAME: ${name}`);
-        console.log(`   TICKER: ${ticker}`);
-        console.log(`   MODE: ${mode}`);
-        await new Promise(resolve => setTimeout(resolve, 2000));
-    }
-}
-
-runTests();
