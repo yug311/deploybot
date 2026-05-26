@@ -1,0 +1,1 @@
+FROM ./finetuned_model_q4_k_m.gguf

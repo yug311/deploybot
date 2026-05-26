@@ -1,6 +1,451 @@
+✅ Connected to j7
+  🤖 Finetuned: Gladiatrum (GLADIATUM)
+Acronym: AI (Artificial Intelligence)
+NAME: Artificial Imperator  
+TICKER: AIMP
+We need to follow steps.
+
+Step1: Identify meme core: Donald Trump AI image of himself as a gladiator riding a lion. Meme is Trump as gladiator on lion, AI-generated. Core meme: "Trump Gladiator Lion". Could be "Trump Gladiator". It's a meme of Trump as a gladiator riding a lion.
+
+Step2: Check if meme already has a name in tweet. Tweet doesn't give a name. No explicit name.
+
+Step3: Choose method.
+
+We have acronym AI present. Method A: ACRONYM: Use if acronym in tweet. The tweet includes AI (Artificial Intelligence). So we can create an acronym-based name. Need to use the acronym to form a name? Example: "AI logos look like buttholes -> Anal Intelligence (AI)". So we need to create a phrase that expands AI into something meme-related. Could be "Artificial Imperial" something? But we need name that captures meme. Could be "Artificial Imperial Trump" (AIT). But we need name and ticker.
+
+Method A: Use acronym in tweet. So we need to create a name that is an acronym using AI maybe. The meme is about AI image of Trump as gladiator. Could be "Artificial Imperator" (AI). Imperator = emperor, gladiator vibe. So name: "Artificial Imperator". That captures AI and Trump as emperor/gladiator. Or "Artificial Icon" (AI). But need to be meme name.
+
+Let's craft: NAME: Artificial Imperator
+
+Ticker: maybe "AIMP"? But ticker should be short, maybe "AI". But ticker can't be just AI because that's the acronym already. Could be "AIMP". But typical memecoin tickers are 3-4 letters. Use "AIMP". Or "AIM". But "AIM" is a word. Could be "AIMP". Let's choose "AIMP". Ensure it's uppercase.
+
+Thus output:
+
+NAME: Artificial Imperator
+TICKER: AIMP
+
+Check steps: We used acronym method because AI present. Good.
+
+Return only those lines.
+  🧠 Groq:      Artificial Imperator (AIMP)
+  🤖 Finetuned: Confused Joe (CJ)
+Acronym: POTUS (President of the United States)
+NAME: Perpetually Oblivious, Totally Unhinged Statesman (POTUS)  
+TICKER: POTU
+We need to follow steps.
+
+Step1: Identify meme core thing. Tweet: "Biden is the most confused president in history lmao". Meme is about Biden being confused. Possibly "Confused Biden". Core meme: Biden being confused.
+
+Step2: Check if meme already has a name in tweet. No explicit name like "Confused Biden". So go to step3.
+
+Step3: Choose method.
+
+We have acronym POTUS present. The tweet includes "POTUS" as acronym? Actually tweet text doesn't include POTUS, but the instruction says Acronyms: Acronym: POTUS (President of the United States). So there is an acronym present (POTUS). So method A: ACRONYM: Use if acronym in tweet. We need to create a name using acronym? Example: AI logos look like buttholes -> Anal Intelligence (AI). So we need to create a phrase that expands the acronym to something meme-related. The acronym is POTUS. We need to create a phrase that captures the meme: "President Of The United States" but we can reinterpret as something like "Perpetually Oblivious, Totally Unhinged Statesman". That would be a meme name. Must be a name (maybe "Perpetually Oblivious, Totally Unhinged Statesman (POTUS)"). That fits.
+
+Thus NAME: Perpetually Oblivious, Totally Unhinged Statesman
+
+Ticker: maybe "POTUS"? But ticker should be short, maybe "POTU". Usually tickers 3-4 letters. Could be "POTU". Or "CONF". But using acronym maybe "POTU". Let's choose "POTU". Provide output.
+
+Check format: Only output NAME: and TICKER:.
+
+Thus final.
+  🧠 Groq:      Perpetually Oblivious, Totally Unhinged Statesman (POTUS) (POTU)
+  🤖 Finetuned: Floating Ass (FLOATINGASS)
+Acronym: No Acronym
+NAME: Asscoin  
+TICKER: ASS
+We need to follow steps.
+
+Step1: Identify meme core thing. Tweet: "There is so much ass floating floating around on the timeline." So meme is "ass floating around on the timeline". Likely referencing "Ass Float" or "Floating Ass". The core meme: "Ass floating on timeline" maybe "Ass Float". It's a single word? It's a concept: "Ass floating". Could be considered a single noun phrase. No acronym. No existing name in tweet. Choose method.
+
+Options: ACRONYM not applicable. PORTMANTEAU: need two concepts hybridizing. Could be "Ass" + "Timeline" => "Assline"? Not great. ADD "THE": Use when meme is a single common ordinary noun that tweet makes legendary. Here it's "ass". Could be "The Ass". But meme is about "ass floating". Might be "The Floating Ass". That's adding "THE" but also extra descriptor. The rule: Add "THE" when meme is a single common ordinary noun that tweet makes legendary. Here the noun is "ass". So could be "The Ass". But maybe better to use ADD "COIN": when meme is a single-word word, quality, commodity, or object that needs to become a tradeable token. "Ass" is a single word object. So we could do "Asscoin". That seems plausible.
+
+Which method fits best? The meme is about "ass floating". It's a single word "ass". So ADD "COIN" seems appropriate: turn "ass" into a token. So name: Asscoin. Ticker: maybe ASS? But ticker should be 3-4 letters, maybe ASS? Could be "ASS". But ticker "ASS" might be taken but okay. Could also be "ASST". But we need output.
+
+Thus:
+
+NAME: Asscoin
+TICKER: ASS
+
+Return only those lines.
+  🧠 Groq:      Asscoin (ASS)
+  🤖 Finetuned: RIDEORDEATH (RODe)
+Acronym: USA (United States of America)
+NAME: U.S. Arrest  
+TICKER: USAR
+We need to follow steps.
+
+Step1: Identify meme core thing people will remember and reference. The tweet: "BREAKING: The USA has successfully launched a raid on Venezuela and captured the dictator Nicolas Mudiro. He was brought back to the United States." It's a fake news meme about US raiding Venezuela and capturing dictator "Nicolas Muduro". Possibly meme about "Nicolas Muduro" being captured. The core meme: "USA raids Venezuela, captures dictator". Could be "Muduro capture". There's no existing name.
+
+Step2: Check if meme already has a name in tweet. No clear name like "Operation Muduro" etc. So go to step3.
+
+Step3: Choose method. Options: Acronym (if acronym in tweet). There is USA acronym. Could use ACRONYM method: Use if acronym in tweet. The meme could be named using acronym? The rule: Use if acronym in tweet. Example: AI logos look like buttholes -> Anal Intelligence (AI). So we could create a name using USA acronym? Maybe "United States of Arrest" (USA). But we need a name and ticker.
+
+We need to pick exactly one method. Since there is an acronym USA, we can use ACRONYM method. We need to create a phrase that expands USA to something meme-related. The meme is about US raid. Could be "U.S. Assault". But need to be acronym expansion: e.g., "U.S. Annihilation". The method: Use if acronym in tweet. So we create a name that is an acronym of USA, maybe "U.S. Aggression". But need a full phrase that matches meme. Could be "U.S. Airdrop". Hmm.
+
+Better: "U.S. Arrest". That's two words, acronym USA. That captures capturing dictator. So Name: "U.S. Arrest". Ticker: maybe "USAR". But ticker should be short, maybe "USAR". However ticker often 3-4 letters. Could be "USAR". Or "USAR" is already a stock ticker for US Army? Not sure. Could be "USAR". Or "USAR" stands for US Arrest. That works.
+
+But we need to output NAME and TICKER. Name: "U.S. Arrest". Ticker: "USAR". Ensure uppercase.
+
+Check method: ACRONYM: Use if acronym in tweet. We used USA acronym to create "U.S. Arrest". That fits.
+
+Thus output.
+
+
+  🧠 Groq:      U.S. Arrest (USAR)
+  🤖 Finetuned: undefined (undefined)
+Acronym: None (No Acronym)
+NAME: Tariffcoin  
+TICKER: TARF
+We need to follow steps.
+
+Step1: Identify meme core thing. Tweet: "These tariffs Trump is pushing, along with his one big beautiful bill will destroy ...". Meme likely about "Trump's tariffs" or "big beautiful bill". Could be "One Big Beautiful Bill" phrase? The meme could be "Trump's tariffs destroying the country". There's no explicit meme name.
+
+Step2: Check if meme already has a name in tweet. No.
+
+Step3: Choose method.
+
+We have a single concept? Could be "Tariffs" (single noun) that need to become a token. Could use ADD "COIN": Tariff -> Tariffcoin? But maybe "Trump Tariffs" as a meme: "Tariff" is a noun. So method D: ADD "COIN". Name would be "Tariffcoin". Ticker maybe "TARF" or "TAR". Must be catchy.
+
+Alternatively could be "One Big Beautiful Bill" as phrase, maybe portmanteau? Not two concepts.
+
+Thus choose D.
+
+Name: Tariffcoin
+
+Ticker: TFC? Usually 3-4 letters. Use "TARF". Let's output.
+
+
+  🧠 Groq:      Tariffcoin (TARF)
+  🤖 Finetuned: Hardmemes (HARDMEMES)
+Acronym: CEO (Chief Executive Officer)
+NAME: MuskCycle  
+TICKER: MUSK
+We need to follow steps.
+
+Step1: Identify meme core thing. The meme shows Elon Musk's head in a cycle labeled Hard Times, Great Memes, Good Times, Weak Memes, forming a loop. So core meme is the "Elon Musk meme cycle" or "Musk cycle". It's about the cyclical nature of meme quality around Elon.
+
+Step2: Check if meme already has a name in tweet. Tweet doesn't give a name. No explicit name.
+
+Step3: Choose method.
+
+We have options: Acronym (if acronym in tweet). There's an acronym "CEO" present, but that's not the meme name. The meme is about a cycle. Could be "Musk Cycle". That's a phrase. It's a single concept? It's a phrase of two words. Could be "The Musk Cycle" (add "THE")? The meme is a single common noun? "Cycle" is a noun, but the meme is about Elon Musk's head in a cycle. Could be "Musk Cycle". That's a two-word phrase, not a single word. Could we use "Add 'COIN'"? The meme is a single-word word, quality, commodity, or object that needs to become a token. "Cycle" is a word, but the meme is about the cycle of memes. Could be "Cyclecoin"? But maybe better to use "Add 'THE'"? The meme is a single common ordinary noun that the tweet makes legendary — one thing elevated from a thing to THE thing. The noun could be "Musk". But "Musk" is a person, not ordinary noun. Could be "Cycle". The meme makes the cycle legendary? Not sure.
+
+Portmanteau: combine Elon + cycle? "Eloncycle"? Or "Muskcycle"? That's a fused word. That could be a portmanteau: concept (cycle) + person (Elon). According to rules: If one element is a person, extract the name’s ending sound chunk (last pronounceable part) and prefix it with the concept. Person: Elon Musk. Last pronounceable part: "Musk". Prefix with concept: "Cycle" + "Musk"? Actually rule: prefix concept with name ending chunk? It says: extract the name’s ending sound chunk (last pronounceable part) - that would be "Musk". Prefix it with the concept to form one fused word. So concept is "Cycle". Prefix concept with "Musk"? That would be "MuskCycle"? Wait "prefix it with the concept" means concept goes before? Actually "prefix it with the concept" means put concept before the name chunk? Let's parse: "extract the name’s ending sound chunk (last pronounceable part) - prefix it with the concept to form one fused word". So concept first, then name chunk: "CycleMusk". That seems odd. Could be "MuskCycle" if we treat concept as suffix. But rule says prefix concept, so concept before name chunk: "CycleMusk". That is a fused word.
+
+But maybe better to use "Add 'COIN'" method: The meme is about "Musk Cycle". So we could call it "MuskCycleCoin". But we need exactly one method. Choose one.
+
+Which method fits best? The meme is a single concept (the cycle). Could be "Cycle". Add "COIN": "Cyclecoin". But that loses Elon.
+
+Portmanteau seems appropriate: combine Elon Musk with cycle => "MuskCycle". That captures meme.
+
+Thus choose method B: Portmanteau.
+
+Name: MuskCycle
+
+Ticker: maybe "MUSK"? Already used. Use "MUSK"? Could be "MUSK". But ticker should be short, maybe "MUSK". But that's same as Elon ticker? Not a real ticker. Could be "MUSKC". Or "MUSK". Use "MUSK". But maybe "MUSK" is taken. Use "MUSK". We'll output.
+
+Thus:
+
+NAME: MuskCycle
+TICKER: MUSK
+
+
+  🧠 Groq:      MuskCycle (MUSK)
+  🤖 Finetuned: Rounding Issue (ROUNDING)
+Acronym: Fed (Federal Reserve)
+NAME: Rounding Issue  
+TICKER: RND
+We need to follow steps.
+
+Step1: Identify meme core thing. The meme: Fed accidentally double-printed $400B, rounding issue. So meme is about "Fed rounding issue" or "double printing". Core meme: "Fed rounding issue" or "Fed double print". It's about central bank mistake.
+
+Step2: Check if meme already has a name in tweet. Tweet contains "rounding issue". That's a phrase used by Jerome Powell. Could be considered name? It's a phrase describing the mistake. Might be considered the meme name? The instruction: "clear name, term, phrase, character, or product that IS the meme by itself". "rounding issue" could be considered the meme phrase. Could use that directly. If yes, we should use it directly. So we would output NAME: Rounding Issue? But we need a memecoin name. If we use directly, we might just use "Rounding Issue". Then ticker maybe "ROUND". But need to follow steps: If meme already has a name, use it directly (extract). So NAME = Rounding Issue. TICKER maybe something derived? Not specified but we need ticker. Probably use abbreviation: RND? But we need to output ticker. Could be "ROUND". Usually ticker 3-4 letters. Use "RNDI"? But we can choose.
+
+But maybe we should treat "rounding issue" as the meme name. Then ticker: RNDI or RND. Let's pick "RND". Provide.
+
+Thus output:
+
+NAME: Rounding Issue
+TICKER: RND
+
+Check if any other steps needed. Since we used step2, we skip naming methods. So final.
+  🧠 Groq:      Rounding Issue (RND)
+  🤖 Finetuned: Insider Trading (INSIDERT)
+Acronym: YTD (Year-To-Date)
+NAME: Your Trading Disclosure (YTD)  
+TICKER: YTD
+We need to follow steps.
+
+Step1: Identify meme core thing people will remember and reference. The tweet is about Nancy Pelosi's stock portfolio up 51% YTD, no index fund, insider trading. Meme: "Pelosi insider trading" or "Pelosi's portfolio". Core meme: "Pelosi insider trading". Could be "Pelosi's Portfolio" but meme is about insider trading by politicians.
+
+Step2: Check if meme already has a name in tweet. Tweet contains "Clear insider trading". No specific name. So no.
+
+Step3: Choose method.
+
+We have acronym YTD present. Method A: ACRONYM: Use if acronym in tweet. The tweet includes YTD. So we can create an acronym-based name. Need to use the acronym to form a name? Example: AI logos look like buttholes -> Anal Intelligence (AI). So we need to create a phrase that expands YTD into something meme-like. Could be "Your Trading Disgrace" (YTD) or "Yielding The Darlings". But must capture meme about Pelosi insider trading. Could be "Yielding The Darlings"? Not great.
+
+Maybe we can use "YTD" as "Your Trading Disclosure". Or "YTD" stands for "Your Trading Dilemma". The meme name could be "Your Trading Dilemma (YTD)". But we need name and ticker.
+
+Name should be something like "Your Trading Dilemma". Ticker maybe YTD.
+
+But the method says: Use if acronym in tweet. So we need to create a name that is an expansion of the acronym. So we need to produce a phrase that expands YTD, referencing Pelosi insider trading. Something like "Yielding The Dollars". That captures profit. "Yielding The Dollars (YTD)". That seems plausible.
+
+Alternatively "Your Trading Disclosure". That references insider trading.
+
+Let's pick "Your Trading Disclosure (YTD)". Ticker: YTD.
+
+Check: Name: Your Trading Disclosure. Ticker: YTD.
+
+Make sure output format: NAME: ... TICKER: ...
+
+Proceed.
+  🧠 Groq:      Your Trading Disclosure (YTD) (YTD)
+  🤖 Finetuned: MAGA Hat (HAT)
+Acronym: POTUS (President of the United States)
+NAME: President Of The United States (POTUS)  
+TICKER: POTU
+We need to follow steps.
+
+Step1: Identify meme core thing. Image shows a man wearing a "Make America Great Again" hat standing in the Oval Office, hands outstretched, flags. Likely meme: "MAGA in the Oval Office" or "MAGA POTUS". The tweet includes acronym POTUS. The meme maybe "POTUS" but that's just acronym for President. The meme is a man (maybe Trump) wearing MAGA hat in Oval Office. Could be "MAGA POTUS". The tweet includes acronym POTUS, which is an acronym. Step2: Check if meme already has a name in tweet. The tweet includes "Make America Great Again" hat, "POTUS". The core meme could be "MAGA POTUS". There's no explicit name. So go to step3.
+
+We need to choose method. Options: ACRONYM if acronym in tweet. There is acronym POTUS. Could we use that as name? The meme is about a POTUS wearing MAGA hat. The acronym is present. So method A: Acronym. Use acronym in tweet to create a name? The rule: Use if acronym in tweet. Example: AI logos look like buttholes -> Anal Intelligence (AI). So we need to create a name that expands the acronym? The acronym is POTUS. Could we expand to something meme-y? Maybe "President Of The United States" is already expansion. But we need a meme name. Could be "President Of The United States" is the phrase, but that's not meme. Maybe we can create a playful expansion: "President Of The United States" is literal. But we need a name that captures meme: maybe "President Of The United States" is fine. But we need a name and ticker.
+
+Alternatively, method D: Add "COIN" to single word. Could be "MAGACoin". But we have acronym present, so method A is appropriate.
+
+Thus we need to produce a name using the acronym. Perhaps we can reinterpret POTUS as "President Of The United States" but that's not creative. Could we create a meme name like "President Of The United States" (POTUS) as the name. That seems okay.
+
+Ticker: Usually 3-4 letters. Could be "POTU". Or "MAGP". But maybe use "POTU". Or "MAGP". Since name is "President Of The United States" maybe ticker "POTU". Let's output.
+
+NAME: President Of The United States (POTUS)
+TICKER: POTU
+
+Check format: Only output NAME: and TICKER:.
+  🧠 Groq:      President Of The United States (POTUS) (POTU)
+^C
+yugagrawal@Mac deploybot % 
+
+"the" for grandeous and sinular and THE one rather than a one
+coin for trading mostly crypto related or idea can relate to a coin (tokenized debt / only up etc. / buying things (happy coin)) ask claude about this
 
 
 
+complete rename
+trumpus maximus
+sleepy joe
+biscuits jouney
+flying squiggles
+blaxk swan event
+ticker talk
+rogue agent
+digital ass
+floki wif hat
+theeaglerapesthegoose
+vampless
+chill alon
+pump wif mask
+moneye printer go brr
+venezuela take over
+president vs elon
+passenger kangaroo
+elon wif hat
+ceilingless
+spacex dragon
+the boys
+unity
+half way
+sol force 1
+memecycle
+shooting chimp dog
+money printer go brr
+ai marxism
+i got your backs
+solana pesasus
+diamond hands
+troll moon
+black swan event
+insider her trading
+raj and toly
+
+
+
+
+
+portmaneau/retard
+
+pempfen
+deve wubin
+chustopher nulen
+alexundriaocusizo curtez
+jurome puwel
+pete buttplug
+
+retardnald
+zuckbot
+grokception
+silvercoin
+trumparoo
+wizardlon
+supertrump
+balding woody baldy
+scam altman
+apebama
+dogelon
+moonhouse
+pixelnald
+nikita boar
+alienlon
+stevenald
+bullnald
+autocoin
+dwoge
+goldnald
+policenald
+gmebay
+memelon
+ANThropic
+
+
+"the"/"coin"
+the plague dog
+the silencing (rename)
+the wandering 7
+the hair dryer
+the last swing
+The Nietzchean Penguin
+the liberated lobster
+the quant
+the eye roll
+the sink
+the lost balloon
+the forbidden color
+the wall street owl
+the waiting dog
+the eagle
+the lobster
+the turtle
+the intelligent crow
+the immortal jellyfish
+the hidden prompt
+the strategy
+the one piece
+
+vibecoin
+dreamcoin
+infinitecoin
+Goldcoin
+randomcoin
+oilcoin
+emojoicoin
+namecoin
+eloncoin
+valuecoin
+meritcoin
+happycoin
+undervaluedcoin
+scamcoin
+debtcoin
+bangercoin
+tesla coin
+
+acronym play
+lay down and rot
+donald jesus trump
+cat executive officer
+reddit language model
+you only live once YOLO
+artificial general intelligence AGI
+arigicial girlfriend int
+beekeeper of the united states
+cat processing unit
+great beaver pound
+pedo of the united states
+anal intelligence
+we love fucking investors
+department of war
+department of war everywhere
+artificial goon intell
+wuantum safe bitcoin
+universal prosperity
+fomsi
+achieving a better life exp
+scam bonkman friend (also portmantaeu)
+king of the uni
+SEXBAAALS
+bitches money no texas
+
+special formats (rip, justice for)
+jf cocaine hippos
+rip max
+rip charlie
+rip 841
+just for tornado
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+images second or third tweet update
+
+reply
+text auto
+replyto in tweet update maybe second or third
+sometimes replyto text is "" then next tweet update actually updates it
+
+
+quoted
+
+retweet
+text just becomes the thing
+originalmedia has in original tweet socket
+
+
+
+
+commnted deploytoken
+
+
+
+
+
+
+
+CAN YOU PARALLEL THIS? DO YOU NEED SUGGESTION BEFORE IMAGE? IF NOT THEN WHY NOT JUST CREATE IMAGE WITH TWEET AND YOU HAVE 3 SECONDS TO MANUALLY FIGURE OUT A NAME + TICKER.
 need to get quoted info
 need to look at vids/thumbnails etc
 LOTS OF THESE DEVS USE AI TO FIGURE OUT THE NAME AND TICKER BUT THE IMAGE IS JUST SCRAPED OR OLD
@@ -12,6 +457,11 @@ bwam
 scrapes are quick 3-4 seconds 2 second old image
 6 seconds for scrape with creative name sf1, 
 uses old images but also uses old nams
+edits old images
+I WANT TO KNOW HOW QUICKLY HE CAN MAKE NEW IMAGES, AND HOW QUICKLY HE CAN EDIT OLD IMAGES TO FIT THE NARRATIVE. 
+got image off website 4 seconds
+3 seconds creative name kingnald + image scrape off tweeet
+
 
 
 
@@ -282,6 +732,36 @@ Ticker: RETARDNALD
 
 
 
+
+// whisper-large-v3-turbo
+// groq/compound
+// meta-llama/llama-4-scout-17b-16e-instruct
+// whisper-large-v3
+// llama-3.3-70b-versatile
+// openai/gpt-oss-20b
+// meta-llama/llama-prompt-guard-2-22m
+// llama-3.1-8b-instant
+// allam-2-7b
+// openai/gpt-oss-safeguard-20b
+// canopylabs/orpheus-arabic-saudi
+// groq/compound-mini
+// meta-llama/llama-prompt-guard-2-86m
+// qwen/qwen3-32b
+// openai/gpt-oss-120b
+// openai/gpt-oss-20b
+// canopylabs/orpheus-v1-english
+
+// nousresearch/hermes-3-llama-3.1-405b:free
+// meta-llama/llama-3.3-70b-instruct:free
+// google/gemma-4-31b-it:free
+// nvidia/nemotron-3-super-120b-a12b:free
+// nvidia/nemotron-3-nano-30b-a3b:free
+// qwen/qwen3-next-80b-a3b-instruct:free
+// openai/gpt-oss-120b:free
+
+
+
+// {"object":"list","data":[{"id":"qwen-3-235b-a22b-instruct-2507","object":"model","created":0,"owned_by":"Cerebras"},{"id":"zai-glm-4.7","object":"model","created":0,"owned_by":"Cerebras"},{"id":"gpt-oss-120b","object":"model","created":0,"owned_by":"Cerebras"},{"id":"llama3.1-8b","object":"model","created":0,"owned_by":"Cerebras"}]}%             
 
 
 
