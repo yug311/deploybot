@@ -13,7 +13,6 @@ import { WorkloadIdentityAuth } from 'openai/auth/workload-identity-auth.mjs';
 import { maybeParseChatCompletion } from 'openai/lib/parser.mjs';
 
 
-
 const client = new OpenAI({
   apiKey: process.env.GEMINI_API_KEY,
   baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/",
@@ -26,15 +25,11 @@ const openrouter = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
 });
 
-const model_image = "llama-3.3-70b-versatile";
-const model_suggestion = "openai/gpt-oss-120b"; //openai/gpt-oss-120b
+const model_suggestion = "gpt-oss-120b"; //openai/gpt-oss-120b
 const model_score = "llama-3.3-70b-versatile";
-// const isOSSModel = model.includes('gpt-oss');
-// const isCompound = model.includes('compound');
-
 const WHITELIST = [
     "elonmusk", "pumpfun", "a1lon", "sama", "claudeai", "anthropicai", "openai", "pmarca", "nikitabier", "cobie", "solana",
-    "rajgokal", "naval", "saylor", "balajis", "mert", "nasa", "jack", "toly",
+    "rajgokal", "naval", "saylor", "balajis", "mert", "nasa", "jack", "toly", "polymarket", "dexerto", "bloomberg", "nypost", "washtimes", "newyorker", "dailymail"
 
 ];
 
@@ -49,9 +44,6 @@ setInterval(() => {
     }
     console.log(`🧹 Cache cleaned — ${Object.keys(tweetCache).length} tweets remaining`);
 }, 5 * 60 * 1000);
-
-
-
 
 
 async function test() {
@@ -69,7 +61,11 @@ async function test() {
 // { author: "pmarca", text: "Nancy Pelosi's stock portfolio is up 51% YTD. She does not hold a single index fund. Never has. Clear insider trading" },
 // { author: "elonmusk", text: "[image: The image shows a man wearing a 'Make America Great Again' hat standing in the Oval Office. The man is standing behind the desk with his hands outstretched, and the room features several American flags and presidential seals.]" },
 
+
+
 //ACRONYM
+// { author: "pmarca", text: "S&P is so shit" },
+// { author: "pmarca", text: "JUST IN: 🇺🇸 Trump family's World Liberty Financial (WLFI) partnered with crypto project linked to alleged scam-ring - investors have lost everything" },
 // { author: "pmarca", text: "LDAR is a term used to describe someone who is doing nothing with their life, laying down and rotting" },
 // { author: "pmarca", text: "After attacking the Head of the Catholic Church, Pope Leo XIV, in a rambling post earlier tonight for his criticisms of the ongoing conflict in the Middle East, President Trump posted this AI image to TruthSocial, portraying himself as Jesus Christ." },
 // { author: "pmarca", text: "this cat accidentally became the CEO of a fintech startup [image: a confused cat sitting in a suit at a laptop during a board meeting]" },
@@ -78,8 +74,8 @@ async function test() {
 // { author: "pmarca", text: "he serves as the graphics card [image: The image shows a small white and gray cat lying inside the open casing of a computer, with various components visible behind it. The power supply unit reads 'POWER 650W'.]" },
 // { author: "pmarca", text: "Trump beekeeper era is undefeated [image: Trump in full beekeeper outfit standing on the White House lawn controlling some bees.]" },
 // { author: "pmarca", text: "guy builds ai girlfriend that gives him trading advice" },
-// { author: "pmarca", text: "The president is a really nice guy" },
-// { author: "pmarca", text: "Theres a cat on the USDC" },
+// { author: "pmarca", text: "The president is a really pedophile" },
+{ author: "pmarca", text: "Theres a cat on the USDC" },
 
 //THE
 // { author: "pmarca", text: "Melania Trump caught on camera rolling her eyes at Biden during state dinner" },
@@ -102,7 +98,7 @@ async function test() {
 // { author: "pmarca", text: "what it’s like to have friends at anthropic [image: The image depicts a screenshot of a chat window on a smartphone with four messages sent and received from a sender named 'ant' with the profile picture of an ant. The chat has the title, 'Messages,' and appears to be a humorous meme.]" },
 
 //COIN
-{ author: "pmarca", text: "BREAKING: National Debt Exceeds 1T." },
+// { author: "pmarca", text: "BREAKING: National Debt Exceeds 1T." },
 // { author: "pmarca", text: "JUST IN: Elon Musk says most cryptocurrencies are 'scams' during OpenAI court testimony.\n\n'Some of them have merit, but most of them are scams.'" },
 // { author: "pmarca", text: "BREAKING: oil prices surge 50 percent overnight" },
 // { author: "pmarca", text: "BREAKING: gold just hit an all time high as markets panic" },
@@ -147,48 +143,42 @@ async function test() {
         const groq = await generateSuggestion(example.text, example.author);
         console.log(`  🧠 Groq:      ${groq.name} (${groq.ticker})`);
 
-        await test2(groq.name, groq.ticker, example.text,  null)
+        // await getHistoricalImages(groq.name, groq.ticker, example.text,  null)
 
         await new Promise(resolve => setTimeout(resolve, 1000));
     }
 }
-// test();
 
 async function getHistoricalImages(name, ticker, tweetText, mediaURL)
 {
     const numpics = mediaURL ? 4 : 5
 
-    const response = await fetch("https://nyc.j7tracker.io/api/coin/search?q=dogcoin&isPump=false&isBonk=false&isBags=false&isUsd1=false&isOg=false&onlyBonded=false", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "origin": "https://j7tracker.io",
-            "referer": "https://j7tracker.io/",
-            "x-session-id": process.env.SESSION_ID,
-            "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
-        }
+    const params = new URLSearchParams({
+    input: name,
+    type: "tokens",
+    filters: JSON.stringify({ blockchains: "solana", bondedOnly: true }),
+    sortBy: "searchScore",
+    excludeBonded: false,
+    limit: numpics,
+    });
+
+    const response = await fetch(`https://api.mobula.io/api/2/fast-search?${params}`, {
+    headers: {
+        "Authorization": process.env.MOBULA_API_KEY,
+    },
     });
 
     const data = await response.json();
-    // Extract image URLs from results, limit to numPics
-    const imageUrls = data.results
-    .map(token => token.image)
-    .filter(url => url); // Remove any null/undefined
 
-    const allImages = mediaURL ? [mediaURL, ...imageUrls] : imageUrls;
-    const limitedImages = allImages.slice(0, numpics);
-
-    console.log(limitedImages);
-
-    // Convert to content format
-    const imageContent = limitedImages.map(url => ({
-    type: "image_url",
-    image_url: { url }
+    const imageContent = data.data
+    .map(token => token.logo)
+    .filter(url => url)
+    .map(url => ({
+        type: "image_url",
+        image_url: { url }
     }));
+    if (mediaURL) imageContent.unshift({ type: "image_url", image_url: mediaURL });
 
-
-
-            
     const startTime = Date.now();
     const visionResponse = await groq.chat.completions.create({
     model: "meta-llama/llama-4-scout-17b-16e-instruct",
@@ -230,16 +220,17 @@ Output format: Just the number or "NONE". Nothing else.`
                 temperature: 0
             });
                 const elapsedTimeMs = Date.now() - startTime;
-                console.log(`Vision API call completed in ${elapsedTimeMs} ms`);
 
     const imageDescription = visionResponse.choices[0].message.content.trim();
+    const reasoning1 = visionResponse.choices[0].message.reasoning;
 
     if (imageDescription !== "NONE") {
     const selectedIndex = parseInt(imageDescription) - 1; // Convert 1-5 to 0-4
-    const selectedImage = imageUrls[selectedIndex];
-    console.log("Selected image:", selectedImage);
+    const selectedImage = imageContent[selectedIndex].image_url;
+    return selectedImage;
     } else {
     console.log("No suitable image found"); //ai generate if none found
+    return null;
     }
 }
 
@@ -251,9 +242,11 @@ You are a memecoin naming expert. Your job: read a tweet and output a NAME and T
 
 Constraints:
 Name: Max 32 Characters
-Ticker: Max 13 Characters
+Ticker: Max 13 Characters, all characters allowed
 
 **FOLLOW THESE STEPS EXACTLY IN ORDER**
+
+1a. Scan the tweet for any explicit or relevant acronyms. They do not have to be in the tweet, just directly related to a concept in it. (Examples: POTUS, AI, AGI, LLM, CPU, GPU, UFO, CEO, IRS, USDC, etc)
 
 1. Identify what the meme is (the core thing people will remember and reference). 
 
@@ -261,10 +254,12 @@ Ticker: Max 13 Characters
    - If YES (The tweet contains a clear name, term, phrase, character, or product that IS the meme by ITSELEF) → use it directly (extract)
    - If NO → Go to step 3
 
-3. Choose exactly ONE of the following methods to name the meme based on its use case. Only name the meme once you have chosen a method. CONSIDER ALL METHODS*
+3. Choose exactly ONE of the following methods to name the meme based on its use case. Only name the meme once you have chosen a method. Consider all methods but only choose one.
 
-### A. ACRONYM: Use if acronym relevant to meme
+### A. ACRONYM: Always use if acronym is relevant to meme
 Example: AI logos look like buttholes -> Anal Intelligence (AI)
+
+Take acronym in step 1a and redefine it in with the meme.
 
 ---
 
@@ -274,7 +269,7 @@ Example: Retard + Donald Trump -> Retardnald
 PORTMANTEAU RULES:
 - MUST be ONE fused word
 - If one element is a person:
-  - extract the name’s ending sound chunk (last pronounceable part - preferably FIRST NAME)
+  - extract the name's ending sound chunk (last pronounceable part - preferably FIRST NAME)
   - prefix it with the concept to form one fused word
 
 ---
@@ -294,6 +289,8 @@ Use established meme formats, crypto/financial terminology, wordplay, and any cr
 
 4. Ticker: Same as name, Most important word/concept in name, or Acronym
 `
+
+// test();
 
 async function suggestFinetuned(tweetText, author) {
     const response = await fetch("http://localhost:11434/api/generate", {
@@ -324,42 +321,7 @@ TICKER:`,
 
 async function generateSuggestion(tweetText, author) {
 
-    const response1 = await groq.chat.completions.create({
-        model: model_score,
-        messages: [
-        
-            
-{
-            role: "user",
-            content: `Scan the tweet for any explicit or relevant acronyms. They do not have to be in the tweet, just directly related to a concept in it (one degree of separation). (Think: Currencies, titles, organizations, tech terms, etc). First consider all possible acronyms, and if there is an acronym, give me one according to this priority order:
-
-1. Explicit acronym in the tweet.
-2. Currency/Tech Acronym
-3. Title
-4. Government/Organization
-
-Tweet: ${tweetText}
-Author: ${author}
-
-OUTPUT FORMAT (NOTHING ELSE): 
-Acronym: Symbol (Meaning) or 'No Acronym'
-`
-
-        }],
-        max_completion_tokens: 1000,
-        seed: 0,
-        temperature: 0,
-    });
-
-    const content1 = response1.choices[0].message.content.trim();
-    console.log(content1)
-
-
-
-
-
-
-    const response = await groq.chat.completions.create({
+    const response = await cerebras.chat.completions.create({
         model: model_suggestion,
         messages: [
 
@@ -367,51 +329,33 @@ Acronym: Symbol (Meaning) or 'No Acronym'
                 role: "system",
                 content: prompt
             },
-        
-            
-{
-            role: "user",
-            content: `Tweet: "${tweetText}"
+                 
+            {
+                role: "user",
+                content: `Tweet: "${tweetText}"
 Author: ${author}
-
-Acronyms: ${content1}
 
 OUTPUT ONLY:
 NAME:
 TICKER:
 `
-
-        },
+            },
     
-    
-    ],
-        max_completion_tokens: 3000,
-        seed: 0,
-        // reasoning_effort: "low",
-        temperature: 0,
-    });
+        ],
+            max_completion_tokens: 3000,
+            seed: 30,
+            reasoning_effort: "medium",
+            temperature: 0,
+        });
 
     const content = response.choices[0].message.content.trim();
     const name = content.match(/NAME: (.+)/)?.[1]?.trim();
     const ticker = content.match(/TICKER: (.+)/)?.[1]?.trim();
 
-        // const content = response.choices[0].message.content.trim();
-    console.log(content);
-    // const name = content.match(/NAME: (.+)/)?.[1]?.trim();
-    // const ticker = content.match(/TICKER: (.+)/)?.[1]?.trim();
-    // const reasoning = content.match(/REASONING: (.+)/)?.[1]?.trim();
-
-// console.log(response.usage.prompt_tokens);
-// console.log(response.usage.completion_tokens);
-// console.log(response.usage.total_tokens);
-
     const reasoning1 = response.choices[0].message.reasoning;
-    console.log(reasoning1)
+    console.log(reasoning1);
     return { name, ticker };
 }
-
-
-
 
 
 async function scoreTweet(tweetText, authorsHandle) {
@@ -502,124 +446,9 @@ Reasoning: Immediate coin identity. An AI crossing a threshold into something ne
     return {score: score, reasoning: response.choices[0].message.content.trim()};
 }
 
-
-function logToFile(tweet, score, reasoning, tweetUrl, suggestion) {
-    const entry = {
-        tweet: tweet,
-        score,
-        reasoning,
-        tweetUrl,
-        suggestion
-    };
-
-    const filename = `log_${new Date().toISOString().split("T")[0]}.json`;
-    
-    let existing = [];
-    if (fs.existsSync(filename)) {
-        existing = JSON.parse(fs.readFileSync(filename, "utf8"));
-    }
-    
-    existing.push(entry);
-    fs.writeFileSync(filename, JSON.stringify(existing, null, 2));
-}
-
 async function generateImage(tweetText, prediction, ticker, tweet) {
-    const REFERENCES = {
-    wojak:    `data:image/webp;base64,${fs.readFileSync("wojak.webp").toString("base64")}`,
-    ms_paint: `data:image/webp;base64,${fs.readFileSync('memestock.webp', { encoding: 'base64' })}`,
-    painted:  `data:image/png;base64,${fs.readFileSync('odds.png',  { encoding: 'base64' })}`,
-    };
 
-
-    // Step 1: classify the visual archetype
-    const archetypeResponse = await groq.chat.completions.create({
-        model: model_image,
-        messages: [{
-            role: "user",
-            content: `You are classifying a memecoin tweet into a visual art style for its coin image.
-
-Tweet: "${tweetText}"
-Coin name: ${prediction}
-Ticker: ${ticker}
-
-Archetypes:
-- FLAT_ICON: Simple abstract concept, body humor, crude single-subject idea (e.g. a sperm, an anus, a logo)
-- MS_PAINT: Parodies, mockery, tokenizations of specific objects, coins, jokes about entities with clear visual identity
-- WOJAK: Relates to internet subculture, incel/nerd/tech culture, NPC memes
-- CUTE_3D: Wholesome absurdism, Pixar energy
-- HYPEREALISTIC - The tweet features an animal, creature, object, or combination of them placed in a dramatic, epic, surreal, or absurd context. 
-- PAINTED: Philosophical, inspiring, emotional, artistic
-
-Reply with only one word: FLAT_ICON, MS_PAINT, WOJAK, HYPEREALISTIC, CUTE_3D, or PAINTED`
-        }],
-        max_tokens: 30,
-        temperature: 0
-    });
-
-    const archetype = archetypeResponse.choices[0].message.content.trim().toUpperCase();
-
-    // Step 2: generate a tailored image prompt for the archetype
-    let prompt;
-
-    if (archetype === "FLAT_ICON") {
-        // Clean, minimal, app-icon style. The concept IS the image. Works best for
-        // body humor, abstract ideas, or anything that reduces to a single symbol.
-        prompt = `Flat vector icon of ${prediction} inspired by "${tweetText}", minimal design, single centered subject, 
-            solid background, clean simple shapes, 2-3 color palette, no text, no gradients, 
-            app icon composition, graphic design aesthetic, high contrast`;
-
-    } else if (archetype === "MS_PAINT") {
-        // Deliberately terrible art. The low quality is the joke. Wobbly lines, 
-        // off-brand colors, looks like a child made it in 30 seconds. Works for 
-        // brand parodies and corporate mockery.
-        prompt = `MS Paint style crude drawing of ${prediction} inspired by "${tweetText}", 
-intentionally low quality, childlike wobbly lines, flat crayon colors, 
-no shading, deliberately bad digital art, meme art style, simple composition. Makes fun of the subject by making it look unsophisticated, memetic and ridiculous.
-The core meme is that ${prediction.name} is ridiculous and stupid. 
-Make the image visually show the joke from the tweet in the most obvious, literal, and childish way possible. 
-Exaggerate the main pun or insult — make it big, dumb, and hilarious. 
-The worse and more unsophisticated the drawing looks, the funnier it is.`;
-
-    } else if (archetype === "WOJAK") {
-        // Classic internet character vocabulary. Thick outlines, flat fills, 
-        // slightly uncanny expressions. The face says everything. Works for 
-        // any "guy who does X" or internet culture narrative.
-        prompt = `Wojak meme style illustration representing ${prediction} inspired by "${tweetText}", 
-thick black outlines, flat color fills, simplified exaggerated facial features, 
-slightly uncanny expression, internet meme character art, white background, 
-no text, centered portrait composition`;
-
-    } else if (archetype === "HYPEREALISTIC") {
-        // High production value surreal composite. The joke lives in the absurd 
-        // juxtaposition of something real placed in an impossible context.
-        // Works for political figures, celebrities, news events.
-        prompt = `cinematic hyperrealistic 3D render of ${prediction} inspired by "${tweetText}", 
-dramatic volumetric lighting, ultra detailed textures, high contrast, surreal meme composition, 
-moody or epic atmosphere depending on context, centered subject`;
-
-    } else if (archetype === "CUTE_3D") {
-        // Pixar-esque warmth. Soft textures, big eyes, golden hour glow. 
-        // Designed to make people go "aww" before they ape in.
-        // Works for any animal coin or aspirational/moon narrative.
-        prompt = `3D rendered Pixar style illustration of ${prediction} inspired by "${tweetText}", 
-cute and expressive character, large eyes, soft fur or plush texture, 
-cinematic warm golden hour lighting, bokeh background, 
-high quality 3D render, adorable wholesome energy, centered composition`;
-
-    } else {
-        // PAINTED — the "deep lore" archetype. Painterly brushstrokes, moody atmosphere,
-        // usually a known meme character placed in something cinematic or beautiful.
-        // Works for inspiring posts, philosophical tweets, "we're all gonna make it" energy.
-        prompt = `Digital painting representing ${prediction} inspired by "${tweetText}", 
-expressive painterly brushstrokes, cinematic atmospheric scene, 
-moody emotional lighting, 
-contemplative and beautiful mood, Van Gogh or impressionist influence, 
-centered subject gazing into distance`;
-    }
-
-    prompt = `The image should capture the essence of the meme/joke/idea of the tweet in a way that is immediately understandable and visually striking. **DO NOT ADD TEXT OR WORDS TO THE IMAGE.** ${prompt}`;
-
-    let referenceImage = null;
+    let prompt = `Create a single, striking image that captures the core meme concept of a viral tweet. The image should be simple but powerful, distilling the essence of the meme into a visual form that is instantly recognizable and shareable.`
 
     const controller = new AbortController();
     if (tweet) tweet.abortController = controller;
@@ -639,10 +468,6 @@ centered subject gazing into distance`;
                 prompt,
                 session_id: process.env.SESSION_ID,
                 model: "model-b",
-                ...(referenceImage && {
-                    image: referenceImage,
-                    images: [referenceImage]
-                })
             })
         });
 
@@ -751,50 +576,50 @@ socket.on("connect", () => {
 });
 
 socket.on("tweet", (data) => {
-    // const handle = data.author?.handle?.toLowerCase();
-    // if (data.type !== "TWEET"){return}
-    // if (!WHITELIST.includes(handle)) return;
+    const handle = data.author?.handle?.toLowerCase();
+    if (data.type !== "TWEET"){return}
+    if (!WHITELIST.includes(handle)) return;
 
-    // const recentTweet = Object.values(tweetCache).find(t => 
-    //     t.author?.handle?.toLowerCase() === handle && 
-    //     Date.now() - t.cachedAt < 20000
-    // );
-    // if (recentTweet) {
-    //     return;
-    // } 
+    const recentTweet = Object.values(tweetCache).find(t => 
+        t.author?.handle?.toLowerCase() === handle && 
+        Date.now() - t.cachedAt < 20000
+    );
+    if (recentTweet) {
+        return;
+    } 
 
-    // tweetCache[data.id] = {
-    //     ...data,
-    //     cachedAt: Date.now(),
-    //     processing: false,
-    //     imageArrived: false,
-    //     hasMedia: data.media?.images?.length > 0
-    // };
+    tweetCache[data.id] = {
+        ...data,
+        cachedAt: Date.now(),
+        processing: false,
+        imageArrived: false,
+        hasMedia: data.media?.images?.length > 0
+    };
 
-    // processTweet(data.id);
+    processTweet(data.id);
 });
 
 socket.on("tweet_update", (data) => {
-    // const existing = tweetCache[data.id];
-    // if (!existing) return;
+    const existing = tweetCache[data.id];
+    if (!existing) return;
 
-    // const hasMedia = data.media?.images?.length > 0;
+    const hasMedia = data.media?.images?.length > 0;
 
-    // tweetCache[data.id] = {
-    //     ...data,
-    //     cachedAt: existing.cachedAt,
-    //     processing: existing.processing,
-    //     imageArrived: existing.imageArrived || hasMedia,
-    //     hasMedia: existing.hasMedia || hasMedia,
-    //     abortController: existing.abortController
-    // };
+    tweetCache[data.id] = {
+        ...data,
+        cachedAt: existing.cachedAt,
+        processing: existing.processing,
+        imageArrived: existing.imageArrived || hasMedia,
+        hasMedia: existing.hasMedia || hasMedia,
+        abortController: existing.abortController
+    };
 
-    // if (hasMedia && !existing.hasMedia) {        
-    //     if (existing.processing) {
-    //         existing.abortController?.abort();
-    //         processWithImage(tweetCache[data.id]);
-    //     }
-    // }
+    if (hasMedia && !existing.hasMedia) {        
+        if (existing.processing) {
+            existing.abortController?.abort();
+            processWithImage(tweetCache[data.id]);
+        }
+    }
 });
 async function processTweet(tweetId) {
 
@@ -804,6 +629,7 @@ async function processTweet(tweetId) {
     tweet.processing = true;
 
     const {score, reasoning} = await scoreTweet(tweet.text, tweet.author?.handle);
+    console.log(tweet.text, reasoning);
 
     // check 1 — image arrived while we were generating the score
     if (tweet.imageArrived) {
@@ -882,6 +708,7 @@ async function processWithImage(tweet) {
     const combinedText = `${tweet.text || ""} [image: ${imageDescription}]`.trim();
 
     const { score, reasoning } = await scoreTweet(combinedText, tweet.author?.handle);
+    console.log(combinedText, reasoning);
 
     if (score < 7) {
         tweet.processing = false;
@@ -895,12 +722,7 @@ async function processWithImage(tweet) {
         return;
     }
 
-    let image = await getHistoricalImages(
-        suggestion.name,
-        suggestion.ticker,
-        combinedText,
-        imageUrl
-    );
+    let image = await getHistoricalImages(suggestion.name,suggestion.ticker,combinedText,imageUrl);
 
     if (!image) {
         image = await generateImage(combinedText, suggestion.name, suggestion.ticker, tweet);
