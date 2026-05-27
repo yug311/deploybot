@@ -72,7 +72,7 @@ You understand that most tweets — even from big accounts, even funny ones, eve
 
 
 
-export const scoreUserPrompt = `Rate this tweet's memecoin potential 1-10. 
+export const scoreUserPrompt = (tweetText, authorsHandle) => `Rate this tweet's memecoin potential 1-10. 
 
 BEFORE SCORING — ask yourself: does this tweet contain an actual meme, joke, concept, or moment? Not just energy, not just slang, not just a famous name. Something that could become a coin with an identity. If the answer is no, the score is low regardless of everything else.
 
@@ -146,4 +146,5 @@ If NONE of them work at all, output: NONE
 
 Output format: Just the number or "NONE". Nothing else.`;
 
-const generateImagePrompt
+export const generateImagePrompt = `Create a single, striking image that captures the core meme concept of a viral tweet. The image should be simple but powerful, distilling the essence of the meme into a visual form that is instantly recognizable and shareable.`;
+
