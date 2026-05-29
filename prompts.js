@@ -8,10 +8,10 @@ Ticker: Max 13 Characters, all characters allowed
 
 1a. Scan the tweet for any explicit or relevant acronyms. They do not have to be in the tweet, just directly related to a concept in it. (Examples: POTUS, AI, AGI, LLM, CPU, GPU, UFO, CEO, IRS, USDC, etc)
 
-1. Identify what the meme is (the core thing people will remember and reference). 
+1. Identify what the meme is. Be specific.
 
-2. Check: does the meme already have a name in the tweet?
-   - If YES (The tweet contains a clear name, term, phrase, character, or product that IS the meme by ITSELEF) → use it directly (extract)
+2. Check: is there a specific named thing, word/phrase, title, label that can be extracted directly as the meme (doesn't need to describe the entire meme, just needs to be the specific concrete thing it pins to)?
+   - If YES → use it directly (extract)
    - If NO → Go to step 3
 
 3. Choose exactly ONE of the following methods to name the meme based on its use case. Only name the meme once you have chosen a method. Consider all methods but only choose one.
@@ -102,28 +102,11 @@ WHAT MAKES A SCORE LOW:
 - Announcements that sound big and important, but are not groundbreaking, viral, or memeable.
 - An image that is just a generic photo, promotional graphic, or illustration with no standalone reaction value — an image that requires the tweet text to explain it is not elevating the score
 
-## Reason through it first in one sentence referencing the criteria 
-above. Then give the score as a single number on its own line.
-
 ##OUTPUT FORMAT:
-REASONING: ...
 SCORE: ...
 
 Tweet: <${tweetText}>>>
-Twitter/X handle: <${authorsHandle}>>>
-
-## EXAMPLES:
-Tweet: "Trump is destroying this country and nobody is doing anything about it"
-Score: 2
-Reasoning: Famous name with no joke, no moment, no concept. Pure opinion. A coin named "Trump Destruction" has no identity beyond anger. This gets liked and scrolled, not screenshotted.
-
-Tweet: "gold just hit an all time high as markets panic"
-Score: 5
-Reasoning: Has financial energy and a real event but no coin identity. "Gold pumping" is a fact, not a meme. There's no joke, no vessel, no specific angle that makes this more than a headline. The concept exists but nothing makes it stick.
-
-Tweet: "Grok can now see, hear, and feel. What have we done."
-Score: 9
-Reasoning: Immediate coin identity. An AI crossing a threshold into something new, wrapped in existential dread. The phrase "what have we done" is a punchline that lands on its own. Vivid, specific, culturally loaded. You can see the coin already.`;
+Twitter/X handle: <${authorsHandle}>>>`;
 
 
 

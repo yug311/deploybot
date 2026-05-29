@@ -27,11 +27,11 @@ const openrouter = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
 });
 
-const model_suggestion = "openai/gpt-oss-120b"; //openai/gpt-oss-120b
-const model_score = "llama-3.3-70b-versatile";
+const model_suggestion = "gpt-oss-120b"; //openai/gpt-oss-120b.  gpt-oss-120b
+const model_score = "llama-3.1-8b-instant"; //llama-3.1-8b-instant
 const WHITELIST = [
     "elonmusk", "pumpfun", "a1lon", "sama", "claudeai", "anthropicai", "openai", "pmarca", "nikitabier", "cobie", "solana",
-    "rajgokal", "naval", "saylor", "balajis", "mert", "nasa", "jack", "toly", "polymarket", "dexerto", "bloomberg", "nypost", "washtimes", "newyorker", "dailymail"
+    "rajgokal", "naval", "saylor", "balajis", "mert", "nasa", "jack", "toly", "polymarket", "dexerto", "bloomberg", "washtimes", "newyorker",
 
 ];
 
@@ -61,7 +61,7 @@ async function getHistoricalImages(name, ticker, tweetText, mediaURL, signal)
     });
 
     const data = await response.json();
-    if (!data.data?.length) return null;
+    if (!data.data?.length && !mediaURL) return null;
 
     const imageContent = data.data
     .map(token => token.logo)
@@ -71,6 +71,8 @@ async function getHistoricalImages(name, ticker, tweetText, mediaURL, signal)
         image_url: { url }
     }));
     if (mediaURL) imageContent.unshift({ type: "image_url", image_url: { url: mediaURL } });
+    console.log(mediaURL);
+    console.log(imageContent);
 
     const startTime = Date.now();
     const visionResponse = await groq.chat.completions.create({
@@ -115,7 +117,7 @@ async function getHistoricalImages(name, ticker, tweetText, mediaURL, signal)
 
 async function generateSuggestion(tweetText, author, signal) {
 
-    const response = await groq.chat.completions.create({
+    const response = await cerebras.chat.completions.create({
         model: model_suggestion,
         messages: [
             {
@@ -162,7 +164,7 @@ async function scoreTweet(tweetText, authorsHandle, signal) {
 
     const scoreMatch = response.choices[0].message.content.match(/SCORE: (\d+)/);
     const score = scoreMatch ? parseInt(scoreMatch[1]) : 0;
-    return {score: score, reasoning: response.choices[0].message.content.trim()};
+    return {score: score};
 }
 
 async function generateImage(tweetText, prediction, ticker, signal) {
@@ -360,14 +362,16 @@ async function processTweet(tweetId) {
         tweet.abortController = controller;
         const signal = controller.signal;
 
-        const {score, reasoning} = await scoreTweet(tweet.text, tweet.author?.handle, signal);
-        console.log(tweet.text, reasoning);
+        const {score} = await scoreTweet(tweet.text, tweet.author?.handle, signal);
+        console.log(tweet.text, score);
+        console.log("1ELAPSED SCORE TIME:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
 
-        if (score >= 5)
+        if (score >= 7)
         {
             player().play("audio.wav");
 
             const suggestion = await generateSuggestion(tweet.text, tweet.author?.handle, signal);
+            console.log("1ELAPSED SUGGESTION TIME:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
             if (!suggestion.name || !suggestion.ticker)
             {
                 tweet.processing = false;
@@ -376,10 +380,12 @@ async function processTweet(tweetId) {
 
             let image = await getHistoricalImages(suggestion.name, suggestion.ticker, tweet.text, null, signal);
             console.log("Historical image result:", image);
+            console.log("1ELAPSED HISTORICAL IMAGE TIME:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
 
             if (!image)
             {
                 image = await generateImage(tweet.text, suggestion.name, suggestion.ticker, signal);
+                console.log("1ELAPSED GENERATED IMAGE TIME:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
             }
 
             if (!image)
@@ -393,7 +399,7 @@ async function processTweet(tweetId) {
             if (result.type === "token_create_success")
             {
                 console.log(`  ✅ Token deployed: ${result.mint_address}`);
-                console.log('ELAPSED TIME:', ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
+                console.log('1ELAPSED TIME:', ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
             } 
             
             else
@@ -466,13 +472,15 @@ async function processWithImage(tweet) {
             console.log("❌ Image description failed:", err.message, "— falling back to text only");
             imageDescription = "NONE";
         }
+        console.log("2ELAPSED VISION TIME:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
 
         const combinedText = `${tweet.text || ""} [image: ${imageDescription}]`.trim();
 
-        const { score, reasoning } = await scoreTweet(combinedText, tweet.author?.handle);
-        console.log(combinedText, reasoning);
+        const { score } = await scoreTweet(combinedText, tweet.author?.handle);
+        console.log(combinedText, score);
+        console.log("2ELAPSED SCORE TIME:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');   
 
-        if (score < 5) {
+        if (score < 7) {
             return;
         }
         player().play("audio.wav");
@@ -481,12 +489,16 @@ async function processWithImage(tweet) {
         if (!suggestion.name || !suggestion.ticker) {
             return;
         }
+        console.log("2ELAPSED SUGGESTION TIME:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');   
+
 
         let image = await getHistoricalImages(suggestion.name,suggestion.ticker,combinedText,imageUrl);
-        console.log("Historical image result:", image);
+        console.log("2Historical image result:", image);
+        console.log("ELAPSED HISTORICAL IMAGE TIME:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
 
         if (!image) {
             image = await generateImage(combinedText, suggestion.name, suggestion.ticker);
+            console.log("2ELAPSED GENERATED IMAGE TIME:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
         }
 
         if (!image) {
@@ -498,7 +510,7 @@ async function processWithImage(tweet) {
         if (result.type === "token_create_success")
         {
             console.log(`  ✅ Token deployed: ${result.mint_address}`);
-            console.log('ELAPSED TIME:', ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
+            console.log('2ELAPSED TIME:', ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
         } 
         else
         {
