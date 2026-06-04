@@ -1,3 +1,65 @@
+1. IDENTIFY THE meme
+-identifying broad/abstract ideas instead of direct thing in the meme
+-not always making the connections and being as specific as possible
+
+2.### A. EXTRACT: *ALWAYS* use when there is an explicit named thing, word/phrase, title, or label that is associated with the meme.
+-other methods sometimes override
+-extracts wrong thing (google insider vs alpharacoon) (pope vs magnifica humanitas)
+-does not name because extracted thing doesnt represent the meme it identified ("username", doesnt represent pope/ai) (google insider literally the meme it identifies so it picks that over alpharacoon)
+-sometimes doesnt think the name is meme-y enough/doesnt capture the meme
+
+ideas:
+"in the tweet" - the extracted thing doesnt have to represent the overarching abstract meme, just its representation in this specific tweet
+split between creative and extract - extract should take on virality/trending etc not a funny meme
+memetic subject?
+removed captures the meme.
+
+BOTH WORKS
+NO ALWAYS WORKS
+no important does not work
+neither works
+
+ *ALWAYS* use
+*IMPORTANT: It does not have to be or represent the EXACT meme, just a specific thing related to it.
+
+
+
+2. Evaluate methods A-F in order. Consider every method before making a decision. Choose exactly ONE method and follow only that method's rules.
+
+### A. EXTRACT: Use when an explicit named entity, thing, word/phrase, title, or label is in the tweet.
+Example: Dog "Harry" announced: -> Harry, Phrase "gonna be huge" -> Gonna Be Huge
+
+---
+
+### B. ACRONYM: Use if acronym relevant to the meme.
+Example: AI logos look like buttholes -> Anal Intelligence (AI)
+
+Take acronym and redefine it with the meme. Prefer crude and vulgar humor. 
+
+---
+
+
+
+
+ALWAYS WORKS
+2. Choose exactly ONE of the following methods based on its use case. GO IN ORDER AND CONSIDER ALL. DO NOT CONSIDER ANY OTHER METHODS.
+
+### A. EXTRACT: Use when an explicit named entity, thing, word/phrase, title, or label appears verbatim in the tweet.
+Example: Dog "Harry" announced: -> Harry, Phrase "gonna be huge" -> Gonna Be Huge
+
+*IMPORTANT: It does not have to be or represent the meme, just a specific thing related to it.
+
+---
+
+
+
+
+
+
+
+
+WORD EXPLICIT COULD BE INTERESTING INSTEAD OF SPECIFIC
+
 GOOGLE/ALPHARACCOON
 partially identifies alpharaccoon after considering google insider, extracts google insider in step 2
 sometimes never identifies but mentions in part 2
@@ -21,6 +83,7 @@ not having it gives acronyms s&p
 INSTANT SCRAPED LIKE INSTA 0 SEC DELAT
 double deploy normal and then with image??
 ❌ Image description failed: 400 {"error":{"message":"failed to retrieve media: received status code: 404","type":"invalid_request_error"}} — falling back to text only
+image url error? might be tied to aboe
 "the" for grandeous and sinular and THE one rather than a one
 coin for trading mostly crypto related or idea can relate to a coin (tokenized debt / only up etc. / buying things (happy coin)) ask claude about this
 

@@ -28,7 +28,7 @@ const openrouter = new OpenAI({
 });
 
 const model_suggestion = "gpt-oss-120b"; //openai/gpt-oss-120b.  gpt-oss-120b
-const model_score = "llama-3.1-8b-instant"; //llama-3.1-8b-instant
+const model_score = "llama-3.1-8b-instant"; //llama-3.1-8b-instant. // llama-3.3-70b-versatile
 const WHITELIST = [
     "elonmusk", "pumpfun", "a1lon", "sama", "claudeai", "anthropicai", "openai", "pmarca", "nikitabier", "cobie", "solana",
     "rajgokal", "naval", "saylor", "balajis", "mert", "nasa", "jack", "toly", "polymarket", "dexerto", "bloomberg", "washtimes", "newyorker",
@@ -130,8 +130,8 @@ async function generateSuggestion(tweetText, author, signal) {
             },
         ],
         max_completion_tokens: 3000,
-        seed: 30,
-        reasoning_effort: "medium",
+        seed: 0,
+        // reasoning_effort: "medium",
         temperature: 0,
     }, { signal });
 
