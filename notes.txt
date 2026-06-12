@@ -1,266 +1,84 @@
-1. IDENTIFY THE meme
--identifying broad/abstract ideas instead of direct thing in the meme
--not always making the connections and being as specific as possible
-
-2.### A. EXTRACT: *ALWAYS* use when there is an explicit named thing, word/phrase, title, or label that is associated with the meme.
--other methods sometimes override
--extracts wrong thing (google insider vs alpharacoon) (pope vs magnifica humanitas)
--does not name because extracted thing doesnt represent the meme it identified ("username", doesnt represent pope/ai) (google insider literally the meme it identifies so it picks that over alpharacoon)
--sometimes doesnt think the name is meme-y enough/doesnt capture the meme
-
-ideas:
-"in the tweet" - the extracted thing doesnt have to represent the overarching abstract meme, just its representation in this specific tweet
-split between creative and extract - extract should take on virality/trending etc not a funny meme
-memetic subject?
-removed captures the meme.
-
-BOTH WORKS
-NO ALWAYS WORKS
-no important does not work
-neither works
-
- *ALWAYS* use
-*IMPORTANT: It does not have to be or represent the EXACT meme, just a specific thing related to it.
-
-
-
-2. Evaluate methods A-F in order. Consider every method before making a decision. Choose exactly ONE method and follow only that method's rules.
-
-### A. EXTRACT: Use when an explicit named entity, thing, word/phrase, title, or label is in the tweet.
-Example: Dog "Harry" announced: -> Harry, Phrase "gonna be huge" -> Gonna Be Huge
-
----
-
-### B. ACRONYM: Use if acronym relevant to the meme.
-Example: AI logos look like buttholes -> Anal Intelligence (AI)
-
-Take acronym and redefine it with the meme. Prefer crude and vulgar humor. 
-
----
-
-
-
-
-ALWAYS WORKS
-2. Choose exactly ONE of the following methods based on its use case. GO IN ORDER AND CONSIDER ALL. DO NOT CONSIDER ANY OTHER METHODS.
-
-### A. EXTRACT: Use when an explicit named entity, thing, word/phrase, title, or label appears verbatim in the tweet.
-Example: Dog "Harry" announced: -> Harry, Phrase "gonna be huge" -> Gonna Be Huge
-
-*IMPORTANT: It does not have to be or represent the meme, just a specific thing related to it.
-
----
 
 
 
 
 
-
-
-
-WORD EXPLICIT COULD BE INTERESTING INSTEAD OF SPECIFIC
-
-GOOGLE/ALPHARACCOON
-partially identifies alpharaccoon after considering google insider, extracts google insider in step 2
-sometimes never identifies but mentions in part 2
-
-AI/MAGNIFICA
-identifies magnifica but doesnt represent meme in part 1 even though part 1 said it was titled that.
-
-{ author: "todaynewsco", text: "🚨 NEWS ALERT: Pope Leo XIV signs document, titled 'Magnifica Humanitas,' this Friday. The document frames ai as a threat." },  
-{ author: "todaynewsco", text: "🚨 NEWS ALERT: Pope Leo XIV is set to sign his first encyclical, potentially titled 'Magnifica Humanitas,' this Friday. The document frames artificial intelligence as a critical moral and labor issue of the new industrial revolution." },
-
-
-(doesn't need to describe the entire meme, just needs to be the specific concrete thing it pins to))
-not having it fucks google insider to google insider instead of alpharaccoon
-not having it gives acronyms s&p
-
-
-
-
-
-
-INSTANT SCRAPED LIKE INSTA 0 SEC DELAT
+❌ Processing error: Cannot read properties of undefined (reading 'image_url')
 double deploy normal and then with image??
 ❌ Image description failed: 400 {"error":{"message":"failed to retrieve media: received status code: 404","type":"invalid_request_error"}} — falling back to text only
-image url error? might be tied to aboe
-"the" for grandeous and sinular and THE one rather than a one
-coin for trading mostly crypto related or idea can relate to a coin (tokenized debt / only up etc. / buying things (happy coin)) ask claude about this
+add blacklist of previous narratives
+double deploys
+add "memecoin" to SUGGESTION
+make sure "recent" news in score
 
+✅ Connected to j7
+🧹 Cache cleaned — 0 tweets remaining
+1ELAPSED SCORE TIME: 0.52 seconds
+2ELAPSED VISION TIME: 1.23 seconds
+2ELAPSED SCORE TIME: 2.16 seconds
+2ELAPSED VISION TIME: 0.96 seconds
+2ELAPSED SCORE TIME: 1.44 seconds
+❌ Processing error: 400 {"error":{"message":"failed to retrieve media: received status code: 404","type":"invalid_request_error"}}
+1ELAPSED SUGGESTION TIME: 17.83 seconds
+❌ Processing error: 400 {"error":{"message":"failed to retrieve media: received status code: 404","type":"invalid_request_error"}}
+We need to follow steps. Identify naming method.
 
+Tweet about scientists using yeast from 5,300-year-old mummy (Ötzi) to bake sourdough. Could be "Ötzi Yeast" or "Mummy Bread". Let's see methods.
 
-complete rename
-trumpus maximus
-sleepy joe
-biscuits jouney
-flying squiggles
-blaxk swan event
-ticker talk
-rogue agent
-digital ass
-floki wif hat
-theeaglerapesthegoose
-vampless
-chill alon
-pump wif mask
-moneye printer go brr
-venezuela take over
-president vs elon
-passenger kangaroo
-elon wif hat
-ceilingless
-spacex dragon
-the boys
-unity
-half way
-sol force 1
-memecycle
-shooting chimp dog
-money printer go brr
-ai marxism
-i got your backs
-solana pesasus
-diamond hands
-troll moon
-black swan event
-insider her trading
-raj and toly
+A. EXTRACT: unique explicit thing: "Ötzi the Iceman", "5,300-year-old mummy", "yeast". Could name "Ötzi Yeast". That's specific anchor.
 
+B. ACRONYM: Not obvious.
 
+C. PORTMANTEAU: Fuse person (Ötzi) with concept (bread) -> "ÖtziBread" maybe using ending sound "tzi". So "Tzibread"? Not great.
 
+D. ADD "THE": "The Yeast" maybe.
 
+E. ADD "COIN": Could be "Yeastcoin". But maybe we want a viral crypto name.
 
-portmaneau/retard
+F. RENAME: Could be "Mummy Sourdough".
 
-pempfen
-deve wubin
-chustopher nulen
-alexundriaocusizo curtez
-jurome puwel
-pete buttplug
+We need best method. Probably EXTRACT: Use "Ötzi Yeast". Name length <=32. "Ötzi Yeast" is 10 characters. Ticker: maybe "OTZIY". Up to 13 characters.
 
-retardnald
-zuckbot
-grokception
-silvercoin
-trumparoo
-wizardlon
-supertrump
-balding woody baldy
-scam altman
-apebama
-dogelon
-moonhouse
-pixelnald
-nikita boar
-alienlon
-stevenald
-bullnald
-autocoin
-dwoge
-goldnald
-policenald
-gmebay
-memelon
-ANThropic
+But maybe more viral: "Mummy Yeast". Or "Ancient Yeast". "Ancient Yeast" is 13 characters. Ticker "ANCY". But we need to follow steps exactly: go through all naming methods A-F then pick best one.
 
+We should evaluate each:
 
-"the"/"coin"
-the plague dog
-the silencing (rename)
-the wandering 7
-the hair dryer
-the last swing
-The Nietzchean Penguin
-the liberated lobster
-the quant
-the eye roll
-the sink
-the lost balloon
-the forbidden color
-the wall street owl
-the waiting dog
-the eagle
-the lobster
-the turtle
-the intelligent crow
-the immortal jellyfish
-the hidden prompt
-the strategy
-the one piece
+A: EXTRACT: "Ötzi Yeast" or "Mummy Yeast". Good.
 
-vibecoin
-dreamcoin
-infinitecoin
-Goldcoin
-randomcoin
-oilcoin
-emojoicoin
-namecoin
-eloncoin
-valuecoin
-meritcoin
-happycoin
-undervaluedcoin
-scamcoin
-debtcoin
-bangercoin
-tesla coin
+B: ACRONYM: Could be "SOUR" (Sourdough). Not relevant.
 
-acronym play
-lay down and rot
-donald jesus trump
-cat executive officer
-reddit language model
-you only live once YOLO
-artificial general intelligence AGI
-arigicial girlfriend int
-beekeeper of the united states
-cat processing unit
-great beaver pound
-pedo of the united states
-anal intelligence
-we love fucking investors
-department of war
-department of war everywhere
-artificial goon intell
-wuantum safe bitcoin
-universal prosperity
-fomsi
-achieving a better life exp
-scam bonkman friend (also portmantaeu)
-king of the uni
-SEXBAAALS
-bitches money no texas
+C: PORTMANTEAU: "ÖtziBread" (9). Could be.
 
-special formats (rip, justice for)
-jf cocaine hippos
-rip max
-rip charlie
-rip 841
-just for tornado
+D: ADD "THE": "The Yeast". Not as catchy.
 
+E: ADD "COIN": "Yeastcoin". Could be.
 
+F: RENAME: "Ancient Sourdough". That's 18.
 
+Which is best? Probably EXTRACT yields a clear anchor: "Ötzi Yeast". It's unique and meme-worthy. So choose that.
 
+Ticker: Most important word: "OTZI". Could be "OTZIY". Up to 13. Use "OTZIY". Or "OTZI". Use "OTZI". Let's output.
 
+Name: Ötzi Yeast
 
+Ticker: OTZI
 
+Check constraints: Name max 32, okay. Ticker max 13, okay. All characters allowed. Use plain ASCII? Ö is non-ASCII but allowed? All characters allowed. Should be fine.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Thus output.
+2ELAPSED SUGGESTION TIME: 31.46 seconds
+https://pbs.twimg.com/media/HKD8WFBXwAIP-qj.jpg
+[
+  {
+    type: 'image_url',
+    image_url: { url: 'https://pbs.twimg.com/media/HKD8WFBXwAIP-qj.jpg' }
+  }
+]
+2Historical image result: https://pbs.twimg.com/media/HKD8WFBXwAIP-qj.jpg
+ELAPSED HISTORICAL IMAGE TIME: 32.90 seconds
+  ✅ Token deployed: 42swzUaEZVWAdNKFx7brVXgnfkLFXbRRCiDEaz73pump
+2ELAPSED TIME: 32.98 seconds
+^C
 
 
 

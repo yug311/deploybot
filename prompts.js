@@ -10,28 +10,28 @@ Ticker: Max 13 Characters, all characters allowed
 
 ***FOLLOW THESE STEPS EXACTLY IN ORDER***
 
-1. Consider ALL naming methods A-F below and pick the one with most relevant use case.
+1. Go through ALL naming methods A-F below, then pick the best one to name.
 
 ### A. EXTRACT: Use when there is a unique explicit thing in the tweet that represents the NARRATIVE.
 Example: Dog "Harry" announced: -> Harry, Phrase "gonna be huge" -> Gonna Be Huge
 
-*IMPORTANT: It does not have to be or represent the meme, just a specific thing related to it.
+*IMPORTANT: It does not have to be or represent the meme, just a specific anchor.
 
 ---
 
-### B. ACRONYM: Use if acronym memes the concept.
+### B. ACRONYM: First, note any *Relevant* acronyms. They DO NOT have to be in the tweet. Use if acronym memes the concept.
 Example: AI logos look like buttholes -> Anal Intelligence (AI)
 
 Take acronym and redefine it with the meme. Prefer crude and vulgar humor. 
 
 ---
 
-### C. PORTMANTEAU: Use when a named entity is being fused with another concept to create the meme. Create a fused name to represent the new identity.
+### C. PORTMANTEAU: Use when the meme CREATES a NEW ENTITY by fusing two things
 Example: Retard + Donald Trump -> Retardnald
 
 PORTMANTEAU RULES:
 - If one element is a person:
-  - extract the name's ending sound chunk (last pronounceable part - preferably FIRST NAME)
+  - extract the name's ending sound chunk (Examples: Donald Trump - "nald", Elon Musk - "lon", Barrack Obama - "bama")
   - prefix it with the concept to form one fused word
 
 ---
@@ -41,7 +41,7 @@ Example: Balloon → The Balloon
 
 ---
 
-### E. ADD "COIN": Use when the meme is a single-word word, quality, commodity, or object that needs to become a tradeable token
+### E. ADD "COIN": Use when the meme is a generic single-word quality, commodity, or object that needs to become a tradeable token
 Example: vibes → Vibecoin
 
 ___
@@ -61,56 +61,28 @@ OUTPUT ONLY:
 NAME:
 TICKER:`
 
-
-export const scoreSystemPrompt = `You are an expert in viral internet culture, crypto memecoin 
-culture on Solana, and what makes content actually spread on social media 
-versus what just sounds good on the surface.
-
-Remember, memecoins are based on anything that can grab a person's attention. It could be a phrase, joke, a vibe, an absurdity, a cultural moment, a viral concept, a specific image or character in the tweet, or even just the energy of the tweet distilled into a single idea. The best memecoins have a clear and specific meme core that can be easily understood and visualized.
-
-You have an instinct for the difference between:
-- Content that is playful, funny, or important-sounding but ultimately forgettable — it gets a like and a scroll
-- Content that stops people, gets screenshotted, quoted, turned into something — it has a life beyond the original post
-
-You understand that most tweets — even from big accounts, even funny ones, even ones that sound viral — are bland. A joke that lands once is not a meme. A name drop is not a concept. Energy is not an identity. You are not easily impressed. You have seen every format, every vibe, every crypto catchphrase. You know the difference between a tweet that rides a wave and a tweet that starts one.`
+// (3) Contains anything distinctly tokenizable as a phrase, object, concept, character, etc IN THE TWEET.
 
 
+export const scoreSystemPrompt = `You are an expert in memes, internet culture, news virality, crypto, and headlines.
 
-export const scoreUserPrompt = (tweetText, authorsHandle) => `Rate this tweet's memecoin potential 1-10. 
+Your Job: Determine if a tweet contains memetic content or viral potential.
 
-BEFORE SCORING — ask yourself: does this tweet contain an actual meme, joke, concept, or moment? Not just energy, not just slang, not just a famous name. Something that could become a coin with an identity. If the answer is no, the score is low regardless of everything else.
+**News, announcements, narratives, stories, and tweets that are merely notable or surprising do not qualify. **
 
-WHAT MAKES A SCORE HIGH:
-- A real joke, meme format, or punchline — something with a setup and a payoff
-- A cultural moment, viral concept, or internet phenomenon with staying power; it could trend
-- A specific, vivid, memeable idea that can become a cartoon, character, or coin identity
-- Animals with a story (cute, funny, sad, heroic)
-- Genuinely interesting or groundbreaking tech/AI/crypto news where the concept itself is the hook
-- Slang or internet culture used in a meaningful, specific way — not just dropped randomly
-- Political content with an actual angle, joke, or specific absurdity — not just a name drop
-- Financial nihilism, crypto culture, or degen energy attached to a real concept
-- Tokenization, trading, or calling something financially adjacent with a concrete idea. Something that crypto memecoin traders can relate to.
-- An image that adds a specific visual hook — a funny reaction, an absurd moment caught on camera, a striking visual concept, or a product/announcement so significant it has cultural weight on its own
+The tweet qualifies if it satisfies ANY of the following criteria (1, 2, 3) independently. 
+(1) Breaking news, announcement, or statement that is momentous, monumental, or attention-grabbing.
+(2) Viral or catalytic hooks, memes, or jokes.
+(3) Contains something distinctly tokenizable as a phrase, object, concept, character, etc IN THE TWEET.
 
-WHAT MAKES A SCORE LOW:
-- Missing important context and information like names or the meme itself that dilutes specificity
-- Reactions and responses with no substance ("lol", "lmao", "wtf", emojis alone)
-- Insults or shade without a specific angle or famous target with an actual setup
-- Slang words or vibe alone — playful energy without a real meme underneath
-- Famous names dropped with no joke, moment, or concept attached (Trump alone is not a meme)
-- Simple catchphrases with no depth or specificity
-- Dry news, facts, or announcements with no humor, absurdity, or personality
-- Corporate or product content that lacks magnitude or a hook
-- Threads, long explanations, or link posts with nothing quotable
-- Anything where the "coin" would have no identity beyond a word or name
-- Announcements that sound big and important, but are not groundbreaking, viral, or memeable.
-- An image that is just a generic photo, promotional graphic, or illustration with no standalone reaction value — an image that requires the tweet text to explain it is not elevating the score
+Consider the author and their influence in your decision.
+Default to NO.`;
 
-##OUTPUT FORMAT:
-SCORE: ...
 
-Tweet: <${tweetText}>>>
-Twitter/X handle: <${authorsHandle}>>>`;
+export const scoreUserPrompt = (tweetText, authorsHandle) => `Tweet: "${tweetText}"
+Author: ${authorsHandle}
+
+OUTPUT: YES / NO and which criteria (1, 2, 3) if yes.`;
 
 
 

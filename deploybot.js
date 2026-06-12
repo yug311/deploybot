@@ -12,7 +12,7 @@ import player from "play-sound";
 import { WorkloadIdentityAuth } from 'openai/auth/workload-identity-auth.mjs';
 import { maybeParseChatCompletion } from 'openai/lib/parser.mjs';
 import { suggestionSystemPrompt, suggestionUserPrompt, scoreSystemPrompt, scoreUserPrompt, historicalImagePrompt, generateImagePrompt } from './prompts.js';
-export {  generateSuggestion, getHistoricalImages };
+export {  generateSuggestion, getHistoricalImages, scoreTweet };
 
 
 const client = new OpenAI({
@@ -27,11 +27,13 @@ const openrouter = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
 });
 
-const model_suggestion = "gpt-oss-120b"; //openai/gpt-oss-120b.  gpt-oss-120b
-const model_score = "llama-3.1-8b-instant"; //llama-3.1-8b-instant. // llama-3.3-70b-versatile
+const model_suggestion = "openai/gpt-oss-120b"; //openai/gpt-oss-120b.  gpt-oss-120b
+const model_score = "openai/gpt-oss-120b"; //llama-3.1-8b-instant. // llama-3.3-70b-versatile
 const WHITELIST = [
     "elonmusk", "pumpfun", "a1lon", "sama", "claudeai", "anthropicai", "openai", "pmarca", "nikitabier", "cobie", "solana",
-    "rajgokal", "naval", "saylor", "balajis", "mert", "nasa", "jack", "toly", "polymarket", "dexerto", "bloomberg", "washtimes", "newyorker",
+    "rajgokal", "naval", "saylor", "balajis", "mert", "nasa", "jack", "toly", "polymarket", "dexerto", "bloomberg", "washtimes",
+    "newyorker", "nypost", "dailymail", "watcherguru",
+
 
 ];
 
@@ -117,7 +119,7 @@ async function getHistoricalImages(name, ticker, tweetText, mediaURL, signal)
 
 async function generateSuggestion(tweetText, author, signal) {
 
-    const response = await cerebras.chat.completions.create({
+    const response = await groq.chat.completions.create({
         model: model_suggestion,
         messages: [
             {
@@ -160,10 +162,18 @@ async function scoreTweet(tweetText, authorsHandle, signal) {
         ],
         max_tokens: 1000,
         temperature: 0,
+        seed: 0,
+        // reasoning_effort: "medium",
+
     }, { signal });
 
-    const scoreMatch = response.choices[0].message.content.match(/SCORE: (\d+)/);
-    const score = scoreMatch ? parseInt(scoreMatch[1]) : 0;
+    // const scoreMatch = response.choices[0].message.content.match(/SCORE: (\d+)/);
+    // const score = scoreMatch ? parseInt(scoreMatch[1]) : 0;
+    const content = response.choices[0].message.content.trim().toLowerCase();
+    const score = content.includes("yes") ? 10 : 0; //binary yes/no for simplicity
+    const reasoning1 = response.choices[0].message.reasoning;
+    console.log(reasoning1);
+    console.log("content:",     content);
     return {score: score};
 }
 
@@ -213,7 +223,7 @@ async function generateImage(tweetText, prediction, ticker, signal) {
 
 async function deployToken(name, ticker, imageBase64, tweetText, authorHandle, tweetUrl, signal) {
     const AI_TERMS = [
-        " ai", "ai ", "gpt", "claude", "llama", "gemini", "singularity", "sentient",
+        " ai", "ai ", "gpt", "cpu", "gpu", "artificial", "intelligence", "intelligent", "claude", "llama", "gemini", "singularity", "sentient",
         "conscious", "self-aware", "agi", "asi", "superintelligence",
         "machine learning", "deep learning", "neural network", "transformer",
         "llm", "gen ai", "generative ai", "large language model", "agent",
@@ -363,7 +373,7 @@ async function processTweet(tweetId) {
         const signal = controller.signal;
 
         const {score} = await scoreTweet(tweet.text, tweet.author?.handle, signal);
-        console.log(tweet.text, score);
+        console.log(tweet.author?.handle, tweet.text, score);
         console.log("1ELAPSED SCORE TIME:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');
 
         if (score >= 7)
@@ -424,7 +434,7 @@ async function processTweet(tweetId) {
         }
         else
         {
-            console.log("❌ Processing error:", err.message);
+            console.log("❌ Processing error:", err.name, err.message);
         }
         tweet.processing = false;
     }
@@ -477,7 +487,7 @@ async function processWithImage(tweet) {
         const combinedText = `${tweet.text || ""} [image: ${imageDescription}]`.trim();
 
         const { score } = await scoreTweet(combinedText, tweet.author?.handle);
-        console.log(combinedText, score);
+        console.log(tweet.author?.handle, combinedText, score);
         console.log("2ELAPSED SCORE TIME:", ((Date.now() - tweet.cachedAt) / 1000).toFixed(2), 'seconds');   
 
         if (score < 7) {
